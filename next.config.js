@@ -2,6 +2,9 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-}
+  images: {
+    domains: ['www.transdesk.com.br']
+  }
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

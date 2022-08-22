@@ -1,9 +1,237 @@
-import { createGlobalStyle } from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 
 export default createGlobalStyle`
     *{
         margin: 0;
         padding: 0;
         box-sizing: border-box;
+    }
+
+    *:focus-visible {
+        outline: -webkit-focus-ring-color auto 0;
+    }
+
+    a{
+        text-decoration: unset;
+    }
+    
+    html { 
+        scroll-behavior: auto !important;
+    }
+
+    body{
+        background-color: #121212;
+
+        font-family: Outfit, sans-serif;
+
+        overflow-x: hidden;
+    }
+
+    .border-radius-8px{
+        border-radius: 8px;
+    }
+
+    .react-horizontal-scrolling-menu--scroll-container{
+        overflow-x: hidden;
+    }
+
+    .margin-64px{
+        margin: 64px 0;
+    }
+
+    .margin-top-12px{
+        margin-top: 12px;
+    }
+    .margin-top-12px{
+        margin-top: 12px;
+    }
+    .margin-top-16px{
+        margin-top: 16px;
+    }
+    .margin-top-24px{
+        margin-top: 24px;
+    }
+    .margin-top-42px{
+        margin-top: 42px;
+    }
+    .margin-top-64px{
+        margin-top: 64px;
+    }
+
+    &.hyundai{
+        aspect-ratio: 1.9491323983836463037794152602805;
+    }
+    &.chevrolet{
+        aspect-ratio: 3.6558181007579135086937137761926;
+    }
+    &.mitsubishi{
+        aspect-ratio: 1.159420289855072463768115942029;
+    }
+    &.honda{
+        aspect-ratio: 1.2305325898865602768698327244761;
+    }
+    &.renault{
+        aspect-ratio: 0.76172413793103448275862068965517;
+    }
+    &.fiat{
+        aspect-ratio: 1.6249153689911983750846310088016;
+    }
+    &.ford{
+        aspect-ratio: 2.6666666666666666666666666666667;
+    }
+    &.volkswagen{
+        aspect-ratio: 1;
+    }
+    &.citroen{
+        aspect-ratio: 1.1107254425546685178757375911142;
+    }
+    &.nissan{
+        aspect-ratio: 1.1951447245564892623716153127918;
+    }
+    &.mercedez{
+        aspect-ratio: 1;
+    }
+    &.bmw{
+        aspect-ratio: 1;
+    }
+    &.pegeout{
+        aspect-ratio: 0.91038406827880512091038406827881;
+    }
+`;
+
+export const Button = styled.div<{ type?: string; }>`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: ${(props) => props.type == 'whatsapp' ? '#25D366' : props.theme.colors.primary};
+
+    height: 44px;
+    width: ${({ type }) => type == 'whatsapp' ? '375px' : type == 'small' ? '44px' : '100%'};
+    ${({ type }) => type == 'small' ? 'min-width: 44px;' : '0'};
+
+    ${({ type }) => type == 'small' ? 'margin: 0 0 0 16px;' : '0'};
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    box-shadow: 0 1px 24px rgba(68, 15, 16, 0.15);
+
+    transition: 0.2s;
+
+    &:hover{
+        box-shadow: 0 1px 24px rgba(68, 15, 16, 0.5);
+    }
+
+    &:active{
+        transform: scale(0.99);
+    }
+
+    svg{
+        fill: ${({ theme }) => theme.colors.text};
+
+        width: 16px;
+        height: auto;
+
+        ${({ type }) => type == 'small' ? '' : 'margin: 0 0 2px 0;'};
+    }
+
+    p{
+        color: ${({ theme }) => theme.colors.text};
+
+        font-size: 15px;
+        font-weight: 600;
+
+        margin: 0 0 0 14px;
+    }
+`;
+
+export const FilterToggle = styled.div`
+    display: flex;
+    align-items: center;
+
+    margin: 14px 0 0 0;
+
+    cursor: pointer;
+
+    svg{
+        fill: ${({ theme }) => theme.colors.text};
+    }
+
+    p{
+        color: ${({ theme }) => theme.colors.text};
+
+        font-size: 16px;
+        font-weight: 600;
+
+        margin: 0 0 0 8px;
+    }
+`;
+
+export const Title = styled.h5`
+    color: ${({ theme }) => theme.colors.text};
+
+    font-size: 26px;
+    font-weight: 700;
+
+    margin: 0 0 12px 0;
+`;
+
+export const Subtitle = styled.h1`
+    display: flex;
+    align-items: end;
+
+    color: ${({ theme }) => theme.colors.text};
+
+    font-size: 14px;
+    font-weight: 500;
+
+    margin: 0 0 14px 32px;
+
+    opacity: 0.75;
+`;
+
+export const Divider = styled.hr<{ full?: boolean }>`
+    background-color: ${({ theme }) => theme.colors.text};
+
+    height: 3px;
+    width: ${({ full }) => full ? '100%' : '175px'};
+
+    margin: 32px 0;
+
+    opacity: 0.25;
+`;
+
+export const Box = styled.div`
+    background-color: ${({ theme }) => theme.colors.gray};
+
+    width: 100%;
+    height: auto;
+
+    padding: 32px;
+
+    border-radius: 8px;
+
+    & > p:first-of-type, h3{
+        color: ${({ theme }) => theme.colors.text};
+
+        font-size: 22px;
+        font-weight: 700;
+
+        margin: 0;
+    }
+
+    & > p:last-of-type, h6{
+        color: ${({ theme }) => theme.colors.text};
+
+        font-size: 14px;
+        font-weight: 500;
+
+        line-height: 26px;
+
+        margin: 0 0 24px 0;
+
+        opacity: 0.8;
     }
 `;

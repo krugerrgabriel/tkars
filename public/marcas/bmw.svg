@@ -1,0 +1,148 @@
+<svg id="Grupo_77" data-name="Grupo 77" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="64" height="63.999" viewBox="0 0 64 63.999">
+  <defs>
+    <linearGradient id="linear-gradient" x1="-0.073" y1="-0.054" x2="0.988" y2="0.971" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#dff4ff"/>
+      <stop offset="0.098" stop-color="#d6eaf5"/>
+      <stop offset="0.268" stop-color="#bfd0d9"/>
+      <stop offset="0.488" stop-color="#98a5ac"/>
+      <stop offset="0.747" stop-color="#646b6e"/>
+      <stop offset="1" stop-color="#2b2b2b"/>
+    </linearGradient>
+    <radialGradient id="radial-gradient" cx="-0.033" cy="0.009" r="0.748" gradientTransform="translate(0)" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#fff"/>
+      <stop offset="0.306" stop-color="#a8a8a8"/>
+      <stop offset="0.646" stop-color="#4f4f4f"/>
+      <stop offset="0.885" stop-color="#161616"/>
+      <stop offset="1"/>
+    </radialGradient>
+    <linearGradient id="linear-gradient-2" x1="-0.201" y1="0.187" x2="0.86" y2="1.212" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#dff4ff"/>
+      <stop offset="0.086" stop-color="#d6eaf5"/>
+      <stop offset="0.233" stop-color="#bed0d9"/>
+      <stop offset="0.424" stop-color="#96a4ac"/>
+      <stop offset="0.652" stop-color="#5f686d"/>
+      <stop offset="0.908" stop-color="#1a1d1e"/>
+      <stop offset="1"/>
+    </linearGradient>
+    <radialGradient id="radial-gradient-2" cx="-3.9" cy="-0.651" r="13.594" gradientTransform="translate(0.064) scale(0.873 1)" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#fff"/>
+      <stop offset="0.31" stop-color="#fdfdfd"/>
+      <stop offset="0.451" stop-color="#f6f6f6"/>
+      <stop offset="0.557" stop-color="#e9e9e9"/>
+      <stop offset="0.646" stop-color="#d7d7d7"/>
+      <stop offset="0.724" stop-color="#bfbfbf"/>
+      <stop offset="0.794" stop-color="#a2a2a2"/>
+      <stop offset="0.859" stop-color="gray"/>
+      <stop offset="0.92" stop-color="#575757"/>
+      <stop offset="0.975" stop-color="#2b2b2b"/>
+      <stop offset="1" stop-color="#141414"/>
+    </radialGradient>
+    <radialGradient id="radial-gradient-3" cx="-4.853" cy="-1.032" r="9.508" gradientTransform="translate(-0.008) scale(1.016 1)" xlink:href="#radial-gradient-2"/>
+    <radialGradient id="radial-gradient-4" cx="-1.413" cy="-1.135" r="9.865" gradientTransform="translate(0)" xlink:href="#radial-gradient-2"/>
+    <radialGradient id="radial-gradient-5" cx="-0.033" cy="0.008" r="0.748" gradientTransform="translate(0)" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#e6e6e6"/>
+      <stop offset="0.105" stop-color="#d6d6d6"/>
+      <stop offset="0.307" stop-color="#adadad"/>
+      <stop offset="0.588" stop-color="#6c6c6c"/>
+      <stop offset="0.933" stop-color="#121212"/>
+      <stop offset="1"/>
+    </radialGradient>
+    <radialGradient id="radial-gradient-6" cx="0.162" cy="0.098" r="1.12" gradientTransform="translate(0)" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#fff"/>
+      <stop offset="0.343" stop-color="#fdfdfd"/>
+      <stop offset="0.481" stop-color="#f6f6f6"/>
+      <stop offset="0.582" stop-color="#eaeaea"/>
+      <stop offset="0.665" stop-color="#d8d8d8"/>
+      <stop offset="0.737" stop-color="#c2c2c2"/>
+      <stop offset="0.802" stop-color="#a6a6a6"/>
+      <stop offset="0.86" stop-color="#848484"/>
+      <stop offset="0.913" stop-color="#5f5f5f"/>
+      <stop offset="0.949" stop-color="#404040"/>
+      <stop offset="0.957" stop-color="#404040"/>
+      <stop offset="1" stop-color="#404040"/>
+      <stop offset="1"/>
+    </radialGradient>
+    <radialGradient id="radial-gradient-7" cx="-0.332" cy="-0.651" r="3.96" gradientTransform="translate(0)" gradientUnits="objectBoundingBox">
+      <stop offset="0.169" stop-color="#fff"/>
+      <stop offset="0.196" stop-color="#e0eff7"/>
+      <stop offset="0.241" stop-color="#b2d9ec"/>
+      <stop offset="0.287" stop-color="#8bc5e2"/>
+      <stop offset="0.335" stop-color="#6bb5da"/>
+      <stop offset="0.384" stop-color="#52a9d4"/>
+      <stop offset="0.436" stop-color="#41a0cf"/>
+      <stop offset="0.491" stop-color="#369bcd"/>
+      <stop offset="0.556" stop-color="#39c"/>
+      <stop offset="0.606" stop-color="#3396c8"/>
+      <stop offset="0.655" stop-color="#328ebc"/>
+      <stop offset="0.705" stop-color="#3180a8"/>
+      <stop offset="0.754" stop-color="#2f6d8c"/>
+      <stop offset="0.803" stop-color="#2d5468"/>
+      <stop offset="0.851" stop-color="#2a373d"/>
+      <stop offset="0.871" stop-color="#292929"/>
+    </radialGradient>
+    <radialGradient id="radial-gradient-8" cx="-1.332" cy="-1.651" r="3.96" xlink:href="#radial-gradient-7"/>
+    <radialGradient id="radial-gradient-9" cx="-0.033" cy="0.009" r="0.748" xlink:href="#radial-gradient-5"/>
+    <linearGradient id="linear-gradient-3" x1="-0.22" y1="-0.377" x2="1.28" y2="1.073" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#f0f4ff"/>
+      <stop offset="0.109" stop-color="#ebeff9"/>
+      <stop offset="0.248" stop-color="#dce0ea"/>
+      <stop offset="0.403" stop-color="#c4c7cf"/>
+      <stop offset="0.57" stop-color="#a2a4ab"/>
+      <stop offset="0.747" stop-color="#76777c"/>
+      <stop offset="0.929" stop-color="#414243"/>
+      <stop offset="1" stop-color="#2b2b2b"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-4" x1="-0.401" y1="-0.189" x2="1.099" y2="1.26" xlink:href="#linear-gradient-3"/>
+    <linearGradient id="linear-gradient-5" x1="0.325" y1="0.331" x2="1.102" y2="1.082" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#c2d7e8"/>
+      <stop offset="0.134" stop-color="#bacfe1"/>
+      <stop offset="0.343" stop-color="#a4bacd"/>
+      <stop offset="0.6" stop-color="#8098ac"/>
+      <stop offset="0.894" stop-color="#4e697f"/>
+      <stop offset="1" stop-color="#3a566d"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-6" x1="-0.073" y1="-0.53" x2="1.426" y2="0.922" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#f0f4ff"/>
+      <stop offset="0.097" stop-color="#e8ebf6"/>
+      <stop offset="0.257" stop-color="#d1d4dd"/>
+      <stop offset="0.459" stop-color="#abaeb5"/>
+      <stop offset="0.695" stop-color="#78797d"/>
+      <stop offset="0.958" stop-color="#363637"/>
+      <stop offset="1" stop-color="#2b2b2b"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-7" x1="-0.008" y1="0.009" x2="0.518" y2="0.518" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#d9def0"/>
+      <stop offset="0.123" stop-color="#d4daec"/>
+      <stop offset="0.263" stop-color="#c7cfe2"/>
+      <stop offset="0.411" stop-color="#b0bcd1"/>
+      <stop offset="0.566" stop-color="#90a1b8"/>
+      <stop offset="0.725" stop-color="#677f99"/>
+      <stop offset="0.885" stop-color="#355674"/>
+      <stop offset="0.972" stop-color="#173d5d"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-8" x1="-0.547" y1="-0.038" x2="0.953" y2="1.411" xlink:href="#linear-gradient-3"/>
+  </defs>
+  <path id="Caminho_127" data-name="Caminho 127" d="M32,0A32,32,0,1,0,64,32,32,32,0,0,0,32,0Zm0,62.4A30.4,30.4,0,1,1,62.4,32,30.4,30.4,0,0,1,32,62.4Z" fill="url(#linear-gradient)"/>
+  <path id="Caminho_128" data-name="Caminho 128" d="M82.99,52.342A30.627,30.627,0,1,1,52.363,21.715,30.629,30.629,0,0,1,82.99,52.342Z" transform="translate(-20.363 -20.342)" fill="#333"/>
+  <path id="Caminho_129" data-name="Caminho 129" d="M86.159,55.734a30.4,30.4,0,1,1-30.4-30.4A30.4,30.4,0,0,1,86.159,55.734Z" transform="translate(-23.762 -23.734)" fill="url(#radial-gradient)"/>
+  <path id="Caminho_130" data-name="Caminho 130" d="M224.775,204.4a20.366,20.366,0,1,1-20.366-20.366A20.366,20.366,0,0,1,224.775,204.4Z" transform="translate(-172.408 -172.399)" fill="url(#linear-gradient-2)"/>
+  <path id="Caminho_131" data-name="Caminho 131" d="M438.437,56.067l2.12-5.618v5.618h1.61V48.021h-2.419l-2.2,5.761h.021l-2.2-5.761h-2.419v8.046h1.61V50.449l2.12,5.618Z" transform="translate(-405.619 -44.985)"/>
+  <path id="Caminho_132" data-name="Caminho 132" d="M742.075,161.268l-2.751,4.011,4.32-2.125,1.172,1.405-6.8,3.414-1.374-1.663,2.636-3.974-.016-.02-4.384,1.877-1.39-1.652,4.585-6.071,1.172,1.406-2.871,3.866,4.443-1.982Z" transform="translate(-687.203 -146.593)"/>
+  <path id="Caminho_133" data-name="Caminho 133" d="M127.14,164.344a2.053,2.053,0,0,0-2.588-.236,1.788,1.788,0,0,0,.012-1.2,2.871,2.871,0,0,0-.879-1.11c-1.081-.905-2.218-.132-3.03.836l-3.926,4.679,6.173,5.179,4.14-4.934C127.988,166.429,128.135,165.311,127.14,164.344Zm-7.985,2.257,2.359-2.811a.961.961,0,0,1,1.288.022.847.847,0,0,1,.145,1.235l-2.332,2.778Zm6.507.467L123.2,170l-1.54-1.294,2.477-2.953a1.009,1.009,0,0,1,1.521,1.317Z" transform="translate(-109.35 -151.207)" fill="#333"/>
+  <path id="Caminho_134" data-name="Caminho 134" d="M438.7,51.149l2.12-5.618v5.618h1.61V43.1h-2.42l-2.2,5.761h.021l-2.2-5.761h-2.42v8.046h1.61V45.531l2.12,5.618Z" transform="translate(-405.867 -40.378)" fill="url(#radial-gradient-2)"/>
+  <path id="Caminho_135" data-name="Caminho 135" d="M742.343,152.729l-2.749,4.011,4.32-2.126,1.171,1.406-6.8,3.414-1.374-1.664,2.636-3.974-.016-.02-4.386,1.877L733.759,154l4.585-6.07,1.172,1.405-2.87,3.866,4.441-1.981Z" transform="translate(-687.456 -138.579)" fill="url(#radial-gradient-3)"/>
+  <path id="Caminho_136" data-name="Caminho 136" d="M122.58,161.835a2.051,2.051,0,0,0-2.586-.237,1.792,1.792,0,0,0,.01-1.2,2.844,2.844,0,0,0-.88-1.111c-1.081-.906-2.216-.132-3.027.836l-3.928,4.679,6.173,5.179,4.14-4.934C123.427,163.919,123.575,162.8,122.58,161.835Zm-7.985,2.257,2.358-2.81a.961.961,0,0,1,1.288.02.845.845,0,0,1,.143,1.235l-2.331,2.779Zm6.508.467-2.459,2.93L117.1,166.2l2.478-2.953a1.01,1.01,0,0,1,1.523,1.317Z" transform="translate(-105.079 -148.856)" fill="url(#radial-gradient-4)"/>
+  <path id="Caminho_137" data-name="Caminho 137" d="M194.788,214.458a19.687,19.687,0,1,1,19.687,19.687A19.688,19.688,0,0,1,194.788,214.458Z" transform="translate(-182.475 -182.458)" fill="url(#radial-gradient-5)"/>
+  <path id="Caminho_138" data-name="Caminho 138" d="M203.759,222.861a19.121,19.121,0,1,1,19.12,19.121A19.121,19.121,0,0,1,203.759,222.861Z" transform="translate(-190.879 -190.861)" fill="url(#radial-gradient-6)"/>
+  <path id="Caminho_139" data-name="Caminho 139" d="M203.284,222.467h19.19v-19.19A19.189,19.189,0,0,0,203.284,222.467Z" transform="translate(-190.457 -190.45)" fill="url(#radial-gradient-7)"/>
+  <path id="Caminho_140" data-name="Caminho 140" d="M506.86,506.852v19.19a19.19,19.19,0,0,0,19.19-19.19Z" transform="translate(-474.877 -474.869)" fill="url(#radial-gradient-8)"/>
+  <path id="Caminho_141" data-name="Caminho 141" d="M239.386,219.719H220.417V200.75h-.679v18.969H200.768v.679h18.969v18.97h.679V220.4h18.969Z" transform="translate(-188.077 -188.06)" fill="url(#radial-gradient-9)"/>
+  <path id="Caminho_142" data-name="Caminho 142" d="M512.241,204.216a18.814,18.814,0,0,1,18.473,18.47h.339a19.154,19.154,0,0,0-18.812-18.811v.341Z" transform="translate(-479.918 -191.01)" fill="url(#linear-gradient-3)"/>
+  <path id="Caminho_143" data-name="Caminho 143" d="M203.686,222.267a18.839,18.839,0,0,1,18.5-18.5v-.34a19.179,19.179,0,0,0-18.836,18.836h.34Z" transform="translate(-190.515 -190.594)" fill="#c2d7e8"/>
+  <path id="Caminho_144" data-name="Caminho 144" d="M222.7,530.7a18.813,18.813,0,0,1-18.471-18.471h-.34A19.154,19.154,0,0,0,222.7,531.037v-.34Z" transform="translate(-191.019 -479.903)" fill="url(#linear-gradient-4)"/>
+  <path id="Caminho_145" data-name="Caminho 145" d="M530.716,512.225A18.814,18.814,0,0,1,512.243,530.7v.34a19.153,19.153,0,0,0,18.812-18.812Z" transform="translate(-479.92 -479.903)" fill="#12404f"/>
+  <path id="Caminho_146" data-name="Caminho 146" d="M222.079,203.432V221.9H203.614v.364h18.829v-18.83Z" transform="translate(-190.766 -190.595)" fill="url(#linear-gradient-5)"/>
+  <path id="Caminho_147" data-name="Caminho 147" d="M224.31,531.3V513.06H206.029v-.36H224.67v18.6Z" transform="translate(-193.028 -480.348)" fill="url(#linear-gradient-6)"/>
+  <path id="Caminho_148" data-name="Caminho 148" d="M513.1,531.3V513.06h18.243v-.36h-18.6v18.6Z" transform="translate(-480.382 -480.348)" fill="url(#linear-gradient-7)"/>
+  <path id="Caminho_149" data-name="Caminho 149" d="M513.1,206.011v18.243h18.243v.359h-18.6v-18.6Z" transform="translate(-480.382 -193.011)" fill="url(#linear-gradient-8)"/>
+</svg>
