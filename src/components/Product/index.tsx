@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import Image from 'next/image';
 import Link from 'next/link';
@@ -10,18 +10,26 @@ import { Body, ImageWrapper, Info, MarcaWrapper } from './styles';
 import { ProductProps } from './interfaces';
 
 const Product: React.FC<ProductProps> = props => {
-  let { margin } = props;
-  let { id, marca, nome, modelo, preco, ano, quilometragem } = props.item;
+  let { margin, fixedWidth } = props;
+  let { id, marca, nome, modelo, preco, ano, quilometragem, extension } =
+    props.item;
   return (
-    <Body margin={margin}>
+    <Body margin={margin} fixedWidth={fixedWidth}>
       <Link href={`/carro/${id}`}>
         <a>
           <ImageWrapper>
             <Image
-              src={`/misc/${id}_principal.jpg`}
+              src={
+                'http://localhost/souunus/assets/img/veiculos/' +
+                id +
+                '_principal.' +
+                extension
+              }
               alt="Logo da TKARS"
               layout="fill"
-              objectFit="contain"
+              objectFit="cover"
+              objectPosition="center"
+              loading="lazy"
             />
           </ImageWrapper>
 

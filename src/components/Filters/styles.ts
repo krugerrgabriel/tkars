@@ -1,13 +1,13 @@
 import styled from "styled-components";
 import ReactSlider from "react-slider";
 
-export const Body = styled.div<{ active: boolean; type?: string }>`
+export const Body = styled.div<{ active: boolean; type?: string; className?: string }>`
     background-color: ${({ theme }) => theme.colors.gray};
 
-    width: 428px;
+    ${({ className }) => className ? '' : 'width: 428px'};
     height: 100vh;
 
-    padding: 138px 32px 32px 32px;
+    padding: 138px 32px 64px 32px;
 
     position: fixed;
     top: 0;
@@ -21,6 +21,13 @@ export const Body = styled.div<{ active: boolean; type?: string }>`
     transition: 0.2s;
 
     z-index: 100;
+
+    div.filter-wrapper{
+        position: relative;
+
+        width: 100%;
+        height: 100%;
+    }
 
     div.section{
         margin: 0 0 32px 0;
@@ -58,6 +65,29 @@ export const Body = styled.div<{ active: boolean; type?: string }>`
         & > *{
             margin: 0 24px 8px 0;
         }
+    }
+
+    div.button-box{
+        background-color: ${({ theme }) => theme.colors.gray};
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        ${({ className }) => className ? '' : 'width: 428px'};
+        height: 78px;
+        
+        position: fixed;
+        left: ${({ active }) => active ? '0' : '-50%'};
+        bottom: 0;
+
+        padding: 0 32px;
+
+        border-radius: 8px 8px 0 0;
+
+        box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.08);
+
+        transition: 0.2s;
     }
 `;
 
@@ -126,8 +156,8 @@ export const Bubble = styled.div<{ bubbleWidth: number; max:number; value: numbe
 
 export const BackWrapper = styled.div<{ type: string; }>`
     position: absolute;
-    top: 104px;
-    left: 32px;
+    top: -42px;
+    left: 0;
 
     ${({ type }) => type == 'full' ? 'display: none;' : ''}
 

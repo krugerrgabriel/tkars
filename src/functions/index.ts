@@ -13,4 +13,13 @@ export const numberWithCommas = (x) => {
 
 export const preventDragHandler = e => {
     e.preventDefault();
-  };
+};
+
+export const returnFormattedDate = (date) => {
+    let dateArray = date.split('-');
+    let day = dateArray[2];
+    let mounth = dateArray[1];
+    let year = dateArray[0];
+
+    return day +'/'+ mounth +'/'+ year;
+}

@@ -27,6 +27,28 @@ export default createGlobalStyle`
         overflow-x: hidden;
     }
 
+    ::-webkit-scrollbar-button {
+        width: 0px;
+        height: 0px;
+        transition: 0.2s;
+    }
+    ::-webkit-scrollbar-thumb {
+        background: #971915;
+        border: 0px none #000000;
+        border-radius: 0px;
+        transition: 0.2s;
+    }
+    ::-webkit-scrollbar-track {
+        background: #000000;
+        border: 0px none #ffffff;
+        border-radius: 0px;
+        transition: 0.2s;
+    }
+    ::selection {
+        color: #ffffff;
+        background: #971915;
+    }
+
     .border-radius-8px{
         border-radius: 8px;
     }
@@ -37,6 +59,10 @@ export default createGlobalStyle`
 
     .margin-64px{
         margin: 64px 0;
+    }
+
+    .margin-left-12px{
+        margin-left: 12px;
     }
 
     .margin-top-12px{
@@ -104,7 +130,7 @@ export const Button = styled.div<{ type?: string; }>`
     align-items: center;
     justify-content: center;
 
-    background-color: ${(props) => props.type == 'whatsapp' ? '#25D366' : props.theme.colors.primary};
+    background-color: ${(props) => props.type == 'whatsapp' ? '#25D366' : props.type == 'secondary' ? props.theme.colors.secondary : props.theme.colors.primary};
 
     height: 44px;
     width: ${({ type }) => type == 'whatsapp' ? '375px' : type == 'small' ? '44px' : '100%'};

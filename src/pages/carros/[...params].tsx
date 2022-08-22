@@ -1,25 +1,29 @@
 import React, { useEffect, useState } from 'react';
 
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 
 import { Container, Row, Col } from 'react-bootstrap';
 
-import Navbar from '../components/Navbar';
-import Fab from '../components/Fab';
-import Filters from '../components/Filters';
-import Breadcrumb from '../components/Breadcrumb';
-import Footer from '../components/Footer';
-import InputField from '../components/InputField';
-import SelectButton from '../components/SelectButton';
-import Product from '../components/Product';
+import Navbar from '../../components/Navbar';
+import Fab from '../../components/Fab';
+import Filters from '../../components/Filters';
+import Breadcrumb from '../../components/Breadcrumb';
+import Footer from '../../components/Footer';
+import InputField from '../../components/InputField';
+import SelectButton from '../../components/SelectButton';
+import Product from '../../components/Product';
 
-import { Button, Title } from '../styles/global';
+import { CarrosArray } from '../../functions/list';
 
-import { CarrosArray } from '../functions/list';
+import { Button, Title } from '../../styles/global';
+import { ProductWrapper } from '../../styles/carros';
+
+import { ServerProps } from '../../interfaces';
 
 // import { Container } from './styles';
 
-const List: React.FC = () => {
+const List: React.FC<ServerProps> = () => {
   let items = [
     {
       name: 'Carros',
@@ -29,6 +33,7 @@ const List: React.FC = () => {
 
   const [carsTitle, setCarsTitle] = useState('');
   const [carsCount, setCarsCount] = useState(0);
+
   useEffect(() => {
     setCarsCount(CarrosArray.length);
   }, []);
@@ -60,14 +65,15 @@ const List: React.FC = () => {
       <Navbar />
 
       <Row>
-        <Col lg={3} className="position-relative">
-          {/* Filters */}
-          <Filters
-            active={true}
-            type="full"
-            filterChange={event => console.log(event)}
-          />
-        </Col>
+        {/* Filters */}
+        <Filters
+          className="col-lg-3"
+          active={true}
+          type="full"
+          filterChange={event => console.log(event)}
+        />
+
+        <Col lg={3} />
 
         <Col lg={9}>
           <Container>
@@ -118,17 +124,20 @@ const List: React.FC = () => {
                 />
               </Col>
             </Row>
-
-            <Row className="margin-top-42px">
-              {CarrosArray.map((item, index) => {
-                return (
-                  <Col lg={3} key={index}>
-                    <Product margin={true} key={index} item={item} />
-                  </Col>
-                );
-              })}
-            </Row>
           </Container>
+
+          <ProductWrapper>
+            {CarrosArray.map((item, index) => {
+              return (
+                <Product
+                  margin={true}
+                  fixedWidth={true}
+                  key={index} /* @ts-ignore */
+                  item={item}
+                />
+              );
+            })}
+          </ProductWrapper>
         </Col>
       </Row>
 

@@ -1,15 +1,17 @@
 import styled from "styled-components";
 
-export const Body = styled.div<{ margin?: boolean; }>`
+export const Body = styled.div<{ margin?: boolean; fixedWidth?: boolean; }>`
     background-color: ${({ theme }) => theme.colors.gray};
 
-    width: 100%;
+    width: ${({ fixedWidth }) => fixedWidth ? '310px' : '100%'};
     /* width: 310px; */
     height: auto;
 
+    padding: 0;
+
     border-radius: 8px;
 
-    ${({ margin }) => margin ? 'margin: 0 0 18px 0' : '' };
+    ${({ margin }) => margin ? 'margin: 0 18px 18px 18px' : '' };
 `;
 
 export const ImageWrapper = styled.div`

@@ -5,6 +5,8 @@ export const Body = styled.div`
 
     margin: 64px 0 0 0;
 
+    z-index: 200;
+
     div.first{
         background-color: ${({ theme }) => theme.colors.primary};
 

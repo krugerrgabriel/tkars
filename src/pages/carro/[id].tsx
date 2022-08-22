@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { GetStaticPaths, GetStaticProps } from 'next';
 
 import Image from 'next/image';
 
@@ -13,10 +14,13 @@ import Breadcrumb from '../../components/Breadcrumb';
 import Ad from '../../components/Ad';
 import Product from '../../components/Product';
 import InputField from '../../components/InputField';
-import Banner from '../../components/Banner';
 
-import { CarrosArray, ficha_tecnica } from '../../functions/list';
-import { preventDragHandler } from '../../functions/';
+import {
+  preventDragHandler,
+  numberWithCommas,
+  returnFormattedDate,
+  formatBRL
+} from '../../functions/';
 import useDrag from '../../functions/useDrag';
 
 import { Wrapper, InfoBox, FloatingBox } from '../../styles/carro';
@@ -26,29 +30,32 @@ import { BannerWrapper } from '../../styles/';
 import 'froala-editor/css/froala_style.min.css';
 import 'font-awesome/css/font-awesome.css';
 
-const CarImage: React.FC<{ item: number }> = ({ item }) => {
-  return (
-    <Wrapper onDragStart={preventDragHandler}>
-      <Image
-        src={`/misc/5_${item}.jpg`}
-        alt="Logo da TKARS"
-        layout="fill"
-        objectFit="contain"
-      />
-    </Wrapper>
-  );
-};
+import { ServerProps } from '../../interfaces';
 
-const Carro: React.FC = () => {
-  let filesFound = [1, 2, 3, 4];
-
+const Carro: React.FC<ServerProps> = ({ data, recommended }) => {
+  const CarImage: React.FC<{ item: string; index?: number }> = ({
+    item,
+    index
+  }) => {
+    return (
+      <Wrapper onDragStart={preventDragHandler}>
+        <Image
+          src={`http://localhost/souunus/assets/img/veiculos/${data.id}_${item}`}
+          alt="Logo da TKARS"
+          layout="fill"
+          objectFit="cover"
+          loading="lazy"
+        />
+      </Wrapper>
+    );
+  };
   let items = [
     {
       name: 'Carros',
       url: '/carros'
     },
     {
-      name: 'Onix Joy',
+      name: data.nome,
       url: '#!'
     }
   ];
@@ -126,8 +133,8 @@ const Carro: React.FC = () => {
           onMouseUp={() => dragStop}
           onMouseMove={handleDrag}
         >
-          {filesFound.map((item, index) => (
-            <CarImage item={item} />
+          {data.files.map((item, index) => (
+            <CarImage key={index} item={item + '.jpg'} index={index} />
           ))}
         </ScrollMenu>
       </BannerWrapper>
@@ -141,10 +148,12 @@ const Carro: React.FC = () => {
               <Row className="justify-content-between">
                 <Col lg={3}>
                   <div className="marca">
-                    <p>CHEVROLET</p>
-                    <div className="marca-wrapper chevrolet">
+                    <p>{data.marca}</p>
+                    <div className={`marca-wrapper ${data.marca}`}>
                       <Image
-                        src={`/marcas/chevrolet.png`}
+                        src={`/marcas/${data.marca}.${
+                          data.marca == 'chevrolet' ? 'png' : 'svg'
+                        }`}
                         alt="Logo da TKARS"
                         layout="fill"
                         objectFit="contain"
@@ -219,10 +228,10 @@ const Carro: React.FC = () => {
 
               <Row>
                 <Col lg={12}>
-                  <h1> Onix joy </h1>
+                  <h1> {data.nome} </h1>
                 </Col>
                 <Col lg={12}>
-                  <h3> 1.0 MPFI JOY 8V FLEX 4P MANUAL </h3>
+                  <h3> {data.modelo} </h3>
                 </Col>
               </Row>
 
@@ -253,7 +262,7 @@ const Carro: React.FC = () => {
                       </svg>
                       <p> ANO </p>
                     </div>
-                    <p> 2018/2019 </p>
+                    <p> {data.ano} </p>
                   </div>
 
                   <div className="item">
@@ -282,7 +291,7 @@ const Carro: React.FC = () => {
 
                       <p> Quilometragem </p>
                     </div>
-                    <p> 38.000km </p>
+                    <p> {numberWithCommas(data.quilometragem)}km </p>
                   </div>
 
                   <div className="item">
@@ -348,7 +357,7 @@ const Carro: React.FC = () => {
                           transform="translate(2.337 2.797)"
                           fill="none"
                           stroke="#fff"
-                          stroke-width="1"
+                          strokeWidth="1"
                         />
                         <line
                           id="Linha_2"
@@ -357,7 +366,7 @@ const Carro: React.FC = () => {
                           transform="translate(9.333 2.797)"
                           fill="none"
                           stroke="#fff"
-                          stroke-width="1"
+                          strokeWidth="1"
                         />
                         <line
                           id="Linha_3"
@@ -366,7 +375,7 @@ const Carro: React.FC = () => {
                           transform="translate(16.422 2.797)"
                           fill="none"
                           stroke="#fff"
-                          stroke-width="1"
+                          strokeWidth="1"
                         />
                         <line
                           id="Linha_4"
@@ -375,7 +384,7 @@ const Carro: React.FC = () => {
                           transform="translate(2.337 6.724)"
                           fill="none"
                           stroke="#fff"
-                          stroke-width="1"
+                          strokeWidth="1"
                         />
                       </svg>
 
@@ -401,7 +410,7 @@ const Carro: React.FC = () => {
 
                       <p> COMBUSTÍVEL </p>
                     </div>
-                    <p> FLEX </p>
+                    <p> {data.combustivel} </p>
                   </div>
 
                   <div className="item">
@@ -429,7 +438,7 @@ const Carro: React.FC = () => {
 
                       <p> COR </p>
                     </div>
-                    <p> PRATA </p>
+                    <p> {data.cor} </p>
                   </div>
 
                   <div className="item">
@@ -445,7 +454,7 @@ const Carro: React.FC = () => {
 
                       <p> DIREÇÃO </p>
                     </div>
-                    <p> ELÉTRICA </p>
+                    <p> {data.direcao} </p>
                   </div>
 
                   <div className="item">
@@ -488,14 +497,14 @@ const Carro: React.FC = () => {
 
                       <p> REVISÃO REALIZADA EM </p>
                     </div>
-                    <p> 02/07/2022 </p>
+                    <p> {returnFormattedDate(data.revisao)} </p>
                   </div>
                 </div>
               </Row>
 
               <Row>
                 <p className="ipva">
-                  ✅ IPVA DE <b>2022</b> PAGO
+                  ✅ IPVA DE <b>{data.ipva}</b> PAGO
                 </p>
               </Row>
 
@@ -527,7 +536,7 @@ const Carro: React.FC = () => {
                 <div className={`reveal ${fichaTecnicaReveal}`}>
                   <div
                     className="fr-view"
-                    dangerouslySetInnerHTML={{ __html: ficha_tecnica }}
+                    dangerouslySetInnerHTML={{ __html: data.ficha_tecnica }}
                   />
                 </div>
               </div>
@@ -540,7 +549,7 @@ const Carro: React.FC = () => {
           >
             <FloatingBox>
               <p className="label"> PREÇO </p>
-              <h2> R$ 57.900,00 </h2>
+              <h2> {formatBRL(data.preco)} </h2>
 
               <h3>Se interessou no veículo ou quer agendar uma visita? 😎</h3>
               <p className="description">
@@ -614,9 +623,11 @@ const Carro: React.FC = () => {
           </Col>
         </Row>
         <Row>
-          {CarrosArray.slice(0, 4).map((item, index) => {
+          {/* @ts-ignore */}
+          {recommended.map((item, index) => {
             return (
               <Col lg={3} key={index}>
+                {/* @ts-ignore */}
                 <Product item={item} />
               </Col>
             );
@@ -632,3 +643,37 @@ const Carro: React.FC = () => {
 };
 
 export default Carro;
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const response = await fetch(
+    'http://localhost/souunus/backend/admin/tkars/site/get.php'
+  );
+  const { data } = await response.json();
+
+  const paths = data.map(item => {
+    return {
+      params: { id: item.id }
+    };
+  });
+
+  return {
+    paths,
+    fallback: false
+  };
+};
+
+export const getStaticProps: GetStaticProps = async context => {
+  const { id } = context.params;
+
+  const response = await fetch(
+    `http://localhost/souunus/backend/admin/tkars/site/get.php?itemId=${id}`
+  );
+  const { data, recommended } = await response.json();
+
+  return {
+    props: {
+      data,
+      recommended
+    }
+  };
+};

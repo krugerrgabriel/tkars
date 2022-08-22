@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import Head from 'next/head';
 import Link from 'next/link';
@@ -19,12 +19,21 @@ import Fab from '../components/Fab';
 import Filters from '../components/Filters';
 
 import useDrag from '../functions/useDrag';
-import { MarcasArray, CarrosArray } from '../functions/list';
+import { MarcasArray } from '../functions/list';
 
 import { BannerWrapper } from '../styles/';
 import { Title, Subtitle, Divider, Button, Box } from '../styles/global';
 
-const Home: React.FC = () => {
+import { ServerProps } from '../interfaces/';
+
+const Home: React.FC<ServerProps> = ({ lessPrice, moreViewed }) => {
+  const [lessPriceArray, setLessPriceArray] = useState({});
+  const [moreViewedArray, setMoreViewedArray] = useState({});
+  useEffect(() => {
+    setLessPriceArray(lessPrice);
+    setMoreViewedArray(moreViewed);
+  }, []);
+
   const [filterOpen, setFilterOpen] = useState(false);
 
   let banners = [
@@ -143,9 +152,10 @@ const Home: React.FC = () => {
         </Row>
 
         <Row>
-          {CarrosArray.slice(0, 4).map((item, index) => {
+          {moreViewed.map((item, index) => {
             return (
               <Col lg={3} key={index}>
+                {/* @ts-ignore */}
                 <Product item={item} />
               </Col>
             );
@@ -154,7 +164,7 @@ const Home: React.FC = () => {
 
         <Row>
           <Col lg={3}>
-            <Link href="/carros">
+            <Link href="/carros/mais-vistos">
               <a>
                 <Button className="margin-top-24px">
                   <svg
@@ -199,9 +209,10 @@ const Home: React.FC = () => {
         </Row>
 
         <Row>
-          {CarrosArray.slice(-4).map((item, index) => {
+          {lessPrice.map((item, index) => {
             return (
               <Col lg={3} key={index}>
+                {/* @ts-ignore */}
                 <Product item={item} />
               </Col>
             );
@@ -210,7 +221,7 @@ const Home: React.FC = () => {
 
         <Row>
           <Col lg={3}>
-            <Link href="/carros">
+            <Link href="/carros/mais-baratos">
               <a>
                 <Button className="margin-top-24px">
                   <svg
@@ -274,3 +285,18 @@ const Home: React.FC = () => {
 };
 
 export default Home;
+
+export const getStaticProps = async () => {
+  const response = await fetch(
+    'http://localhost/souunus/backend/admin/tkars/site/get'
+  );
+  const { lessPrice, moreViewed } = await response.json();
+
+  return {
+    props: {
+      lessPrice,
+      moreViewed
+    },
+    revalidate: 720
+  };
+};

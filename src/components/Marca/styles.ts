@@ -1,16 +1,20 @@
 import styled from "styled-components";
 
 export const Body = styled.div<{ small?: boolean }>`
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-direction: column;
+    &, a{
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: column;
+
+        width: 124px;
+        height: 124px;
+    }
 
     background-color: ${({ theme }) => theme.colors.gray};
 
-    width: 124px;
-    height: 124px;
-
+    
     margin: 0 20px 0 0;
     padding: 16px 0;
 
