@@ -10,11 +10,11 @@ import { Body, ImageWrapper, Info, MarcaWrapper } from './styles';
 import { ProductProps } from './interfaces';
 
 const Product: React.FC<ProductProps> = props => {
-  let { margin, fixedWidth } = props;
+  let { margin, fixedWidth, className } = props;
   let { id, marca, nome, modelo, preco, ano, quilometragem, extension } =
     props.item;
   return (
-    <Body margin={margin} fixedWidth={fixedWidth}>
+    <Body margin={margin} fixedWidth={fixedWidth} className={className}>
       <Link href={`/carro/${id}`}>
         <a>
           <ImageWrapper>

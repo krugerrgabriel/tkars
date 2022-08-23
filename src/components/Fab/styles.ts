@@ -18,6 +18,8 @@ export const Body = styled.div`
 
     cursor: pointer;
 
+    z-index: 700;
+
     transition: 0.2s;
 
     &:hover{

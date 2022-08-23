@@ -9,13 +9,21 @@ const Ad: React.FC = () => {
   return (
     <>
       <Subtext> ANÚNCIO PUBLICITÁRIO </Subtext>
-      <Box>
+      <ImageWrapper className="mobile">
+        <Image
+          src="https://www.transdesk.com.br/realizeseusonho/assets/img/banners/mobile/carro-novinho1.jpg"
+          alt="Logo da TKARS"
+          layout="fill"
+          objectFit="contain"
+        />
+      </ImageWrapper>
+      <Box className="ad">
         <h3> Deseja comprar um veículo mas está sem grana à vista? 😥 </h3>
         <h6>
           Clique na imagem abaixo e solicite já uma simulação do{' '}
           <u>Consórcio Transdesk</u>, a melhor forma de realizar o seu sonho! 🤑
         </h6>
-        <ImageWrapper>
+        <ImageWrapper className="desktop">
           <Image
             src="https://www.transdesk.com.br/realizeseusonho/assets/img/banners/desktop/carro-novinho1.jpg"
             alt="Logo da TKARS"

@@ -9,4 +9,13 @@ export const BannerWrapper = styled.div`
     div.margin-banner-3{
         margin: 0 24px 0 0;
     }
+
+    @media (max-width: 618px){
+        div.margin-banner-0{
+        margin: 0 0 0 24px;
+    }
+    div.margin-banner-3{
+        margin: 0 24px 0 0;
+    }   
+    }
 `;

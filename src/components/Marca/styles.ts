@@ -54,6 +54,24 @@ export const Body = styled.div<{ small?: boolean }>`
 
         margin: 0;
     }
+
+    @media (max-width: 992px) {
+        margin: 0 16px 0 0;
+        padding: 12px 0;
+        
+        &, a{
+            width: 98px;
+            height: 98px;
+        }
+
+        div.wrapper{
+            height: 42px;
+        }
+
+        h4{
+            font-size: 12px;
+        }
+    }
 `;
 
 export const LogoWrapper = styled.div<{ small?: boolean }>`
@@ -64,6 +82,10 @@ export const LogoWrapper = styled.div<{ small?: boolean }>`
     &.ford{
         width: 82px;
         height: auto;
+
+        @media (max-width: 992px) {
+            width: 64px;
+        }
     }
     &.mitsubishi,
     &.honda,
@@ -75,13 +97,25 @@ export const LogoWrapper = styled.div<{ small?: boolean }>`
     &.pegeout{
         width: 64px;
         height: auto;
+
+        @media (max-width: 992px) {
+            width: 48px;
+        }
     }
     &.renault{
         width: auto;
         height: 58px;
+
+        @media (max-width: 992px) {
+            width: 38px;
+        }
     }
     &.fiat{
         width: 72px;
         height: auto;
+
+        @media (max-width: 992px) {
+            width: 52px;
+        }
     }
 `;

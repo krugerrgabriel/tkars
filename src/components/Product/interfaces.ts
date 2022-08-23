@@ -1,6 +1,7 @@
 export interface ProductProps{
     margin?: boolean;
     fixedWidth?: boolean;
+    className?: boolean;
     item: {
         id: number,
         nome: string,

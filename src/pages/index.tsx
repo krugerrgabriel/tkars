@@ -107,8 +107,8 @@ const Home: React.FC<ServerProps> = ({ lessPrice, moreViewed }) => {
 
       {/* Caixa de pesquisa */}
       <Container>
-        <Row className="justify-content-center margin-64px">
-          <Col lg={10}>
+        <Row className="justify-content-center margin-64px ">
+          <Col lg={10} md={12} sm={12} xs={12} className="padding-0">
             <SearchBox filterClick={() => setFilterOpen(!filterOpen)} />
           </Col>
         </Row>
@@ -154,9 +154,9 @@ const Home: React.FC<ServerProps> = ({ lessPrice, moreViewed }) => {
         <Row>
           {moreViewed.map((item, index) => {
             return (
-              <Col lg={3} key={index}>
+              <Col lg={3} md={4} sm={12} key={index}>
                 {/* @ts-ignore */}
-                <Product item={item} />
+                <Product item={item} className={`product-${index}`} />
               </Col>
             );
           })}
@@ -164,7 +164,7 @@ const Home: React.FC<ServerProps> = ({ lessPrice, moreViewed }) => {
 
         <Row>
           <Col lg={3}>
-            <Link href="/carros/mais-vistos">
+            <Link href="/carros/">
               <a>
                 <Button className="margin-top-24px">
                   <svg
@@ -211,9 +211,9 @@ const Home: React.FC<ServerProps> = ({ lessPrice, moreViewed }) => {
         <Row>
           {lessPrice.map((item, index) => {
             return (
-              <Col lg={3} key={index}>
+              <Col lg={3} md={4} sm={12} key={index}>
                 {/* @ts-ignore */}
-                <Product item={item} />
+                <Product item={item} className={`product-${index}`} />
               </Col>
             );
           })}
@@ -221,7 +221,7 @@ const Home: React.FC<ServerProps> = ({ lessPrice, moreViewed }) => {
 
         <Row>
           <Col lg={3}>
-            <Link href="/carros/mais-baratos">
+            <Link href="/carros/">
               <a>
                 <Button className="margin-top-24px">
                   <svg

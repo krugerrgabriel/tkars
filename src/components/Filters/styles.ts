@@ -11,7 +11,7 @@ export const Body = styled.div<{ active: boolean; type?: string; className?: str
 
     position: fixed;
     top: 0;
-    left: ${({ active }) => active ? '0' : '-50%'};
+    left: ${({ active }) => active ? '0' : '-125%'};
     
     box-shadow: 0 -2px 24px rgba(68, 15, 16, 0.15);
 
@@ -78,7 +78,7 @@ export const Body = styled.div<{ active: boolean; type?: string; className?: str
         height: 78px;
         
         position: fixed;
-        left: ${({ active }) => active ? '0' : '-50%'};
+        left: ${({ active }) => active ? '0' : '-125%'};
         bottom: 0;
 
         padding: 0 32px;

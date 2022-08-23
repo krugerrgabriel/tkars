@@ -84,6 +84,10 @@ export default createGlobalStyle`
         margin-top: 64px;
     }
 
+    .padding-0{
+        padding: 0;
+    }
+
     &.hyundai{
         aspect-ratio: 1.9491323983836463037794152602805;
     }
@@ -122,6 +126,29 @@ export default createGlobalStyle`
     }
     &.pegeout{
         aspect-ratio: 0.91038406827880512091038406827881;
+    }
+
+    .show-768px{
+        display: none;
+    }
+    @media (max-width: 768px) {
+        .hide-768px{
+            display: none !important;
+        }
+
+        .show-768px{
+            display: flex !important;
+        }
+    }
+    @media (max-width: 576px) {
+        .container{
+            padding: 0 24px !important;
+        }
+    }
+    @media(max-width: 480px){
+        .margin-64px{
+            margin: 42px 0;
+        }
     }
 `;
 
@@ -171,6 +198,23 @@ export const Button = styled.div<{ type?: string; }>`
 
         margin: 0 0 0 14px;
     }
+
+    @media(max-width: 468px){
+        width: ${({ type }) => type == 'whatsapp' ? '100%' : type == 'small' ? '44px' : '100%'};
+
+        svg{
+            width: 14px;
+            height: auto;
+
+            ${({ type }) => type == 'small' ? '' : 'margin: 0 0 1px 0;'};
+        }
+        
+        p{
+            font-size: 14px;
+
+            margin: 0 0 0 12px;
+        }
+    }
 `;
 
 export const FilterToggle = styled.div`
@@ -202,9 +246,13 @@ export const Title = styled.h5`
     font-weight: 700;
 
     margin: 0 0 12px 0;
+
+    @media (max-width: 768px) {
+        font-size: 22px;
+    }
 `;
 
-export const Subtitle = styled.h1`
+export const Subtitle = styled.p`
     display: flex;
     align-items: end;
 
@@ -213,9 +261,15 @@ export const Subtitle = styled.h1`
     font-size: 14px;
     font-weight: 500;
 
-    margin: 0 0 14px 32px;
+    margin: 0 0 10px 32px;
 
     opacity: 0.75;
+
+    @media(max-width: 768px){
+        font-size: 12px;
+
+        margin: 0 0 10px 24px;
+    }
 `;
 
 export const Divider = styled.hr<{ full?: boolean }>`
@@ -259,5 +313,27 @@ export const Box = styled.div`
         margin: 0 0 24px 0;
 
         opacity: 0.8;
+    }
+
+    @media (max-width: 992px){
+        padding: 18px 24px;
+
+        & > p:first-of-type, h3{
+            font-size: 18px;
+        }
+
+        & > p:last-of-type, h6{
+            font-size: 12px;
+
+            line-height: 24px;
+
+            margin: 0 0 18px 0;
+        }
+    }
+
+    @media(max-width: 768px){
+        &.ad{
+            display: none;
+        }
     }
 `;

@@ -56,6 +56,80 @@ export const Body = styled.div`
             opacity: 0.9;
         }
     }
+
+    @media (max-width: 1200px) {
+        height: 250px;
+
+        div.body{
+            h2{
+                font-size: 20px;
+            }
+
+            h3{
+                font-size: 14px;
+
+                line-height: 21px;
+            }
+        }
+    }
+
+    @media (max-width: 768px) {
+        height: 300px;
+
+        div.body{
+            h2{
+                font-size: 22px;
+            }
+
+            h3{
+                font-size: 16px;
+
+                line-height: 24px;
+            }
+        }
+    }
+
+    @media (max-width: 640px) {
+        height: 225px;
+
+        div.body{
+            left: 16px;
+            bottom: 16px;
+
+            height: auto;
+            width: calc(100% - 32px);
+
+            h2{
+                font-size: 18px;
+            }
+
+            h3{
+                font-size: 14px;
+
+                line-height: 21px;
+
+                margin: 0;
+            }
+        }
+    }
+
+    @media (max-width: 540px) {
+        height: 175px;
+
+        div.body{
+            h2{
+                font-size: 14px;
+            }
+
+            h3{
+                font-size: 11px;
+
+                line-height: 17px;
+
+                margin: 0;
+            }
+        }
+    }
 `;
 
 export const Overlay = styled.div`

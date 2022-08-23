@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Body = styled.div<{ margin?: boolean; fixedWidth?: boolean; }>`
+export const Body = styled.div<{ margin?: boolean; fixedWidth?: boolean; className?: any; }>`
     background-color: ${({ theme }) => theme.colors.gray};
 
     width: ${({ fixedWidth }) => fixedWidth ? '310px' : '100%'};
@@ -12,6 +12,22 @@ export const Body = styled.div<{ margin?: boolean; fixedWidth?: boolean; }>`
     border-radius: 8px;
 
     ${({ margin }) => margin ? 'margin: 0 18px 18px 18px' : '' };
+
+    @media (max-width: 992px){
+        &.product-3{
+            display: none;
+        }
+    }
+
+    @media (max-width: 768px){
+        a{
+            display: flex;
+        }
+
+        &{
+            margin: 0 0 12px 0;
+        }
+    }
 `;
 
 export const ImageWrapper = styled.div`
@@ -23,6 +39,10 @@ export const ImageWrapper = styled.div`
 
     *{
         border-radius: 8px 8px 0 0;
+
+        @media(max-width: 768px){
+            border-radius: 8px 0 0 8px;
+        }
     }
 `;
 
@@ -93,6 +113,68 @@ export const Info = styled.div`
             opacity: 0.8;
         }
     }
+
+    @media(max-width: 1200px){
+        h3{
+            font-size: 10px;
+        }
+
+        h1{
+            font-size: 17px;
+        }
+
+        h4{
+            font-size: 11px;
+
+            margin: 0 0 12px 0;
+        }
+
+        h2{
+            font-size: 21px;
+        }
+    }
+
+    @media(max-width: 768px){
+        h3{
+            font-size: 11px;
+        }
+
+        h1{
+            font-size: 19px;
+        }
+
+        h4{
+            font-size: 12px;
+        }
+
+        h2{
+            font-size: 22px;
+        }
+    }
+
+    @media(max-width: 480px){
+        h3{
+            font-size: 10px;
+        }
+
+        h1{
+            font-size: 18px;
+        }
+
+        h4{
+            font-size: 10px;
+        }
+
+        h2{
+            font-size: 18px;
+        }
+
+        div.more-info{
+            p{
+                font-size: 9px;
+            }
+        }
+    }
 `;
 
 export const MarcaWrapper = styled.div`
@@ -105,5 +187,21 @@ export const MarcaWrapper = styled.div`
 
     &.renault,&.volkswagen,&.nissan,&.fiat{
         height: 10px;
+    }
+
+    @media (max-width: 1200px){
+        height: 6px;
+
+        &.renault,&.volkswagen,&.nissan,&.fiat{
+            height: 8px;
+        }
+    }
+
+    @media (max-width: 768px){
+        height: 7px;
+
+        &.renault,&.volkswagen,&.nissan,&.fiat{
+            height: 7px;
+        }
     }
 `;

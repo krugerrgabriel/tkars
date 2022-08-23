@@ -14,11 +14,30 @@ export const Subtext = styled.p`
 export const ImageWrapper = styled.div`
     position: relative;
 
-    aspect-ratio: 3.8396850957237430667382358203614;
+    display: none;
+
+    &.desktop{
+        aspect-ratio: 3.8396850957237430667382358203614;
+    }
+    &.mobile{
+        aspect-ratio: 1.6619718309859154929577464788732;
+    }
+    
     width: 100%;
     height: auto;
 
     *{
         border-radius: 8px;
+    }
+
+    @media (min-width: 768px){
+        &.desktop{
+            display: block;
+        }
+    }
+    @media (max-width: 768px){
+        &.mobile{
+            display: block;
+        }
     }
 `;

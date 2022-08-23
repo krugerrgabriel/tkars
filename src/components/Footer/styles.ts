@@ -13,6 +13,13 @@ export const Body = styled.div`
         height: 42px;
         width: 100%;
 
+        @media(max-width: 680px){
+            height: 40px;
+        }
+        @media(max-width: 480px){
+            height: 36px;
+        }
+
         div:not(.wrapper){
             display: flex;
             align-items: center;
@@ -32,6 +39,13 @@ export const Body = styled.div`
                     font-weight: 500;
                     
                     margin: 0;
+
+                    @media(max-width: 680px){
+                        font-size: 10px;
+                    }
+                    @media(max-width: 480px){
+                        font-size: 9px;
+                    }
                 }
             }
         }
@@ -50,6 +64,21 @@ export const Body = styled.div`
             
             margin: 0;
         }
+
+        @media(max-width: 680px){
+            height: 40px;
+
+            p{
+                font-size: 10px;
+            }
+        }
+        @media(max-width: 480px){
+            height: 36px;
+
+            p{
+                font-size: 9px;
+            }
+        }
     }
 `;
 
@@ -61,4 +90,15 @@ export const Wrapper = styled.div`
     width: auto;
 
     margin: 0 0 0 12px;
+
+    @media(max-width: 680px){
+        height: 18px;
+
+        margin: 0 0 0 10px;
+    }
+    @media(max-width: 480px){
+        height: 16px;
+
+        margin: 0 0 0 8px;
+    }
 `;

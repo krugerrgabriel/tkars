@@ -26,4 +26,40 @@ export const Body = styled.div`
 
         margin: 4px 0 16px 0;
     }
+
+    @media (max-width: 1200px) {
+        padding: 32px 42px;
+
+        h1{
+            font-size: 20px
+        }
+
+        h3{
+            font-size: 14px
+        }
+    }
+
+    @media (max-width: 768px) {
+        padding: 24px;
+        
+        h3{
+            font-size: 14px;
+
+            line-height: 24px;
+        }
+
+        .margin-top-12px-768px{
+            margin-top: 12px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        h1{
+            font-size: 18px;
+        }
+
+        h3{
+            font-size: 12px;
+        }
+    }
 `;
