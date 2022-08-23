@@ -24,7 +24,7 @@ import { ServerProps } from '../interfaces';
 
 const getData = async () => {
   const response = await fetch(
-    `https://transdesk.com.br/pbe/souunus/backend/admin/tkars/site/get`
+    `https://transdesk.com.br/souunus/backend/admin/tkars/site/get`
   );
   const { data } = await response.json();
   return data;

@@ -288,7 +288,7 @@ export default Home;
 
 export const getStaticProps = async () => {
   const response = await fetch(
-    `https://transdesk.com.br/pbe/souunus/backend/admin/tkars/site/get`
+    `https://transdesk.com.br/souunus/backend/admin/tkars/site/get.php`
   );
   const { lessPrice, moreViewed } = await response.json();
 

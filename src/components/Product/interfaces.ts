@@ -4,6 +4,7 @@ export interface ProductProps{
     className?: boolean;
     item: {
         id: number,
+        slug: string,
         nome: string,
         marca: string,
         modelo: string,

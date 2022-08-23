@@ -7,30 +7,30 @@ import { Container, Row, Col } from 'react-bootstrap';
 
 import { ScrollMenu } from 'react-horizontal-scrolling-menu';
 
-import Navbar from '../../components/Navbar';
-import Fab from '../../components/Fab';
-import Footer from '../../components/Footer';
-import Breadcrumb from '../../components/Breadcrumb';
-import Ad from '../../components/Ad';
-import Product from '../../components/Product';
-import InputField from '../../components/InputField';
+import Navbar from '../../../components/Navbar';
+import Fab from '../../../components/Fab';
+import Footer from '../../../components/Footer';
+import Breadcrumb from '../../../components/Breadcrumb';
+import Ad from '../../../components/Ad';
+import Product from '../../../components/Product';
+import InputField from '../../../components/InputField';
 
 import {
   preventDragHandler,
   numberWithCommas,
   returnFormattedDate,
   formatBRL
-} from '../../functions/';
-import useDrag from '../../functions/useDrag';
+} from '../../../functions/';
+import useDrag from '../../../functions/useDrag';
 
-import { Wrapper, InfoBox, FloatingBox } from '../../styles/carro';
-import { Divider, Title, Button } from '../../styles/global';
-import { BannerWrapper } from '../../styles/';
+import { Wrapper, InfoBox, FloatingBox } from '../../../styles/carro';
+import { Divider, Title, Button } from '../../../styles/global';
+import { BannerWrapper } from '../../../styles/';
 
 import 'froala-editor/css/froala_style.min.css';
 import 'font-awesome/css/font-awesome.css';
 
-import { ServerProps } from '../../interfaces';
+import { ServerProps } from '../../../interfaces';
 
 const Carro: React.FC<ServerProps> = ({ data, recommended }) => {
   const CarImage: React.FC<{ item: string; index?: number }> = ({
@@ -40,7 +40,7 @@ const Carro: React.FC<ServerProps> = ({ data, recommended }) => {
     return (
       <Wrapper onDragStart={preventDragHandler}>
         <Image
-          src={`https://transdesk.com.br/pbe/souunus/assets/img/veiculos/${data.id}_${item}`}
+          src={`https://transdesk.com.br/souunus/assets/img/veiculos/${data.id}_${item}`}
           alt="Logo da TKARS"
           layout="fill"
           objectFit="cover"
@@ -646,13 +646,13 @@ export default Carro;
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const response = await fetch(
-    'https://transdesk.com.br/pbe/souunus/backend/admin/tkars/site/get.php'
+    'https://transdesk.com.br/souunus/backend/admin/tkars/site/get.php'
   );
   const { data } = await response.json();
 
   const paths = data.map(item => {
     return {
-      params: { id: item.id }
+      params: { id: item.id, slug: item.slug }
     };
   });
 
@@ -666,7 +666,7 @@ export const getStaticProps: GetStaticProps = async context => {
   const { id } = context.params;
 
   const response = await fetch(
-    `https://transdesk.com.br/pbe/souunus/backend/admin/tkars/site/get.php?itemId=${id}`
+    `https://transdesk.com.br/souunus/backend/admin/tkars/site/get.php?itemId=${id}`
   );
   const { data, recommended } = await response.json();
 

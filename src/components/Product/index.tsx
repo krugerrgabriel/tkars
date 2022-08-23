@@ -11,16 +11,16 @@ import { ProductProps } from './interfaces';
 
 const Product: React.FC<ProductProps> = props => {
   let { margin, fixedWidth, className } = props;
-  let { id, marca, nome, modelo, preco, ano, quilometragem, extension } =
+  let { id, slug, marca, nome, modelo, preco, ano, quilometragem, extension } =
     props.item;
   return (
     <Body margin={margin} fixedWidth={fixedWidth} className={className}>
-      <Link href={`/carro/${id}`}>
+      <Link href={`/carro/${id}/${slug}`}>
         <a>
           <ImageWrapper>
             <Image
               src={
-                'https://transdesk.com.br/pbe/souunus/assets/img/veiculos/' +
+                'https://transdesk.com.br/souunus/assets/img/veiculos/' +
                 id +
                 '_principal.' +
                 extension
