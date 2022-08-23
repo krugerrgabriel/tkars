@@ -9,13 +9,16 @@ import SearchField from '../SearchField';
 import { Button, FilterToggle } from '../../styles/global';
 import { Body } from './styles';
 
-const SearchBox: React.FC<{ filterClick: Function }> = ({ filterClick }) => {
+const SearchBox: React.FC<{ filterClick: Function; carsNumber: number }> = ({
+  filterClick,
+  carsNumber
+}) => {
   return (
     <Body>
       <h1> Seu novo carro está aqui! 🤩 </h1>
       <h3>
-        São mais de 39 carros esperando por você! Dê uma olhada em nosso
-        catalogo e encontre o seu carro ideal.
+        São mais de {carsNumber} carros esperando por você! Dê uma olhada em
+        nosso catalogo e encontre o seu carro ideal.
       </h3>
 
       <Row>

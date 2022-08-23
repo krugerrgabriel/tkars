@@ -1,6 +1,8 @@
 export interface ServerProps{
+    carsNumber?: number,
     lessPrice?: {
         id: number,
+        slug: string,
         nome: string,
         marca: string,
         modelo: string,
@@ -21,6 +23,7 @@ export interface ServerProps{
     }[],
     moreViewed?: {
         id: number,
+        slug: string,
         nome: string,
         marca: string,
         modelo: string,
@@ -41,6 +44,7 @@ export interface ServerProps{
     }[],
     data?: {
         id: number,
+        slug: string,
         nome: string,
         marca: string,
         modelo: string,
@@ -62,6 +66,7 @@ export interface ServerProps{
     },
     recommended?: {
         id: number,
+        slug: string,
         nome: string,
         marca: string,
         modelo: string,

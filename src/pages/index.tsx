@@ -26,7 +26,7 @@ import { Title, Subtitle, Divider, Button, Box } from '../styles/global';
 
 import { ServerProps } from '../interfaces/';
 
-const Home: React.FC<ServerProps> = ({ lessPrice, moreViewed }) => {
+const Home: React.FC<ServerProps> = ({ lessPrice, moreViewed, carsNumber }) => {
   const [lessPriceArray, setLessPriceArray] = useState({});
   const [moreViewedArray, setMoreViewedArray] = useState({});
   useEffect(() => {
@@ -109,7 +109,10 @@ const Home: React.FC<ServerProps> = ({ lessPrice, moreViewed }) => {
       <Container>
         <Row className="justify-content-center margin-64px ">
           <Col lg={10} md={12} sm={12} xs={12} className="padding-0">
-            <SearchBox filterClick={() => setFilterOpen(!filterOpen)} />
+            <SearchBox
+              carsNumber={carsNumber}
+              filterClick={() => setFilterOpen(!filterOpen)}
+            />
           </Col>
         </Row>
       </Container>
@@ -290,12 +293,13 @@ export const getStaticProps = async () => {
   const response = await fetch(
     `https://transdesk.com.br/souunus/backend/admin/tkars/site/get.php`
   );
-  const { lessPrice, moreViewed } = await response.json();
+  const { data, lessPrice, moreViewed } = await response.json();
 
   return {
     props: {
       lessPrice,
-      moreViewed
+      moreViewed,
+      carsNumber: data.length
     },
     revalidate: 720
   };

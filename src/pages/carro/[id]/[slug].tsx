@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { GetStaticPaths, GetStaticProps } from 'next';
 
 import Image from 'next/image';
+import Link from 'next/link';
 
 import { Container, Row, Col } from 'react-bootstrap';
 
@@ -97,6 +98,8 @@ const Carro: React.FC<ServerProps> = ({ data, recommended }) => {
             scrollContainer.current.scrollLeft += posDiff;
           }
         });
+
+  let link = `https://api.whatsapp.com/send?phone=5545988134329&text=*[TKARS]*%0a%0ahttps://tkars.vercel.app/carros/${data.id}/${data.slug}%0a%0aMe interessei nesse ${data.nome} e gostaria de saber mais sobre 😁`;
 
   return (
     <>
@@ -512,7 +515,12 @@ const Carro: React.FC<ServerProps> = ({ data, recommended }) => {
                 <div className={`reveal ${fichaTecnicaReveal}`}>
                   <div
                     className="fr-view"
-                    dangerouslySetInnerHTML={{ __html: data.ficha_tecnica }}
+                    dangerouslySetInnerHTML={{
+                      __html: data.ficha_tecnica.replaceAll(
+                        '<p data-f-id="pbf" style="text-align: center; font-size: 14px; margin-top: 30px; opacity: 0.65; font-family: sans-serif;">Powered by <a href="https://www.froala.com/wysiwyg-editor?pb=1" title="Froala Editor">Froala Editor</a></p>',
+                        ''
+                      )
+                    }}
                   />
                 </div>
               </div>
@@ -529,60 +537,39 @@ const Carro: React.FC<ServerProps> = ({ data, recommended }) => {
 
               <h3>Se interessou no veículo ou quer agendar uma visita? 😎</h3>
               <p className="description">
-                Preencha os campos abaixo informando seus dados para nós
-                entrarmos em contato com você para te oferecer uma melhor
-                condição desse veículo 😁
+                Clique no botão abaixo e entre em contato conosco para nós te
+                oferecermos a melhor condição para esse veículo 😁
               </p>
 
-              <InputField
-                type="text"
-                placeholder="Seu nome completo"
-                icon={`<svg xmlns="http://www.w3.org/2000/svg" width="16" height="12.8" viewBox="0 0 16 12.8"><g id="bx-id-card" transform="translate(-2 -4)"><path id="Caminho_86" data-name="Caminho 86" d="M9.317,11.2a1.6,1.6,0,1,0-1.6-1.6A1.557,1.557,0,0,0,9.317,11.2Z" transform="translate(-1.144 -0.801)"/><path id="Caminho_87" data-name="Caminho 87" d="M16.4,4H3.6A1.554,1.554,0,0,0,2,5.5v9.8a1.554,1.554,0,0,0,1.6,1.5H16.4A1.554,1.554,0,0,0,18,15.3V5.5A1.554,1.554,0,0,0,16.4,4Zm0,11.2L3.6,15.191V5.6l12.8.009Z" transform="translate(0 0)"/><path id="Caminho_88" data-name="Caminho 88" d="M12.395,9h3.2v1.6h-3.2Zm.8,3.2h2.4v1.6h-2.4Zm-1.255,2.031c0-1.1-1.34-2.231-2.97-2.231S6,13.134,6,14.235v.372h5.939Z" transform="translate(-0.796 -1.004)"/></g></svg>`}
-              />
-              <div className="margin-top-12px"></div>
-              <InputField
-                type="text"
-                placeholder="Seu telefone"
-                icon={`<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16.001" viewBox="0 0 16 16.001"><path id="bx-phone" d="M15.38,10.665a.841.841,0,0,0-1.19,0l-1.342,1.342a6.3,6.3,0,0,1-2.519-1.342A6.3,6.3,0,0,1,8.987,8.146L10.329,6.8a.841.841,0,0,0,0-1.19L6.962,2.247a.841.841,0,0,0-1.19,0L3.488,4.53a1.682,1.682,0,0,0-.493,1.208,12.883,12.883,0,0,0,3.618,8.644A12.888,12.888,0,0,0,15.258,18h.024a1.664,1.664,0,0,0,1.183-.493l2.283-2.283a.841.841,0,0,0,0-1.19Zm-.107,5.651A11.145,11.145,0,0,1,7.8,13.191,11.148,11.148,0,0,1,4.679,5.72L6.367,4.032,8.544,6.209,7.455,7.3a.841.841,0,0,0-.229.768,8.551,8.551,0,0,0,1.912,3.79,8.551,8.551,0,0,0,3.79,1.912.835.835,0,0,0,.768-.228l1.089-1.089,2.177,2.177Z" transform="translate(-2.995 -2)"/></svg>`}
-              />
-              <div className="margin-top-12px"></div>
-              <InputField
-                type="text"
-                placeholder="Seu e-mail"
-                icon={`<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path id="bx-at" d="M10,2a8,8,0,0,0,0,16,7.992,7.992,0,0,0,3.554-.883l-.708-1.434A6.424,6.424,0,0,1,10,16.4,6.4,6.4,0,1,1,16.4,10v.8c0,.554-.25,1.6-1.2,1.6-1.117,0-1.2-1.455-1.2-1.6v-4H12.4v.02A3.963,3.963,0,0,0,10,6a4,4,0,1,0,2.93,6.7A2.5,2.5,0,0,0,15.2,14,2.97,2.97,0,0,0,18,10.8V10A8.009,8.009,0,0,0,10,2Zm0,10.4A2.4,2.4,0,1,1,12.4,10,2.4,2.4,0,0,1,10,12.4Z" transform="translate(-2 -2)"/></svg>`}
-              />
-              <div className="margin-top-12px"></div>
-              <InputField
-                type="text"
-                placeholder="Data de nascimento"
-                icon={`<svg xmlns="http://www.w3.org/2000/svg" width="16" height="17.778" viewBox="0 0 16 17.778"><g id="bx-calendar" transform="translate(-3 -2)"><path id="Caminho_93" data-name="Caminho 93" d="M7,11H8.783v1.771H7Zm0,3.543H8.783v1.771H7ZM10.566,11h1.783v1.771H10.566Zm0,3.543h1.783v1.771H10.566ZM14.131,11h1.783v1.771H14.131Zm0,3.543h1.783v1.771H14.131Z" transform="translate(-0.457 -0.988)"/><path id="Caminho_94" data-name="Caminho 94" d="M4.778,19.778H17.222A1.78,1.78,0,0,0,19,18V5.556a1.78,1.78,0,0,0-1.778-1.778H15.444V2H13.667V3.778H8.333V2H6.556V3.778H4.778A1.78,1.78,0,0,0,3,5.556V18A1.78,1.78,0,0,0,4.778,19.778ZM17.222,7.333V18H4.778V7.333Z" transform="translate(0 0)"/></g></svg>`}
-              />
-
-              <Button className="margin-top-16px">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="17.5"
-                  height="14"
-                  viewBox="0 0 17.5 14"
-                >
-                  <g id="bx-share" transform="translate(0)">
-                    <path
-                      id="Caminho_91"
-                      data-name="Caminho 91"
-                      d="M12.889,8.679a.893.893,0,0,0,.895-.876V6.414L17.8,10.431l-4.014,4.017V13.058a.875.875,0,0,0-.76-.868,13.179,13.179,0,0,0-1.729-.116,11.456,11.456,0,0,0-6.878,2.233C5.786,8.855,12.092,8.679,12.889,8.679Z"
-                      transform="translate(-2.408 -3.431)"
-                      fill="none"
-                    />
-                    <path
-                      id="Caminho_92"
-                      data-name="Caminho 92"
-                      d="M11.628,6.547V3.875a.875.875,0,0,1,1.494-.619l6.125,6.125a.874.874,0,0,1,0,1.237l-6.125,6.125a.875.875,0,0,1-1.494-.619V13.416c-.248-.017-.494-.025-.738-.025a9.493,9.493,0,0,0-7.317,3.264A.874.874,0,0,1,2,16.125C2,8.141,9.078,6.779,11.628,6.547Zm-.738,5.093a13.191,13.191,0,0,1,1.728.116.876.876,0,0,1,.759.868v1.388L17.39,10,13.378,5.987V7.375a.893.893,0,0,1-.894.875c-.8,0-7.1.176-8.469,5.622A11.461,11.461,0,0,1,10.89,11.641Z"
-                      transform="translate(-2.003 -3)"
-                    />
-                  </g>
-                </svg>
-                <p>ENTRAR EM CONTATO</p>
-              </Button>
+              <Link href={link}>
+                <a rel="noreferrer" target="_blank">
+                  <Button className="margin-top-16px">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="17.5"
+                      height="14"
+                      viewBox="0 0 17.5 14"
+                    >
+                      <g id="bx-share" transform="translate(0)">
+                        <path
+                          id="Caminho_91"
+                          data-name="Caminho 91"
+                          d="M12.889,8.679a.893.893,0,0,0,.895-.876V6.414L17.8,10.431l-4.014,4.017V13.058a.875.875,0,0,0-.76-.868,13.179,13.179,0,0,0-1.729-.116,11.456,11.456,0,0,0-6.878,2.233C5.786,8.855,12.092,8.679,12.889,8.679Z"
+                          transform="translate(-2.408 -3.431)"
+                          fill="none"
+                        />
+                        <path
+                          id="Caminho_92"
+                          data-name="Caminho 92"
+                          d="M11.628,6.547V3.875a.875.875,0,0,1,1.494-.619l6.125,6.125a.874.874,0,0,1,0,1.237l-6.125,6.125a.875.875,0,0,1-1.494-.619V13.416c-.248-.017-.494-.025-.738-.025a9.493,9.493,0,0,0-7.317,3.264A.874.874,0,0,1,2,16.125C2,8.141,9.078,6.779,11.628,6.547Zm-.738,5.093a13.191,13.191,0,0,1,1.728.116.876.876,0,0,1,.759.868v1.388L17.39,10,13.378,5.987V7.375a.893.893,0,0,1-.894.875c-.8,0-7.1.176-8.469,5.622A11.461,11.461,0,0,1,10.89,11.641Z"
+                          transform="translate(-2.003 -3)"
+                        />
+                      </g>
+                    </svg>
+                    <p>ENTRAR EM CONTATO</p>
+                  </Button>
+                </a>
+              </Link>
             </FloatingBox>
           </Col>
         </Row>
