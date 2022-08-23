@@ -1,10 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useState } from 'react';
 
 import Image from 'next/image';
 import Link from 'next/link';
 
 import { formatBRL, numberWithCommas } from '../../functions/index';
 
+import { Loader } from '../../styles/global';
 import { Body, ImageWrapper, Info, MarcaWrapper } from './styles';
 
 import { ProductProps } from './interfaces';
@@ -13,11 +14,14 @@ const Product: React.FC<ProductProps> = props => {
   let { margin, fixedWidth, className } = props;
   let { id, slug, marca, nome, modelo, preco, ano, quilometragem, extension } =
     props.item;
+
+  const [isLoaded, setIsLoaded] = useState(false);
   return (
     <Body margin={margin} fixedWidth={fixedWidth} className={className}>
       <Link href={`/carro/${id}/${slug}`}>
         <a>
           <ImageWrapper>
+            {!isLoaded && <Loader />}
             <Image
               src={
                 'https://transdesk.com.br/souunus/assets/img/veiculos/' +
@@ -30,6 +34,7 @@ const Product: React.FC<ProductProps> = props => {
               objectFit="cover"
               objectPosition="center"
               loading="lazy"
+              onLoad={() => setIsLoaded(true)}
             />
           </ImageWrapper>
 

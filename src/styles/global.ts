@@ -1,4 +1,4 @@
-import styled, { createGlobalStyle } from "styled-components";
+import styled, { createGlobalStyle, keyframes } from "styled-components";
 
 export default createGlobalStyle`
     *{
@@ -160,6 +160,28 @@ export default createGlobalStyle`
             margin: 42px 0;
         }
     }
+`;
+
+const loader = keyframes`
+    to {
+        background-position-x: -200%;
+    }
+`;
+export const Loader = styled.div`
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background: linear-gradient(100deg, #2d2d2d 8%, #3b3b3b 18%, #2d2d2d 33%);
+    background-size: 200% 300%;
+
+    -webkit-animation: 1.5s ${loader} linear infinite;
+    animation: 1.5s ${loader} linear infinite;
+
+    z-index: 400;
 `;
 
 export const Button = styled.div<{ type?: string; }>`

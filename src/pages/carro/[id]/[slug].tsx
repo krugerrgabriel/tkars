@@ -24,7 +24,7 @@ import {
 import useDrag from '../../../functions/useDrag';
 
 import { Wrapper, InfoBox, FloatingBox } from '../../../styles/carro';
-import { Divider, Title, Button } from '../../../styles/global';
+import { Divider, Title, Button, Loader } from '../../../styles/global';
 import { BannerWrapper } from '../../../styles/';
 
 import 'froala-editor/css/froala_style.min.css';
@@ -37,14 +37,17 @@ const Carro: React.FC<ServerProps> = ({ data, recommended }) => {
     item,
     index
   }) => {
+    const [isLoaded, setIsLoaded] = useState(false);
     return (
       <Wrapper onDragStart={preventDragHandler}>
+        {!isLoaded && <Loader />}
         <Image
           src={`https://transdesk.com.br/souunus/assets/img/veiculos/${data.id}_${item}`}
           alt="Logo da TKARS"
           layout="fill"
           objectFit="cover"
           loading="lazy"
+          onLoad={() => setIsLoaded(true)}
         />
       </Wrapper>
     );
