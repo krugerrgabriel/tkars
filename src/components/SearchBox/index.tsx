@@ -23,7 +23,7 @@ const SearchBox: React.FC<{ filterClick: Function }> = ({ filterClick }) => {
           <SearchField />
         </Col>
         <Col lg={4} md={4} sm={12} className="margin-top-12px-768px">
-          <Link href="/carros/tudo">
+          <Link href="/carros">
             <a>
               <Button>
                 <svg

@@ -10,7 +10,7 @@ export const Body = styled.div<{ active: boolean; type?: string; className?: str
     padding: 138px 32px 64px 32px;
 
     position: fixed;
-    top: 0;
+    bottom: 0;
     left: ${({ active }) => active ? '0' : '-125%'};
     
     box-shadow: 0 -2px 24px rgba(68, 15, 16, 0.15);
@@ -89,6 +89,25 @@ export const Body = styled.div<{ active: boolean; type?: string; className?: str
 
         transition: 0.2s;
     }
+
+    &::-webkit-scrollbar {
+        width: 4px;
+    }
+
+    @media (max-width: 496px){
+        &{
+            padding: 72px 32px 64px 32px;
+
+            height: calc(100vh - 36px);
+
+            border-radius: 24px 24px 0 0;
+
+            z-index: 501;
+        }
+        &, div.button-box{
+            width: 100%;
+        }
+    }
 `;
 
 export const StyledSlider = styled(ReactSlider)`
@@ -154,12 +173,16 @@ export const Bubble = styled.div<{ bubbleWidth: number; max:number; value: numbe
     }
 `;
 
-export const BackWrapper = styled.div<{ type: string; }>`
-    position: absolute;
-    top: -42px;
-    left: 0;
+export const BackWrapper = styled.div<{ active: boolean; }>`
+    display: none;
 
-    ${({ type }) => type == 'full' ? 'display: none;' : ''}
+    position: fixed;
+    top: 64px;
+    left: ${({ active }) => active ? '12px' : '-125%'};
+
+    transition: 0.2s;
+
+    z-index: 503;
 
     div.wrapper{
         position: relative;
@@ -168,5 +191,33 @@ export const BackWrapper = styled.div<{ type: string; }>`
         height: 26px;
 
         cursor: pointer;
+    }
+
+    @media(max-width: 496px){
+        display: block;
+    }
+`;
+
+export const Overlay = styled.div<{ active: boolean}>`
+    display: none;
+
+    @media (max-width: 496px) {
+        display: block;
+
+        background-color: rgba(0, 0, 0, 0.25);
+
+        backdrop-filter: blur(2px);
+        -webkit-backdrop-filter: blur(2px);
+
+        width: 100vw;
+        height: 100vh;
+
+        position: fixed;
+        left: ${({ active }) => active ? '0' : '-125%'};
+        bottom: 0;
+
+        z-index: 500;
+
+        transition: 0.2s;
     }
 `;

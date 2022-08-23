@@ -18,7 +18,7 @@ export const Body = styled.div`
 
     cursor: pointer;
 
-    z-index: 700;
+    z-index: 300;
 
     transition: 0.2s;
 
@@ -31,5 +31,10 @@ export const Body = styled.div`
 
         width: 18px;
         height: 18px;
+    }
+
+    @media(max-width: 642px){
+        right: 8px;
+        bottom: 8px;
     }
 `;

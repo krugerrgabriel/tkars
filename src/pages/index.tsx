@@ -164,7 +164,7 @@ const Home: React.FC<ServerProps> = ({ lessPrice, moreViewed }) => {
 
         <Row>
           <Col lg={3}>
-            <Link href="/carros/">
+            <Link href="/carros">
               <a>
                 <Button className="margin-top-24px">
                   <svg
@@ -221,7 +221,7 @@ const Home: React.FC<ServerProps> = ({ lessPrice, moreViewed }) => {
 
         <Row>
           <Col lg={3}>
-            <Link href="/carros/">
+            <Link href="/carros">
               <a>
                 <Button className="margin-top-24px">
                   <svg

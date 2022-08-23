@@ -1,29 +1,50 @@
 import React, { useEffect, useState } from 'react';
 
 import Head from 'next/head';
-import { useRouter } from 'next/router';
 
 import { Container, Row, Col } from 'react-bootstrap';
 
-import Navbar from '../../components/Navbar';
-import Fab from '../../components/Fab';
-import Filters from '../../components/Filters';
-import Breadcrumb from '../../components/Breadcrumb';
-import Footer from '../../components/Footer';
-import InputField from '../../components/InputField';
-import SelectButton from '../../components/SelectButton';
-import Product from '../../components/Product';
+import Navbar from '../components/Navbar';
+import Fab from '../components/Fab';
+import Filters from '../components/Filters';
+import Breadcrumb from '../components/Breadcrumb';
+import Footer from '../components/Footer';
+import InputField from '../components/InputField';
+import SelectButton from '../components/SelectButton';
+import Product from '../components/Product';
 
-import { CarrosArray } from '../../functions/list';
+import { CarrosArray } from '../functions/list';
+import { useWindowSize } from '../functions';
 
-import { Button, Title } from '../../styles/global';
-import { ProductWrapper } from '../../styles/carros';
+import { Button, Title } from '../styles/global';
+import { ProductWrapper } from '../styles/carros';
 
-import { ServerProps } from '../../interfaces';
+import { ServerProps } from '../interfaces';
 
 // import { Container } from './styles';
 
+const getData = async () => {
+  const response = await fetch(
+    'http://localhost/souunus/backend/admin/tkars/site/get'
+  );
+  const { data } = await response.json();
+  return data;
+};
+
 const List: React.FC<ServerProps> = () => {
+  const [carros, setCarros] = useState([]);
+
+  useEffect(() => {
+    getData().then(data => {
+      setCarros(data);
+    });
+  }, []);
+
+  // const size = useWindowSize();
+  // useEffect(() => {
+  //   console.log(size.width);
+  // }, [size]);
+
   let items = [
     {
       name: 'Carros',
@@ -127,7 +148,7 @@ const List: React.FC<ServerProps> = () => {
           </Container>
 
           <ProductWrapper>
-            {CarrosArray.map((item, index) => {
+            {carros?.map((item, index) => {
               return (
                 <Product
                   margin={true}

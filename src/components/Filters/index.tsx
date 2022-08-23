@@ -1,10 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 
-import Image from 'next/image';
-
 import { ScrollMenu } from 'react-horizontal-scrolling-menu';
 import { Row, Col } from 'react-bootstrap';
-import { Scrollbars } from 'react-custom-scrollbars';
 
 import MarcaCheck from '../MarcaCheck';
 import InputField from '../InputField';
@@ -25,6 +22,7 @@ import {
   StyledTrack,
   StyledSlider,
   Bubble,
+  Overlay,
   BackWrapper
 } from './styles';
 import { Button } from '../../styles/global';
@@ -122,19 +120,35 @@ const Filters: React.FC<FiltersProps> = ({
           }
         });
   return (
-    <Body className={className} type={type} active={active}>
-      <Scrollbars>
-        <BackWrapper type={type} onClick={() => filterChange()}>
+    <>
+      <Body className={className} type={type} active={active}>
+        <BackWrapper active={active} onClick={() => filterChange()}>
           <div className="wrapper">
-            <Image
-              src="/bx-chevron-left-circle.svg"
-              alt="Logo da TKARS"
-              layout="fill"
-              objectFit="contain"
-            />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="26"
+              height="26"
+              viewBox="0 0 26 26"
+            >
+              <g id="bx-chevron-left-circle" transform="translate(-2 -2)">
+                <path
+                  id="Caminho_58"
+                  data-name="Caminho 58"
+                  d="M15,2A13,13,0,1,0,28,15,13.015,13.015,0,0,0,15,2Zm0,23.4A10.4,10.4,0,1,1,25.4,15,10.412,10.412,0,0,1,15,25.4Z"
+                  transform="translate(0 0)"
+                  fill="#fff"
+                />
+                <path
+                  id="Caminho_59"
+                  data-name="Caminho 59"
+                  d="M15,6.293,7.586,13.716,15,21.139,16.836,19.3,11.26,13.716l5.577-5.584Z"
+                  transform="translate(1.679 1.284)"
+                  fill="#fff"
+                />
+              </g>
+            </svg>
           </div>
         </BackWrapper>
-
         <div className="section">
           <div className="wrapper">
             <p className="title"> Marcas </p>
@@ -165,14 +179,14 @@ const Filters: React.FC<FiltersProps> = ({
             <p className="title"> Ano do carro </p>
           </div>
           <Row>
-            <Col lg={6}>
+            <Col>
               <InputField
                 type="number"
                 placeholder="do ano..."
                 icon={`<svg xmlns="http://www.w3.org/2000/svg" width="14.4" height="16" viewBox="0 0 14.4 16"><g id="bx-calendar-star" transform="translate(-3 -2)"><path id="Caminho_74" data-name="Caminho 74" d="M9.58,13.838l-.373,2.175,1.954-1.027,1.954,1.027-.373-2.175L14.323,12.3l-2.184-.318L11.162,10l-.977,1.979L8,12.3Z" transform="translate(-0.991 -1.589)"/><path id="Caminho_75" data-name="Caminho 75" d="M15.8,3.6H14.2V2H12.6V3.6H7.8V2H6.2V3.6H4.6A1.6,1.6,0,0,0,3,5.2V16.4A1.6,1.6,0,0,0,4.6,18H15.8a1.6,1.6,0,0,0,1.6-1.6V5.2A1.6,1.6,0,0,0,15.8,3.6Zm0,12.8H4.6V6.8H15.8Z" transform="translate(0 0)"/></g></svg>`}
               />
             </Col>
-            <Col lg={6}>
+            <Col>
               <InputField
                 type="number"
                 placeholder="até o ano..."
@@ -224,14 +238,14 @@ const Filters: React.FC<FiltersProps> = ({
             <p className="title"> Quilometragem </p>
           </div>
           <Row>
-            <Col lg={6}>
+            <Col>
               <InputField
                 type="number"
                 placeholder="de..."
                 icon={`<svg xmlns="http://www.w3.org/2000/svg" width="12.8" height="16" viewBox="0 0 12.8 16"><g id="bx-map" transform="translate(-4 -2)"><path id="Caminho_78" data-name="Caminho 78" d="M11.2,12.41A3.2,3.2,0,1,0,8,9.2,3.208,3.208,0,0,0,11.2,12.41Zm0-4.807A1.6,1.6,0,1,1,9.6,9.2,1.6,1.6,0,0,1,11.2,7.6Z" transform="translate(-0.805 -0.803)" /><path id="Caminho_79" data-name="Caminho 79" d="M9.936,17.851a.8.8,0,0,0,.928,0c.243-.172,5.959-4.3,5.936-9.451A6.4,6.4,0,0,0,4,8.4C3.977,13.552,9.693,17.679,9.936,17.851ZM10.4,3.6a4.806,4.806,0,0,1,4.8,4.8c.017,3.55-3.51,6.738-4.8,7.784C9.111,15.142,5.583,11.953,5.6,8.4A4.8,4.8,0,0,1,10.4,3.6Z" transform="translate(0)" /></g></svg>`}
               />
             </Col>
-            <Col lg={6}>
+            <Col>
               <InputField
                 type="number"
                 placeholder="até..."
@@ -299,7 +313,7 @@ const Filters: React.FC<FiltersProps> = ({
         </div>
 
         <div className="button-box col-lg-3">
-          <Button type="secondary">
+          <Button type="secondary" onClick={() => filterChange()}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="14"
@@ -339,8 +353,9 @@ const Filters: React.FC<FiltersProps> = ({
             <p> APLICAR FILTROS </p>
           </Button>
         </div>
-      </Scrollbars>
-    </Body>
+      </Body>
+      <Overlay active={active} />
+    </>
   );
 };
 
