@@ -43,6 +43,13 @@ export const InfoBox = styled.div`
             margin: 0;
 
             opacity: 0.8;
+
+            @media (max-width: 1200px) {
+                font-size: 11px;
+            }
+            @media (max-width: 592px) {
+                font-size: 10px;
+            }
         }
 
         div.marca-wrapper{
@@ -52,10 +59,18 @@ export const InfoBox = styled.div`
             width: auto;
 
             margin: 0 0 2px 12px;
+
+            @media (max-width: 592px) {
+                height: 7px;
+
+                margin: 0 0 0 8px;
+            }
         }
     }
 
     div.icon-wrapper{
+        cursor: pointer;
+        
         svg{
             fill: ${({ theme }) => theme.colors.text};
 
@@ -72,6 +87,13 @@ export const InfoBox = styled.div`
         text-transform: uppercase;
 
         margin: 2px 0 6px 0;
+
+        @media (max-width: 1200px) {
+            font-size: 22px;
+        }
+        @media (max-width: 592px) {
+            font-size: 20px;
+        }
     }
 
     h3{
@@ -85,6 +107,15 @@ export const InfoBox = styled.div`
         margin: 0 0 42px 0;
 
         opacity: 0.9;
+
+        @media (max-width: 1200px) {
+            font-size: 14px;
+        }
+        @media (max-width: 592px) {
+            font-size: 12px;
+
+            margin: 0 0 32px 0;
+        }
     }
 
     div.items{
@@ -103,6 +134,13 @@ export const InfoBox = styled.div`
                 
                 svg{
                     fill: ${({ theme }) => theme.colors.text};
+
+                    @media (max-width: 1200px) {
+                        width: 13px;
+                    }
+                    @media (max-width: 592px) {
+                        width: 12px;
+                    }
                 }
                 
                 & > p{
@@ -114,6 +152,13 @@ export const InfoBox = styled.div`
                     text-transform: uppercase;
 
                     margin: 0 0 0 8px;
+
+                    @media (max-width: 1200px) {
+                        font-size: 13px;
+                    }
+                    @media (max-width: 592px) {
+                        font-size: 12px;
+                    }
                 }
             }
 
@@ -128,6 +173,12 @@ export const InfoBox = styled.div`
                 margin: 2px 0 0 0;
 
                 opacity: 0.75;
+                @media (max-width: 1200px) {
+                    font-size: 13px;
+                }
+                @media (max-width: 592px) {
+                    font-size: 12px;
+                }
             }
 
             div.item-wrapper{
@@ -152,6 +203,13 @@ export const InfoBox = styled.div`
         b{
             font-weight: 800;
         }
+
+        @media (max-width: 1200px) {
+            font-size: 15px;
+        }
+        @media (max-width: 592px) {
+            font-size: 12px;
+        }
     }
 
     div.ficha-tecnica{
@@ -172,6 +230,13 @@ export const InfoBox = styled.div`
                 font-weight: 700;
 
                 margin: 0;
+
+                @media (max-width: 1200px) {
+                    font-size: 22px;
+                }
+                @media (max-width: 592px) {
+                    font-size: 18px;
+                }
             }
 
             svg{
@@ -180,6 +245,14 @@ export const InfoBox = styled.div`
                 transform: rotate(180deg);
 
                 transition: 0.3s;
+
+                @media (max-width: 592px) {
+                    width: 18px;
+                }
+            }
+
+            @media(max-width: 592px){
+                margin: 0;
             }
         }
 
@@ -213,6 +286,29 @@ export const InfoBox = styled.div`
             word-wrap: break-word;
         }
     }
+
+    .show-592px{
+        display: none;
+
+        & h2{
+            color: ${({ theme }) => theme.colors.text};
+
+            font-size: 28px;
+            font-weight: 600;
+
+            margin: 0 0 32px 0;
+        }
+    }
+
+    @media (max-width: 592px){
+        background-color: transparent;
+
+        padding: 0;
+
+        .show-592px{
+            display: block;
+        }
+    }
 `;
 
 export const FloatingBox = styled.div`
@@ -239,6 +335,10 @@ export const FloatingBox = styled.div`
         opacity: 0.85;
 
         margin: 0;
+
+        @media (max-width: 1200px) {
+            font-size: 12px;
+        }
     }
     
     h2{
@@ -248,6 +348,10 @@ export const FloatingBox = styled.div`
         font-weight: 600;
 
         margin: 1px 0 24px 0;
+
+        @media (max-width: 1200px) {
+            font-size: 32px;
+        }
     }
     
     h3{
@@ -259,6 +363,17 @@ export const FloatingBox = styled.div`
         line-height: 28px;
     
         margin: 0;
+
+        @media (max-width: 1200px) {
+            font-size: 16px;
+
+            line-height: 27px;
+        }
+        @media (max-width: 592px) {
+            font-size: 18px;
+
+            line-height: 28px;
+        }
     }
 
     p.description{
@@ -274,6 +389,37 @@ export const FloatingBox = styled.div`
         opacity: 0.85;
     
         margin: 8px 0 16px 0;
+
+        @media (max-width: 1200px) {
+            font-size: 13px;
+
+            line-height: 23px;
+        }
+        @media (max-width: 592px) {
+            font-size: 14px;
+
+            line-height: 24px;
+        }
+    }
+
+    .hide-592px{
+        display: block;
+    }
+
+    @media (max-width: 992px) {
+        position: relative;
+
+        top: 0;
+
+        margin: 42px 0 0 0;
+    }
+
+    @media(max-width: 592px){
+        margin: 32px 0 0 0;
+
+        .hide-592px{
+            display: none;
+        }
     }
 `;
 
@@ -285,4 +431,20 @@ export const Wrapper = styled.div`
     height: auto;
 
     margin: 0 12px 0 0;
+
+    @media(max-width: 1400px){
+        width: 600px;
+    }
+    @media(max-width: 1200px){
+        width: 550px;
+    }
+    @media(max-width: 992px){
+        width: 500px;
+    }
+    @media(max-width: 768px){
+        width: 400px;
+    }
+    @media(max-width: 480px){
+        width: 300px;
+    }
 `;

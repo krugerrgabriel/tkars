@@ -14,13 +14,13 @@ import Footer from '../../../components/Footer';
 import Breadcrumb from '../../../components/Breadcrumb';
 import Ad from '../../../components/Ad';
 import Product from '../../../components/Product';
-import InputField from '../../../components/InputField';
 
 import {
   preventDragHandler,
   numberWithCommas,
   returnFormattedDate,
-  formatBRL
+  formatBRL,
+  useWindowSize
 } from '../../../functions/';
 import useDrag from '../../../functions/useDrag';
 
@@ -32,6 +32,21 @@ import 'froala-editor/css/froala_style.min.css';
 import 'font-awesome/css/font-awesome.css';
 
 import { ServerProps } from '../../../interfaces';
+
+function onWheel(apiObj, ev: React.WheelEvent): void {
+  const isThouchpad = Math.abs(ev.deltaX) !== 0 || Math.abs(ev.deltaY) < 15;
+
+  if (isThouchpad) {
+    ev.stopPropagation();
+    return;
+  }
+
+  if (ev.deltaY < 0) {
+    apiObj.scrollNext();
+  } else if (ev.deltaY > 0) {
+    apiObj.scrollPrev();
+  }
+}
 
 const Carro: React.FC<ServerProps> = ({ data, recommended }) => {
   const CarImage: React.FC<{ item: string; index?: number }> = ({
@@ -99,7 +114,21 @@ const Carro: React.FC<ServerProps> = ({ data, recommended }) => {
           }
         });
 
-  let link = `https://api.whatsapp.com/send?phone=5545988134329&text=*[TKARS]*%0a%0ahttps://tkars.vercel.app/carros/${data.id}/${data.slug}%0a%0aMe interessei nesse ${data.nome} e gostaria de saber mais sobre 😁`;
+  let link = `https://api.whatsapp.com/send?phone=5545988134329&text=*[TKARS]*%0ahttps://tkars.vercel.app/carros/${data.id}/${data.slug}%0a%0aMe interessei por esse *${data.nome}* e gostaria de saber mais sobre 😁`;
+
+  const handleShare = () => {
+    navigator.share({
+      title: '[TKARS] ' + data.nome,
+      text: data.modelo + ' por apenas ' + formatBRL(data.preco),
+      url: `https://tkars.vercel.app/carros/${data.id}/${data.slug}`
+    });
+  };
+
+  const [heightFix, setHeightFix] = useState(false);
+  const size = useWindowSize();
+  useEffect(() => {
+    setHeightFix(size.width > 992 ? true : false);
+  }, [size]);
 
   return (
     <>
@@ -111,6 +140,8 @@ const Carro: React.FC<ServerProps> = ({ data, recommended }) => {
           onMouseDown={() => dragStart}
           onMouseUp={() => dragStop}
           onMouseMove={handleDrag}
+          onWheel={onWheel}
+          LeftArrow={`<svg xmlns="http://www.w3.org/2000/svg" width="18" height="11.23" viewBox="0 0 18 11.23"><path id="bx-chevron-down" d="M22.063,9.293l-6.77,6.77-6.77-6.77-2.23,2.23,9,9,9-9Z" transform="translate(-6.293 -9.293)" fill="#fff"/></svg>`}
         >
           {data.files.map((item, index) => (
             <CarImage key={index} item={item + '.jpg'} index={index} />
@@ -120,7 +151,7 @@ const Carro: React.FC<ServerProps> = ({ data, recommended }) => {
 
       <Container>
         <Row>
-          <Col lg={8} ref={infoRef}>
+          <Col lg={8} md={12} sm={12} xs={12} ref={infoRef}>
             <InfoBox>
               <Breadcrumb items={items} />
 
@@ -142,21 +173,7 @@ const Carro: React.FC<ServerProps> = ({ data, recommended }) => {
                 </Col>
 
                 <Col lg={3} className="d-flex f-column justify-content-end">
-                  <div className="icon-wrapper">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="28.24"
-                      height="24"
-                      viewBox="0 0 28.24 24"
-                    >
-                      <path
-                        id="heart"
-                        d="M16.119,28a1.412,1.412,0,0,1-1-.409L4.146,16.607A7.387,7.387,0,1,1,14.594,6.16l1.525,1.525L17.643,6.16A7.387,7.387,0,1,1,28.091,16.607L17.121,27.591a1.412,1.412,0,0,1-1,.409ZM9.37,6.823A4.518,4.518,0,0,0,6.151,8.151a4.574,4.574,0,0,0,0,6.452l9.967,9.981L26.086,14.6a4.574,4.574,0,0,0,0-6.452,4.687,4.687,0,0,0-6.438,0l-2.527,2.541a1.412,1.412,0,0,1-2,0L12.589,8.151A4.518,4.518,0,0,0,9.37,6.823Z"
-                        transform="translate(-1.999 -4)"
-                      />
-                    </svg>
-                  </div>
-                  <div className="icon-wrapper">
+                  <div className="icon-wrapper" onClick={handleShare}>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="22.8"
@@ -211,6 +228,12 @@ const Carro: React.FC<ServerProps> = ({ data, recommended }) => {
                 </Col>
                 <Col lg={12}>
                   <h3> {data.modelo} </h3>
+                </Col>
+              </Row>
+
+              <Row className="show-592px">
+                <Col lg={12}>
+                  <h2> {formatBRL(data.preco)} </h2>
                 </Col>
               </Row>
 
@@ -524,16 +547,21 @@ const Carro: React.FC<ServerProps> = ({ data, recommended }) => {
                   />
                 </div>
               </div>
+
+              <Divider full={true} className="show-592px" />
             </InfoBox>
           </Col>
           <Col
             lg={4}
+            md={12}
+            sm={12}
+            xs={12}
             className="position-relative"
-            style={{ height: floatingHeight }}
+            style={{ height: heightFix ? floatingHeight : 'unset' }}
           >
             <FloatingBox>
-              <p className="label"> PREÇO </p>
-              <h2> {formatBRL(data.preco)} </h2>
+              <p className="label hide-592px"> PREÇO </p>
+              <h2 className="hide-592px"> {formatBRL(data.preco)} </h2>
 
               <h3>Se interessou no veículo ou quer agendar uma visita? 😎</h3>
               <p className="description">
