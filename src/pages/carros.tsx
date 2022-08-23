@@ -77,7 +77,52 @@ const List: React.FC<ServerProps> = () => {
   return (
     <>
       <Head>
-        <title> As melhores ofertas de carros | TKars </title>
+        <title>As melhores ofertas de carros | TKars</title>
+
+        <meta name="og:site_name" content="TKars" />
+        <meta name="author" content="Gabriel Sabara Krüger" />
+        <link rel="canonical" href="https://diretodotrecho.com.br/" />
+        <meta property="og:locale" content="pt_BR" />
+        <meta property="locale" content="pt_BR" />
+        <meta name="robots" content="index, follow" />
+        <meta name="googlebot" content="index, follow" />
+        <meta name="viewport" content="width=device-width" />
+        <meta
+          name="description"
+          content="Os melhores carros para você estão aqui na TKars"
+        />
+        <meta
+          property="og:title"
+          content="Os melhores carros para você | TKars"
+        />
+        <meta property="og:url" content={`https://tkars.vercel.app`} />
+        <meta
+          property="og:description"
+          content="Os melhores carros para você estão aqui na TKars"
+        />
+        <meta
+          property="og:image"
+          content={`https://transdesk.com.br/souunus/assets/img/veiculos/6_og.jpg`}
+        />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="TKars" />
+        <meta property="og:type" content="article" />
+        <meta name="keywords" content="Carros" />
+        <meta property="article:published_time" content="24/08/2022" />
+        <meta property="article:tag" content="Carros" />
+        {/* @ts-ignore */}
+        <meta name="twitter:card" value="summary" />
+        <meta name="twitter:site" content="@krugerrgabriel" />
+        <meta
+          name="twitter:title"
+          content="Os melhores carros para você estão aqui na TKars"
+        />
+        <meta
+          name="twitter:description"
+          content="Os melhores carros para você estão aqui na TKars"
+        />
+        <meta name="twitter:creator" content="@krugerrgabriel" />
       </Head>
 
       {/* Navbar */}

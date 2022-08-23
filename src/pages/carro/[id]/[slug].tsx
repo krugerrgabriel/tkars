@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { GetStaticPaths, GetStaticProps } from 'next';
 
+import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -132,6 +133,74 @@ const Carro: React.FC<ServerProps> = ({ data, recommended }) => {
 
   return (
     <>
+      <Head>
+        <title>{data.nome} | TKars</title>
+
+        <meta name="og:site_name" content="TKars" />
+        <meta name="author" content="Gabriel Sabara Krüger" />
+        <link rel="canonical" href="https://diretodotrecho.com.br/" />
+        <meta property="og:locale" content="pt_BR" />
+        <meta property="locale" content="pt_BR" />
+        <meta name="robots" content="index, follow" />
+        <meta name="googlebot" content="index, follow" />
+        <meta name="viewport" content="width=device-width" />
+        <meta name="description" content={data.nome + ' ' + data.modelo} />
+        <meta property="og:title" content={data.nome + ' ' + data.modelo} />
+        <meta
+          property="og:url"
+          content={`https://tkars.vercel.app/carro/${data.id}/${data.slug}`}
+        />
+        <meta
+          property="og:description"
+          content={data.nome + ' ' + data.modelo}
+        />
+        <meta
+          property="og:image"
+          content={`https://transdesk.com.br/souunus/assets/img/veiculos/${data.id}_og.jpg`}
+        />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta
+          property="og:image:alt"
+          content={data.nome + ' ' + data.modelo + ' | TKars'}
+        />
+        <meta property="og:type" content="article" />
+        <meta
+          name="keywords"
+          content={
+            data.nome +
+            ', ' +
+            data.marca +
+            ', ' +
+            data.modelo +
+            ', ' +
+            data.motorizacao
+          }
+        />
+        <meta property="article:published_time" content={data.createdAt} />
+        <meta
+          property="article:tag"
+          content={
+            data.nome +
+            ', ' +
+            data.marca +
+            ', ' +
+            data.modelo +
+            ', ' +
+            data.motorizacao
+          }
+        />
+        {/* @ts-ignore */}
+        <meta name="twitter:card" value="summary" />
+        <meta name="twitter:site" content="@krugerrgabriel" />
+        <meta name="twitter:title" content={data.nome + ' ' + data.modelo} />
+        <meta
+          name="twitter:description"
+          content={data.nome + ' ' + data.modelo}
+        />
+        <meta name="twitter:creator" content="@krugerrgabriel" />
+      </Head>
+
       <Navbar />
 
       {/* Banners */}

@@ -62,7 +62,8 @@ export interface ServerProps{
         preco: number,
         extension: string,
         views: number,
-        files: number[]
+        files: number[],
+        createdAt: string
     },
     recommended?: {
         id: number,
