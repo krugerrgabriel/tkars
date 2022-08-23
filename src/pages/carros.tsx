@@ -144,7 +144,7 @@ const List: React.FC<ServerProps> = () => {
 
         <Col xxl={3} lg={0} />
 
-        <Col xxl={9} lg={12}>
+        <Col xxl={9} lg={12} className="padding-right-0-480px">
           <Container>
             <Row>
               <Col lg={12}>

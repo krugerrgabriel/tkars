@@ -159,6 +159,14 @@ export default createGlobalStyle`
         .margin-64px{
             margin: 42px 0;
         }
+
+        .container{
+            padding: 0 12px !important;
+        }
+
+        .padding-right-0-480px{
+            padding-right: 0 !important;
+        }
     }
 `;
 

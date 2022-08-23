@@ -115,13 +115,13 @@ const Carro: React.FC<ServerProps> = ({ data, recommended }) => {
           }
         });
 
-  let link = `https://api.whatsapp.com/send?phone=5545988134329&text=*[TKARS]*%0ahttps://tkars.vercel.app/carros/${data.id}/${data.slug}%0a%0aMe interessei por esse *${data.nome}* e gostaria de saber mais sobre 😁`;
+  let link = `https://api.whatsapp.com/send?phone=5545988134329&text=*[TKARS]*%0ahttps://tkars.vercel.app/carro/${data.id}/${data.slug}%0a%0aMe interessei por esse *${data.nome}* e gostaria de saber mais sobre 😁`;
 
   const handleShare = () => {
     navigator.share({
       title: '[TKARS] ' + data.nome,
       text: data.modelo + ' por apenas ' + formatBRL(data.preco),
-      url: `https://tkars.vercel.app/carros/${data.id}/${data.slug}`
+      url: `https://tkars.vercel.app/carro/${data.id}/${data.slug}`
     });
   };
 
