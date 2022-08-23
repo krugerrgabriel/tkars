@@ -11,6 +11,9 @@ export const ProductWrapper = styled(Row)`
     @media(max-width: 992px){
         margin: 42px 0;
     }
+    @media(max-width: 480px){
+        margin: 42px 0 0 0;
+    }
 `;
 
 export const StyledContainer = styled(Container)`
@@ -21,7 +24,6 @@ export const StyledContainer = styled(Container)`
 
 export const BoxAppear = styled.div`
     .filter{
-        padding: 0 18px;
         margin: 0 12px 0 0;
 
         width: max-content;

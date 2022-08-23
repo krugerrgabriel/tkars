@@ -240,7 +240,8 @@ export const Button = styled.div<{ type?: string; }>`
     }
 
     @media(max-width: 468px){
-        width: ${({ type }) => type == 'whatsapp' ? '100%' : type == 'small' ? '44px' : '100%'};
+        width: ${({ type }) => type == 'whatsapp' ? '100%' : type == 'small' ? '40px' : '100%'};
+        height: 40px;
 
         svg{
             width: 14px;

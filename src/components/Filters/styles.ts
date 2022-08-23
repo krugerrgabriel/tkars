@@ -196,6 +196,9 @@ export const BackWrapper = styled.div<{ active: boolean; }>`
     @media(max-width: 496px){
         display: block;
     }
+    @media(max-width: 360px){
+        top: 52px;
+    }
 `;
 
 export const Overlay = styled.div<{ active: boolean}>`

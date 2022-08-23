@@ -120,7 +120,8 @@ const Carro: React.FC<ServerProps> = ({ data, recommended }) => {
   const handleShare = () => {
     navigator.share({
       title: '[TKARS] ' + data.nome,
-      text: data.modelo + ' por apenas ' + formatBRL(data.preco),
+      text:
+        data.nome + ' ' + data.modelo + ' por apenas ' + formatBRL(data.preco),
       url: `https://tkars.vercel.app/carro/${data.id}/${data.slug}`
     });
   };

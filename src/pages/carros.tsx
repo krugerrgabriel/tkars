@@ -40,7 +40,7 @@ const List: React.FC<ServerProps> = () => {
   }, []);
 
   const [filterOpen, setFilterOpen] = useState(false);
-  const [filterWidthActive, setFilterWidthActive] = useState(true);
+  const [filterWidthActive, setFilterWidthActive] = useState(false);
 
   const size = useWindowSize();
   useEffect(() => {
