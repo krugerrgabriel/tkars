@@ -43,6 +43,12 @@ export const Body = styled.div<{ active: boolean }>`
                 font-style: unset;
             }
         }
+
+        @media(max-width: 768px){
+            background-color: transparent;
+
+            padding: 0;
+        }
     }
 
     div.reveal{
@@ -82,6 +88,14 @@ export const Body = styled.div<{ active: boolean }>`
             &:last-of-type{
                 margin: 0;
             }
+        }
+
+        @media(max-width: 768px){
+            background-color: ${({ theme }) => theme.colors.gray};
+
+            border-top: unset;
+
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
         }
     }
 `;

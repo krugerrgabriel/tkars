@@ -131,6 +131,16 @@ export default createGlobalStyle`
     .show-768px{
         display: none;
     }
+    @media (min-width: 1920px){
+        .width-unset-1920px{
+            width: unset;
+        }
+    }
+    @media(max-width: 1400px){
+        .justify-content-end-1400pxmax{
+            justify-content: end;
+        }
+    }
     @media (max-width: 768px) {
         .hide-768px{
             display: none !important;

@@ -36,7 +36,9 @@ const SelectButton: React.FC<SelectButtonProps> = ({
   let orderBy = '';
   if (value != '') {
     let activeValue = options.filter(item => item.value == value);
-    orderBy = ': ' + activeValue[0].name;
+    orderBy = activeValue[0].name;
+  } else {
+    orderBy = 'ORDERNAR POR';
   }
 
   return (
@@ -55,7 +57,7 @@ const SelectButton: React.FC<SelectButtonProps> = ({
           />
         </svg>
         <p>
-          ORDERNAR POR<i>{orderBy}</i>
+          <i>{orderBy}</i>
         </p>
       </div>
 

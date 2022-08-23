@@ -20,7 +20,7 @@ const Product: React.FC<ProductProps> = props => {
           <ImageWrapper>
             <Image
               src={
-                'http://localhost/souunus/assets/img/veiculos/' +
+                'https://transdesk.com.br/pbe/souunus/assets/img/veiculos/' +
                 id +
                 '_principal.' +
                 extension

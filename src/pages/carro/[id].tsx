@@ -40,7 +40,7 @@ const Carro: React.FC<ServerProps> = ({ data, recommended }) => {
     return (
       <Wrapper onDragStart={preventDragHandler}>
         <Image
-          src={`http://localhost/souunus/assets/img/veiculos/${data.id}_${item}`}
+          src={`https://transdesk.com.br/pbe/souunus/assets/img/veiculos/${data.id}_${item}`}
           alt="Logo da TKARS"
           layout="fill"
           objectFit="cover"
@@ -646,7 +646,7 @@ export default Carro;
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const response = await fetch(
-    'http://localhost/souunus/backend/admin/tkars/site/get.php'
+    'https://transdesk.com.br/pbe/souunus/backend/admin/tkars/site/get.php'
   );
   const { data } = await response.json();
 
@@ -666,7 +666,7 @@ export const getStaticProps: GetStaticProps = async context => {
   const { id } = context.params;
 
   const response = await fetch(
-    `http://localhost/souunus/backend/admin/tkars/site/get.php?itemId=${id}`
+    `https://transdesk.com.br/pbe/souunus/backend/admin/tkars/site/get.php?itemId=${id}`
   );
   const { data, recommended } = await response.json();
 

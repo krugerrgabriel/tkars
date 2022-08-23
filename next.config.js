@@ -3,7 +3,7 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    domains: ['www.transdesk.com.br', 'localhost']
+    domains: ['transdesk.com.br', 'www.transdesk.com.br', 'localhost']
   }
 };
 

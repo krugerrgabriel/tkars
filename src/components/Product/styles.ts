@@ -13,9 +13,17 @@ export const Body = styled.div<{ margin?: boolean; fixedWidth?: boolean; classNa
 
     ${({ margin }) => margin ? 'margin: 0 18px 18px 18px' : '' };
 
+    @media(min-width: 1920px){
+        width: 310px;
+    }
+    
     @media (max-width: 992px){
         &.product-3{
             display: none;
+        }
+
+        &{
+            margin: 0 0 18px 0;
         }
     }
 
