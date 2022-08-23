@@ -46,8 +46,8 @@ const Carro: React.FC<ServerProps> = ({ data, recommended }) => {
           alt="Logo da TKARS"
           layout="fill"
           objectFit="cover"
-          loading="lazy"
           onLoad={() => setIsLoaded(true)}
+          priority={index == 0 ? true : false}
         />
       </Wrapper>
     );
@@ -60,33 +60,6 @@ const Carro: React.FC<ServerProps> = ({ data, recommended }) => {
     {
       name: data.nome,
       url: '#!'
-    }
-  ];
-
-  let banners = [
-    {
-      id: 1,
-      nome: 'HYUNDAI HB20',
-      description:
-        'Para a calda do seu pudim de leite condensado dar certo, fique sempre com a proporção de meia medida de água para uma medida de açúcar.'
-    },
-    {
-      id: 2,
-      nome: 'CHEVROLET ONIX',
-      description:
-        'Para a calda do seu pudim de leite condensado dar certo, fique sempre com a proporção de meia medida de água para uma medida de açúcar.'
-    },
-    {
-      id: 3,
-      nome: 'CHEVROLET CRUZE',
-      description:
-        'Para a calda do seu pudim de leite condensado dar certo, fique sempre com a proporção de meia medida de água para uma medida de açúcar.'
-    },
-    {
-      id: 4,
-      nome: 'TOYOTA COROLLA',
-      description:
-        'Para a calda do seu pudim de leite condensado dar certo, fique sempre com a proporção de meia medida de água para uma medida de açúcar.'
     }
   ];
 
