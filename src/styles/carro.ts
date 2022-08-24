@@ -284,6 +284,15 @@ export const InfoBox = styled.div`
             color: ${({ theme }) => theme.colors.text};
 
             word-wrap: break-word;
+
+            @media (max-width: 592px){
+                font-size: 14px;
+                
+                margin: 24px 0 0 0;
+            }
+            @media (max-width: 360px){
+                font-size: 12px;
+            }
         }
     }
 

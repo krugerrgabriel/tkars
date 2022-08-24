@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 
 import SearchField from '../SearchField/';
 
@@ -12,10 +12,13 @@ import {
   LogoWrapper,
   SidenavWrapper,
   NavbarMargin,
-  SearchWrapper
+  SearchWrapper,
+  Sidenav
 } from './styles';
 
 const Navbar: React.FC = () => {
+  const [sidenavActive, setSidenavActive] = useState(false);
+
   return (
     <>
       <NavbarMargin />
@@ -70,6 +73,8 @@ const Navbar: React.FC = () => {
           </SidenavWrapper>
         </Container>
       </Body>
+
+      <Sidenav active={sidenavActive}></Sidenav>
     </>
   );
 };

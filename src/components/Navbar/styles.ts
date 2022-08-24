@@ -73,3 +73,5 @@ export const SearchWrapper = styled.div`
         height: 18px;
     }
 `;
+
+export const Sidenav = styled.div<{ active: boolean; }>``;

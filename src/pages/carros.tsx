@@ -22,20 +22,28 @@ import { ServerProps } from '../interfaces';
 
 // import { Container } from './styles';
 
-const getData = async () => {
+const getData = async (params = '') => {
   const response = await fetch(
-    `https://transdesk.com.br/souunus/backend/admin/tkars/site/get`
+    `http://localhost/souunus/backend/admin/tkars/site/get.php`,
+    {
+      method: 'POST',
+      body: params.length > 0 ? JSON.stringify({ params }) : ''
+    }
   );
+
   const { data } = await response.json();
+
   return data;
 };
 
 const List: React.FC<ServerProps> = () => {
-  const [carros, setCarros] = useState([]);
+  const [allCars, setAllCars] = useState([]);
+  const [showCars, setShowCars] = useState([]);
 
   useEffect(() => {
     getData().then(data => {
-      setCarros(data);
+      setShowCars(data);
+      setAllCars(data);
     });
   }, []);
 
@@ -57,7 +65,7 @@ const List: React.FC<ServerProps> = () => {
   const [carsTitle, setCarsTitle] = useState('');
 
   useEffect(() => {
-    let carsCount = carros.length;
+    let carsCount = showCars.length;
     if (carsCount > 0) {
       let personChar = '';
       if (carsCount > 1) {
@@ -70,10 +78,25 @@ const List: React.FC<ServerProps> = () => {
     } else {
       setCarsTitle('Nenhum veículo encontrado 😥');
     }
-  }, [carros]);
+  }, [showCars]);
 
   const [selectStatus, setSelectStatus] = useState(false);
   const [selectValue, setSelectValue] = useState('');
+
+  const [filters, setFilters] = useState([]);
+
+  useEffect(() => {
+    // @ts-ignore
+    getData(filters).then(data => {
+      setShowCars(data);
+      setAllCars(data);
+    });
+  }, [filters]);
+
+  const filterChange = event => {
+    setFilters(event);
+  };
+
   return (
     <>
       <Head>
@@ -134,13 +157,10 @@ const List: React.FC<ServerProps> = () => {
           className="col-lg-3"
           active={filterWidthActive}
           type="full"
-          filterChange={event => console.log(event)}
+          filterChange={filterChange}
         />
-        {/* Filtrors */}
-        <Filters
-          active={filterOpen}
-          filterChange={() => setFilterOpen(!filterOpen)}
-        />
+        {/* Filters */}
+        <Filters active={filterOpen} filterChange={filterChange} />
 
         <Col xxl={3} lg={0} />
 
@@ -271,7 +291,7 @@ const List: React.FC<ServerProps> = () => {
 
           <StyledContainer>
             <ProductWrapper>
-              {carros?.map((item, index) => {
+              {showCars?.map((item, index) => {
                 return (
                   <Col
                     xxl={3}
@@ -280,8 +300,9 @@ const List: React.FC<ServerProps> = () => {
                     md={4}
                     sm={12}
                     className="width-unset-1920px"
+                    key={index}
                   >
-                    <Product key={index} item={item} />
+                    <Product item={item} />
                   </Col>
                 );
               })}

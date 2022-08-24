@@ -5,7 +5,7 @@ import { Body } from './styles';
 import { CheckBoxProps } from './interfaces';
 
 const CheckBox: React.FC<CheckBoxProps> = props => {
-  let { label, active, checkChange } = props;
+  let { label, active, checkChange, id } = props;
   return (
     <Body>
       <input
