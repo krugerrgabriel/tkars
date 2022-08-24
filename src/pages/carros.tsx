@@ -37,13 +37,11 @@ const getData = async (params = '') => {
 };
 
 const List: React.FC<ServerProps> = () => {
-  const [allCars, setAllCars] = useState([]);
   const [showCars, setShowCars] = useState([]);
 
   useEffect(() => {
     getData().then(data => {
       setShowCars(data);
-      setAllCars(data);
     });
   }, []);
 
@@ -83,13 +81,96 @@ const List: React.FC<ServerProps> = () => {
   const [selectStatus, setSelectStatus] = useState(false);
   const [selectValue, setSelectValue] = useState('');
 
+  useEffect(() => {
+    console.log(showCars);
+  }, [showCars]);
+
+  useEffect(() => {
+    let newArray = [];
+    switch (selectValue) {
+      case 'mais-baratos':
+        newArray = showCars.sort((a, b) => {
+          if (a.preco < b.preco) {
+            return -1;
+          }
+          if (a.preco > b.preco) {
+            return 1;
+          }
+          return 0;
+        });
+        break;
+      case 'mais-caros':
+        newArray = showCars.sort((a, b) => {
+          if (a.preco > b.preco) {
+            return -1;
+          }
+          if (a.preco < b.preco) {
+            return 1;
+          }
+          return 0;
+        });
+        break;
+      case 'menos-rodados':
+        newArray = showCars.sort((a, b) => {
+          if (a.quilometragem < b.quilometragem) {
+            return -1;
+          }
+          if (a.quilometragem > b.quilometragem) {
+            return 1;
+          }
+          return 0;
+        });
+        break;
+      case 'mais-rodados':
+        newArray = showCars.sort((a, b) => {
+          if (a.quilometragem > b.quilometragem) {
+            return -1;
+          }
+          if (a.quilometragem < b.quilometragem) {
+            return 1;
+          }
+          return 0;
+        });
+        break;
+      case 'por-marca':
+        newArray = showCars.sort((a, b) => {
+          if (a.marca > b.marca) {
+            return -1;
+          }
+          if (a.marca < b.marca) {
+            return 1;
+          }
+          return 0;
+        });
+        break;
+      default:
+        newArray = showCars.sort((a, b) => {
+          if (a.id > b.id) {
+            return -1;
+          }
+          if (a.id < b.id) {
+            return 1;
+          }
+          return 0;
+        });
+        break;
+    }
+    setShowCars(newArray);
+
+    setTimeout(() => {
+      setSelectStatus(true);
+      setTimeout(() => {
+        setSelectStatus(false);
+      }, 5);
+    }, 5);
+  }, [selectValue]);
+
   const [filters, setFilters] = useState([]);
 
   useEffect(() => {
     // @ts-ignore
     getData(filters).then(data => {
       setShowCars(data);
-      setAllCars(data);
     });
   }, [filters]);
 
@@ -291,7 +372,7 @@ const List: React.FC<ServerProps> = () => {
 
           <StyledContainer>
             <ProductWrapper>
-              {showCars?.map((item, index) => {
+              {showCars.map((item, index) => {
                 return (
                   <Col
                     xxl={3}
