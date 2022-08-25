@@ -26,7 +26,9 @@ export default createGlobalStyle`
 
         overflow-x: hidden;
     }
-
+    &::-webkit-scrollbar {
+        width: 4px;
+    }
     ::-webkit-scrollbar-button {
         width: 0px;
         height: 0px;

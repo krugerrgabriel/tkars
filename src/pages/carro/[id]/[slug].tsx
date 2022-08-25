@@ -8,14 +8,13 @@ import Router from 'next/router';
 
 import { Container, Row, Col } from 'react-bootstrap';
 
-import { ScrollMenu } from 'react-horizontal-scrolling-menu';
-
 import Navbar from '../../../components/Navbar';
 import Fab from '../../../components/Fab';
 import Footer from '../../../components/Footer';
 import Breadcrumb from '../../../components/Breadcrumb';
 import Ad from '../../../components/Ad';
 import Product from '../../../components/Product';
+import ScrollMenu from '../../../components/ScrollMenu';
 
 import {
   preventDragHandler,
@@ -40,21 +39,6 @@ import 'froala-editor/css/froala_style.min.css';
 import 'font-awesome/css/font-awesome.css';
 
 import { ServerProps } from '../../../interfaces';
-
-function onWheel(apiObj, ev: React.WheelEvent): void {
-  const isThouchpad = Math.abs(ev.deltaX) !== 0 || Math.abs(ev.deltaY) < 15;
-
-  if (isThouchpad) {
-    ev.stopPropagation();
-    return;
-  }
-
-  if (ev.deltaY < 0) {
-    apiObj.scrollNext();
-  } else if (ev.deltaY > 0) {
-    apiObj.scrollPrev();
-  }
-}
 
 const Carro: React.FC<ServerProps> = ({ data, recommended }) => {
   const CarImage: React.FC<{ item: string; index?: number }> = ({
@@ -110,17 +94,6 @@ const Carro: React.FC<ServerProps> = ({ data, recommended }) => {
       setFloatingHeight(minInfoHeight);
     }
   }, [fichaTecnicaReveal]);
-
-  const { dragStart, dragStop, dragMove, dragging } = useDrag();
-  const handleDrag = //@ts-ignore
-
-      ({ scrollContainer }: scrollVisibilityApiType) =>
-      (ev: React.MouseEvent) =>
-        dragMove(ev, posDiff => {
-          if (scrollContainer.current) {
-            scrollContainer.current.scrollLeft += posDiff;
-          }
-        });
 
   let link = `https://api.whatsapp.com/send?phone=5545988134329&text=*[TKARS]*%0ahttps://tkars.vercel.app/carro/${data.id}/${data.slug}%0a%0aMe interessei por esse *${data.nome}* e gostaria de saber mais sobre 😁`;
 
@@ -225,14 +198,8 @@ const Carro: React.FC<ServerProps> = ({ data, recommended }) => {
       <Navbar handleKey={handleKey} />
 
       {/* Banners */}
-      <BannerWrapper onMouseLeave={dragStop}>
-        <ScrollMenu
-          onMouseDown={() => dragStart}
-          onMouseUp={() => dragStop}
-          onMouseMove={handleDrag}
-          onWheel={onWheel}
-          LeftArrow={`<svg xmlns="http://www.w3.org/2000/svg" width="18" height="11.23" viewBox="0 0 18 11.23"><path id="bx-chevron-down" d="M22.063,9.293l-6.77,6.77-6.77-6.77-2.23,2.23,9,9,9-9Z" transform="translate(-6.293 -9.293)" fill="#fff"/></svg>`}
-        >
+      <BannerWrapper>
+        <ScrollMenu>
           {data.files.map((item, index) => (
             <CarImage key={index} item={item + '.jpg'} index={index} />
           ))}

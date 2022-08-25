@@ -1,6 +1,7 @@
 {
   "name": "TKars",
   "short_name": "TKars",
+  "description": "Os melhores carros para você estão aqui na TKars",
   "icons": [
     {
       "src": "/logos/icon-192x192.png",
@@ -18,5 +19,5 @@
   "background_color": "#121212",
   "start_url": "/",
   "display": "standalone",
-  "orientation": "portrait"
+  "orientation": "portrait-primary"
 }

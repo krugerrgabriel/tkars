@@ -10,6 +10,7 @@ const nextConfig = {
 };
 
 module.exports = withPWA({
+  target: 'serverless',
   pwa: {
     dest: 'public',
     register: true,

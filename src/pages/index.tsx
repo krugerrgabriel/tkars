@@ -6,8 +6,6 @@ import Router from 'next/router';
 
 import { Container, Row, Col } from 'react-bootstrap';
 
-import { ScrollMenu } from 'react-horizontal-scrolling-menu';
-
 // Components
 import Navbar from '../components/Navbar';
 import Banner from '../components/Banner';
@@ -18,8 +16,8 @@ import Ad from '../components/Ad';
 import Footer from '../components/Footer';
 import Fab from '../components/Fab';
 import Filters from '../components/Filters';
+import ScrollMenu from '../components/ScrollMenu';
 
-import useDrag from '../functions/useDrag';
 import { MarcasArray } from '../functions/list';
 
 import { BannerWrapper } from '../styles/';
@@ -62,17 +60,6 @@ const Home: React.FC<ServerProps> = ({
       { shallow: true }
     );
   };
-
-  const { dragStart, dragStop, dragMove, dragging } = useDrag();
-  const handleDrag = //@ts-ignore
-
-      ({ scrollContainer }: scrollVisibilityApiType) =>
-      (ev: React.MouseEvent) =>
-        dragMove(ev, posDiff => {
-          if (scrollContainer.current) {
-            scrollContainer.current.scrollLeft += posDiff;
-          }
-        });
 
   const handleRedirect = itemId => {
     location.href = '#!';
@@ -132,12 +119,8 @@ const Home: React.FC<ServerProps> = ({
       <Navbar handleKey={handleKey} />
 
       {/* Banners */}
-      <BannerWrapper onMouseLeave={dragStop}>
-        <ScrollMenu
-          onMouseDown={() => dragStart}
-          onMouseUp={() => dragStop}
-          onMouseMove={handleDrag}
-        >
+      <BannerWrapper>
+        <ScrollMenu>
           {/* @ts-ignore */}
           {data.slice(0, 5).map((item, index) => (
             <div
@@ -174,18 +157,15 @@ const Home: React.FC<ServerProps> = ({
             <Subtitle> arraste para o lado </Subtitle>
           </Col>
         </Row>
-        <div onMouseLeave={dragStop}>
-          <ScrollMenu
-            onMouseDown={() => dragStart}
-            onMouseUp={() => dragStop}
-            onMouseMove={handleDrag}
-          >
-            {MarcasArray.map((item, index) => {
-              return <Marca name={item} key={index} />;
-            })}
-          </ScrollMenu>
-        </div>
-
+        <ScrollMenu>
+          {MarcasArray.map((item, index) => {
+            return (
+              <div>
+                <Marca name={item} key={index} />
+              </div>
+            );
+          })}
+        </ScrollMenu>
         <Divider />
       </Container>
 

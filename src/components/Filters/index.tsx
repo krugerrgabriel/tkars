@@ -1,14 +1,12 @@
 import React, { useRef, useState, useEffect } from 'react';
 
-import { ScrollMenu } from 'react-horizontal-scrolling-menu';
 import { Row, Col } from 'react-bootstrap';
 
 import MarcaCheck from '../MarcaCheck';
 import InputField from '../InputField';
 import CheckBox from '../CheckBox';
+import ScrollMenu from '../ScrollMenu';
 
-import useDrag from '../../functions/useDrag';
-import { formatBRL } from '../../functions/';
 import {
   MarcasArray,
   CoresArray,
@@ -160,16 +158,6 @@ const Filters: React.FC<FiltersProps> = ({
     setTipos([]);
   };
 
-  const { dragStart, dragStop, dragMove, dragging } = useDrag();
-  const handleDrag = //@ts-ignore
-
-      ({ scrollContainer }: scrollVisibilityApiType) =>
-      (ev: React.MouseEvent) =>
-        dragMove(ev, posDiff => {
-          if (scrollContainer.current) {
-            scrollContainer.current.scrollLeft += posDiff;
-          }
-        });
   return (
     <>
       <Body className={className} type={type} active={active}>
@@ -205,24 +193,18 @@ const Filters: React.FC<FiltersProps> = ({
             <p className="title"> Marcas </p>
             <p className="subtitle"> arraste para o lado </p>
           </div>
-          <div onMouseLeave={dragStop}>
-            <ScrollMenu
-              onMouseDown={() => dragStart}
-              onMouseUp={() => dragStop}
-              onMouseMove={handleDrag}
-            >
-              {MarcasArray.map((item, index) => {
-                return (
-                  <MarcaCheck
-                    active={marcas.includes(item)}
-                    name={item}
-                    key={index}
-                    changeStatus={handleMarca}
-                  />
-                );
-              })}
-            </ScrollMenu>
-          </div>
+          <ScrollMenu>
+            {MarcasArray.map((item, index) => {
+              return (
+                <MarcaCheck
+                  active={marcas.includes(item)}
+                  name={item}
+                  key={index}
+                  changeStatus={handleMarca}
+                />
+              );
+            })}
+          </ScrollMenu>
         </div>
 
         <div className="section">
