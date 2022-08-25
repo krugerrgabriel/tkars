@@ -43,6 +43,8 @@ export default class MyDocument extends Document {
         <Head>
           <meta charSet="utf-8" />
 
+          <link rel="manifest" href="/manifest.json" />
+
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link rel="preconnect" href="https://fonts.gstatic.com" />
           <link
@@ -51,6 +53,9 @@ export default class MyDocument extends Document {
           />
 
           <link rel="icon" type="image/svg" href="/icon01.svg" />
+          <link rel="apple-touch-icon" href="/icon01.svg"></link>
+
+          <meta name="theme-color" content="#971915" />
         </Head>
         <body>
           <Main />
