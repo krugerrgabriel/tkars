@@ -139,21 +139,17 @@ const Carro: React.FC<ServerProps> = ({ data, recommended }) => {
     setHeightFix(size.width > 992 ? true : false);
   }, [size]);
 
-  const handleKey = event => {
-    if (event.key == 'Enter') {
-      let { value } = event.target;
-
-      Router.push(
-        {
-          pathname: '/carros',
-          query: {
-            searchParams: value
-          }
-        },
-        '/carros',
-        { shallow: true }
-      );
-    }
+  const handleKey = value => {
+    Router.push(
+      {
+        pathname: '/carros',
+        query: {
+          searchParams: value
+        }
+      },
+      '/carros',
+      { shallow: true }
+    );
   };
 
   return (

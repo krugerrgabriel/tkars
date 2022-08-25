@@ -14,21 +14,18 @@ const SearchBox: React.FC<{ filterClick: Function; carsNumber: number }> = ({
   filterClick,
   carsNumber
 }) => {
-  const handleKey = event => {
-    if (event.key == 'Enter') {
-      let { value } = event.target;
-
-      Router.push(
-        {
-          pathname: '/carros',
-          query: {
-            searchParams: value
-          }
-        },
-        '/carros',
-        { shallow: true }
-      );
-    }
+  const handleKey = value => {
+    Router.push(
+      {
+        pathname: '/carros',
+        query: {
+          searchParams: value,
+          searchBox: true
+        }
+      },
+      '/carros',
+      { shallow: true }
+    );
   };
 
   return (

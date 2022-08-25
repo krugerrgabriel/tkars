@@ -52,14 +52,11 @@ const List: React.FC<ServerProps> = () => {
       getData().then(data => {
         setShowCars(data);
       });
-    }, 500);
+    }, 100);
   }, [filters, searchParams]);
 
-  const handleKey = event => {
-    if (event.key == 'Enter') {
-      let { value } = event.target;
-      setSearchParams(value);
-    }
+  const handleKey = value => {
+    setSearchParams(value);
   };
 
   useEffect(() => {
@@ -186,11 +183,15 @@ const List: React.FC<ServerProps> = () => {
   }, [selectValue]);
 
   const filterChange = event => {
-    setSearchParams('');
+    if (event == 'close') {
+      setFilterOpen(false);
+    } else {
+      setSearchParams('');
 
-    setTimeout(() => {
-      setFilters(event);
-    }, 250);
+      setTimeout(() => {
+        setFilters(event);
+      }, 250);
+    }
   };
 
   return (
@@ -287,7 +288,7 @@ const List: React.FC<ServerProps> = () => {
                   className="d-flex align-items-center justify-content-end-1400pxmax hide-768px"
                 >
                   <Button
-                    className="show-1400px filter"
+                    className="show-1400px filter size-44"
                     onClick={() => setFilterOpen(!filterOpen)}
                   >
                     <svg

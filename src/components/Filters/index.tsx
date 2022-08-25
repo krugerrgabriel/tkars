@@ -173,7 +173,7 @@ const Filters: React.FC<FiltersProps> = ({
   return (
     <>
       <Body className={className} type={type} active={active}>
-        <BackWrapper active={active} onClick={() => filterChange()}>
+        <BackWrapper active={active} onClick={() => filterChange('close')}>
           <div className="wrapper">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -401,7 +401,7 @@ const Filters: React.FC<FiltersProps> = ({
                 />
               </g>
             </svg>
-            <p> APLICAR FILTROS </p>
+            <p> APLICAR </p>
           </Button>
         </div>
       </Body>

@@ -27,6 +27,10 @@ export const BoxAppear = styled.div`
         margin: 0 12px 0 0;
 
         width: max-content;
+
+        &.size-44{
+            width: 44px;
+        }
     }
 
     .show-768px{

@@ -48,21 +48,19 @@ const Home: React.FC<ServerProps> = ({
     });
   };
 
-  const handleKey = event => {
-    if (event.key == 'Enter') {
-      let { value } = event.target;
+  const handleKey = value => {
+    console.log(value);
 
-      Router.push(
-        {
-          pathname: '/carros',
-          query: {
-            searchParams: value
-          }
-        },
-        '/carros',
-        { shallow: true }
-      );
-    }
+    Router.push(
+      {
+        pathname: '/carros',
+        query: {
+          searchParams: value
+        }
+      },
+      '/carros',
+      { shallow: true }
+    );
   };
 
   const { dragStart, dragStop, dragMove, dragging } = useDrag();
