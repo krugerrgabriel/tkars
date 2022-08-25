@@ -8,22 +8,22 @@ import { preventDragHandler } from '../../functions/index';
 import { Loader } from '../../styles/global';
 import { Body, Overlay } from './styles';
 
-import { BannerProps } from './interfaces';
+import { ProductProps } from '../Product/interfaces';
 
-const Banner: React.FC<BannerProps> = props => {
-  let { id, nome, description } = props.item;
+const Banner: React.FC<ProductProps> = props => {
+  let { id, slug, marca, nome, modelo, quilometragem } = props.item;
 
   const [isLoaded, setIsLoaded] = useState(false);
   return (
     <Body onDragStart={preventDragHandler}>
-      <Link href={`/carro/${id}`}>
+      <Link href={`/carro/${id}/${slug}`}>
         <a>
           {!isLoaded && <Loader />}
           <Image
-            src={`/misc/${id}_principal.jpg`}
+            src={`https://transdesk.com.br/souunus/assets/img/veiculos/${id}_og.jpg`}
             alt="Logo da TKARS"
             layout="fill"
-            objectFit="contain"
+            objectFit="cover"
             className="border-radius-8px"
             onLoad={() => setIsLoaded(true)}
           />
@@ -31,8 +31,12 @@ const Banner: React.FC<BannerProps> = props => {
           <Overlay />
 
           <div className="body">
-            <h2> {nome} </h2>
-            <h3>{description}</h3>
+            <h2>
+              {marca} {nome}
+            </h2>
+            <h3>
+              <b>{modelo}</b> com apenas <b>{quilometragem}km</b> rodados!!
+            </h3>
           </div>
         </a>
       </Link>

@@ -20,7 +20,7 @@ export const Body = styled.div<{ active: boolean; type?: string; className?: str
 
     transition: 0.2s;
 
-    z-index: 100;
+    z-index: 201;
 
     div.filter-wrapper{
         position: relative;

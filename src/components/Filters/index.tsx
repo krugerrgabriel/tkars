@@ -151,6 +151,15 @@ const Filters: React.FC<FiltersProps> = ({
     filterChange([...filters, ...sendFilters]);
   };
 
+  const handleCancel = () => {
+    filterChange();
+
+    setMarcas([]);
+    setCores([]);
+    setCombustiveis([]);
+    setTipos([]);
+  };
+
   const { dragStart, dragStop, dragMove, dragging } = useDrag();
   const handleDrag = //@ts-ignore
 
@@ -355,7 +364,7 @@ const Filters: React.FC<FiltersProps> = ({
         </div>
 
         <div className="button-box col-lg-3">
-          <Button type="secondary" onClick={() => filterChange()}>
+          <Button type="secondary" onClick={handleCancel}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="14"

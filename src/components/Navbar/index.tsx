@@ -16,7 +16,7 @@ import {
   Sidenav
 } from './styles';
 
-const Navbar: React.FC = () => {
+const Navbar: React.FC<{ handleKey: Function }> = ({ handleKey }) => {
   const [sidenavActive, setSidenavActive] = useState(false);
 
   return (
@@ -54,7 +54,7 @@ const Navbar: React.FC = () => {
           </Link>
 
           <div className="search-wrapper hide-768px">
-            <SearchField />
+            <SearchField handleKey={handleKey} />
           </div>
 
           <SidenavWrapper>

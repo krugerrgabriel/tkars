@@ -12,7 +12,7 @@ const Marca: React.FC<{ name: string }> = props => {
   let nameLower = name.toLowerCase();
   return (
     <Body onDragStart={preventDragHandler}>
-      <Link href={`/carros/marca-${nameLower}`}>
+      <Link href={{ pathname: '/carros', query: { searchParams: nameLower } }}>
         <a>
           <div className="wrapper">
             <LogoWrapper className={nameLower}>

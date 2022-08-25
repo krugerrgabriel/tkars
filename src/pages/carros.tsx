@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 
 import { Container, Row, Col } from 'react-bootstrap';
 
@@ -9,7 +10,7 @@ import Fab from '../components/Fab';
 import Filters from '../components/Filters';
 import Breadcrumb from '../components/Breadcrumb';
 import Footer from '../components/Footer';
-import InputField from '../components/InputField';
+import SearchField from '../components/SearchField';
 import SelectButton from '../components/SelectButton';
 import Product from '../components/Product';
 
@@ -22,27 +23,62 @@ import { ServerProps } from '../interfaces';
 
 // import { Container } from './styles';
 
-const getData = async (params = '') => {
+const getData = async (params = '', searchParams = '') => {
   const response = await fetch(
     `http://localhost/souunus/backend/admin/tkars/site/get.php`,
     {
       method: 'POST',
-      body: params.length > 0 ? JSON.stringify({ params }) : ''
+      body:
+        params.length > 0 || searchParams.length > 0
+          ? JSON.stringify({ params, searchParams })
+          : ''
     }
   );
 
   const { data } = await response.json();
-
   return data;
 };
 
 const List: React.FC<ServerProps> = () => {
   const [showCars, setShowCars] = useState([]);
 
+  const [filters, setFilters] = useState([]);
+
   useEffect(() => {
-    getData().then(data => {
+    // @ts-ignore
+    getData(filters, searchParams).then(data => {
       setShowCars(data);
     });
+  }, [filters]);
+
+  const router = useRouter();
+  const [searchParams, setSearchParams] = useState('');
+
+  const handleKey = event => {
+    if (event.key == 'Enter') {
+      let { value } = event.target;
+      setSearchParams(value);
+    }
+  };
+
+  useEffect(() => {
+    getData('', searchParams).then(data => {
+      setShowCars(data);
+    });
+  }, [searchParams]);
+  useEffect(() => {
+    if (router.query.searchParams) {
+      // @ts-ignore
+      setSearchParams(router.query.searchParams);
+      // @ts-ignore
+      getData('', router.query.searchParams).then(data => {
+        setShowCars(data);
+      });
+    } else {
+      getData('', '').then(data => {
+        setShowCars(data);
+      });
+    }
   }, []);
 
   const [filterOpen, setFilterOpen] = useState(false);
@@ -80,10 +116,6 @@ const List: React.FC<ServerProps> = () => {
 
   const [selectStatus, setSelectStatus] = useState(false);
   const [selectValue, setSelectValue] = useState('');
-
-  useEffect(() => {
-    console.log(showCars);
-  }, [showCars]);
 
   useEffect(() => {
     let newArray = [];
@@ -165,17 +197,12 @@ const List: React.FC<ServerProps> = () => {
     }, 5);
   }, [selectValue]);
 
-  const [filters, setFilters] = useState([]);
-
-  useEffect(() => {
-    // @ts-ignore
-    getData(filters).then(data => {
-      setShowCars(data);
-    });
-  }, [filters]);
-
   const filterChange = event => {
-    setFilters(event);
+    setSearchParams('');
+
+    setTimeout(() => {
+      setFilters(event);
+    }, 250);
   };
 
   return (
@@ -230,7 +257,7 @@ const List: React.FC<ServerProps> = () => {
       </Head>
 
       {/* Navbar */}
-      <Navbar />
+      <Navbar handleKey={handleKey} />
 
       <Row>
         {/* Filters */}
@@ -262,28 +289,7 @@ const List: React.FC<ServerProps> = () => {
 
               <Row className="justify-content-between">
                 <Col xl={5} lg={5} md={7} className="d-flex">
-                  <InputField
-                    type="text"
-                    placeholder="Digite o modelo, marca, ano, ficha técnica..."
-                    icon={`<svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17"><g id="search" transform="translate(-0.5 0.5)"><path id="Caminho_17" data-name="Caminho 17" d="M19.721,18.38l-3.21-3.2a7.478,7.478,0,0,0,1.6-4.626,7.553,7.553,0,1,0-7.553,7.553,7.478,7.478,0,0,0,4.626-1.6l3.2,3.21a.948.948,0,1,0,1.341-1.341ZM4.888,10.553a5.665,5.665,0,1,1,5.665,5.665,5.665,5.665,0,0,1-5.665-5.665Z" transform="translate(-2.5 -3.5)"/></g></svg>`}
-                  />
-
-                  <Button type="small" className="hide-768px">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="19"
-                      height="19.001"
-                      viewBox="0 0 19 19.001"
-                    >
-                      <g id="bx-zoom-in" transform="translate(-2 -2)">
-                        <path
-                          id="Caminho_152"
-                          data-name="Caminho 152"
-                          d="M10.125,2A8.125,8.125,0,1,0,15.1,16.536L19.564,21,21,19.565,16.535,15.1A8.111,8.111,0,0,0,10.125,2Zm0,14.219a6.094,6.094,0,1,1,6.094-6.094A6.1,6.1,0,0,1,10.125,16.219Z"
-                        />
-                      </g>
-                    </svg>
-                  </Button>
+                  <SearchField handleKey={handleKey} />
                 </Col>
 
                 <Col

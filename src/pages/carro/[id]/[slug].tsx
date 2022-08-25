@@ -4,6 +4,7 @@ import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
+import Router from 'next/router';
 
 import { Container, Row, Col } from 'react-bootstrap';
 
@@ -132,6 +133,23 @@ const Carro: React.FC<ServerProps> = ({ data, recommended }) => {
     setHeightFix(size.width > 992 ? true : false);
   }, [size]);
 
+  const handleKey = event => {
+    if (event.key == 'Enter') {
+      let { value } = event.target;
+
+      Router.push(
+        {
+          pathname: '/carros',
+          query: {
+            searchParams: value
+          }
+        },
+        '/carros',
+        { shallow: true }
+      );
+    }
+  };
+
   return (
     <>
       <Head>
@@ -202,7 +220,7 @@ const Carro: React.FC<ServerProps> = ({ data, recommended }) => {
         <meta name="twitter:creator" content="@krugerrgabriel" />
       </Head>
 
-      <Navbar />
+      <Navbar handleKey={handleKey} />
 
       {/* Banners */}
       <BannerWrapper onMouseLeave={dragStop}>

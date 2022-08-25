@@ -1,8 +1,24 @@
-import React from 'react';
+import React, { useEffect, useState, useRef } from 'react';
+
+import { useRouter } from 'next/router';
 
 import { Body } from './styles';
 
-const SearchField: React.FC = () => {
+const SearchField: React.FC<{ handleKey: Function }> = ({ handleKey }) => {
+  const inputRef = useRef(null);
+
+  const router = useRouter();
+
+  useEffect(() => {
+    if (router.query.searchParams) {
+      // @ts-ignore
+      inputRef.current.value = router.query.searchParams;
+    }
+  }, []);
+
+  const onKeyUp = event => {
+    handleKey(event);
+  };
   return (
     <Body>
       <svg
@@ -22,7 +38,9 @@ const SearchField: React.FC = () => {
 
       <input
         type="text"
-        placeholder="Digite o modelo, marca, ano, ficha técnica..."
+        ref={inputRef}
+        placeholder="Digite o modelo, marca, ano, ficha técnica..." // @ts-ignore
+        onKeyUp={onKeyUp}
       />
     </Body>
   );

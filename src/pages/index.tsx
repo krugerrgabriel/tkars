@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import Head from 'next/head';
 import Link from 'next/link';
+import Router from 'next/router';
 
 import { Container, Row, Col } from 'react-bootstrap';
 
@@ -26,38 +27,36 @@ import { Title, Subtitle, Divider, Button, Box } from '../styles/global';
 
 import { ServerProps } from '../interfaces/';
 
-const Home: React.FC<ServerProps> = ({ lessPrice, moreViewed, carsNumber }) => {
-  const [lessPriceArray, setLessPriceArray] = useState({});
-  const [moreViewedArray, setMoreViewedArray] = useState({});
-
+const Home: React.FC<ServerProps> = ({
+  data,
+  lessPrice,
+  moreViewed,
+  carsNumber
+}) => {
   const [filterOpen, setFilterOpen] = useState(false);
 
-  let banners = [
-    {
-      id: 1,
-      nome: 'HYUNDAI HB20',
-      description:
-        'Para a calda do seu pudim de leite condensado dar certo, fique sempre com a proporção de meia medida de água para uma medida de açúcar.'
-    },
-    {
-      id: 2,
-      nome: 'CHEVROLET ONIX',
-      description:
-        'Para a calda do seu pudim de leite condensado dar certo, fique sempre com a proporção de meia medida de água para uma medida de açúcar.'
-    },
-    {
-      id: 3,
-      nome: 'CHEVROLET CRUZE',
-      description:
-        'Para a calda do seu pudim de leite condensado dar certo, fique sempre com a proporção de meia medida de água para uma medida de açúcar.'
-    },
-    {
-      id: 4,
-      nome: 'TOYOTA COROLLA',
-      description:
-        'Para a calda do seu pudim de leite condensado dar certo, fique sempre com a proporção de meia medida de água para uma medida de açúcar.'
+  const handleFilter = event => {
+    Router.push({
+      pathname: '/carros'
+    });
+  };
+
+  const handleKey = event => {
+    if (event.key == 'Enter') {
+      let { value } = event.target;
+
+      Router.push(
+        {
+          pathname: '/carros',
+          query: {
+            searchParams: value
+          }
+        },
+        '/carros',
+        { shallow: true }
+      );
     }
-  ];
+  };
 
   const { dragStart, dragStop, dragMove, dragging } = useDrag();
   const handleDrag = //@ts-ignore
@@ -125,7 +124,7 @@ const Home: React.FC<ServerProps> = ({ lessPrice, moreViewed, carsNumber }) => {
       </Head>
 
       {/* Navbar */}
-      <Navbar />
+      <Navbar handleKey={handleKey} />
 
       {/* Banners */}
       <BannerWrapper onMouseLeave={dragStop}>
@@ -134,7 +133,8 @@ const Home: React.FC<ServerProps> = ({ lessPrice, moreViewed, carsNumber }) => {
           onMouseUp={() => dragStop}
           onMouseMove={handleDrag}
         >
-          {banners.map((item, index) => (
+          {/* @ts-ignore */}
+          {data.slice(0, 5).map((item, index) => (
             <div
               className={`margin-banner-${index}`}
               key={index}
@@ -150,10 +150,7 @@ const Home: React.FC<ServerProps> = ({ lessPrice, moreViewed, carsNumber }) => {
       <Container>
         <Row className="justify-content-center margin-64px ">
           <Col lg={10} md={12} sm={12} xs={12} className="padding-0">
-            <SearchBox
-              carsNumber={carsNumber}
-              filterClick={() => setFilterOpen(!filterOpen)}
-            />
+            <SearchBox carsNumber={carsNumber} filterClick={handleFilter} />
           </Col>
         </Row>
       </Container>
@@ -338,6 +335,7 @@ export const getStaticProps = async () => {
 
   return {
     props: {
+      data,
       lessPrice,
       moreViewed,
       carsNumber: data.length
