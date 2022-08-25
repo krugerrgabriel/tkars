@@ -190,6 +190,8 @@ const List: React.FC<ServerProps> = () => {
 
       setTimeout(() => {
         setFilters(event);
+
+        setFilterOpen(size.width < 1400 ? false : true);
       }, 250);
     }
   };
