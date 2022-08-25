@@ -25,7 +25,7 @@ import { ServerProps } from '../interfaces';
 
 const getData = async (params = '', searchParams = '') => {
   const response = await fetch(
-    `http://localhost/souunus/backend/admin/tkars/site/get.php`,
+    `https://transdesk.com.br/souunus/backend/admin/tkars/site/get.php`,
     {
       method: 'POST',
       body:
