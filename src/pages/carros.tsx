@@ -23,36 +23,38 @@ import { ServerProps } from '../interfaces';
 
 // import { Container } from './styles';
 
-const getData = async (params = '', searchParams = '') => {
-  const response = await fetch(
-    `https://transdesk.com.br/souunus/backend/admin/tkars/site/get.php`,
-    {
-      method: 'POST',
-      body:
-        params.length > 0 || searchParams.length > 0
-          ? JSON.stringify({ params, searchParams })
-          : ''
-    }
-  );
-
-  const { data } = await response.json();
-  return data;
-};
-
 const List: React.FC<ServerProps> = () => {
-  const [showCars, setShowCars] = useState([]);
+  const router = useRouter();
+  const [searchParams, setSearchParams] = useState('');
 
   const [filters, setFilters] = useState([]);
 
+  const getData = async () => {
+    console.log(filters);
+
+    const response = await fetch(
+      `https://transdesk.com.br/souunus/backend/admin/tkars/site/get.php`,
+      {
+        method: 'POST',
+        body:
+          filters.length > 0 || searchParams.length > 0
+            ? JSON.stringify({ params: filters, searchParams })
+            : ''
+      }
+    );
+
+    const { data } = await response.json();
+    return data;
+  };
+
+  const [showCars, setShowCars] = useState([]);
+
   useEffect(() => {
     // @ts-ignore
-    getData(filters, searchParams).then(data => {
+    getData().then(data => {
       setShowCars(data);
     });
-  }, [filters]);
-
-  const router = useRouter();
-  const [searchParams, setSearchParams] = useState('');
+  }, [filters, searchParams]);
 
   const handleKey = event => {
     if (event.key == 'Enter') {
@@ -62,22 +64,9 @@ const List: React.FC<ServerProps> = () => {
   };
 
   useEffect(() => {
-    getData('', searchParams).then(data => {
-      setShowCars(data);
-    });
-  }, [searchParams]);
-  useEffect(() => {
     if (router.query.searchParams) {
       // @ts-ignore
       setSearchParams(router.query.searchParams);
-      // @ts-ignore
-      getData('', router.query.searchParams).then(data => {
-        setShowCars(data);
-      });
-    } else {
-      getData('', '').then(data => {
-        setShowCars(data);
-      });
     }
   }, []);
 

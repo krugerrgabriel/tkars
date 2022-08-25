@@ -152,7 +152,7 @@ const Filters: React.FC<FiltersProps> = ({
   };
 
   const handleCancel = () => {
-    filterChange();
+    filterChange([]);
 
     setMarcas([]);
     setCores([]);
