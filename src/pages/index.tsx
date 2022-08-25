@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 import Head from 'next/head';
 import Link from 'next/link';
@@ -23,7 +23,14 @@ import useDrag from '../functions/useDrag';
 import { MarcasArray } from '../functions/list';
 
 import { BannerWrapper } from '../styles/';
-import { Title, Subtitle, Divider, Button, Box } from '../styles/global';
+import {
+  Title,
+  Subtitle,
+  Divider,
+  Button,
+  Box,
+  AllWrapper
+} from '../styles/global';
 
 import { ServerProps } from '../interfaces/';
 
@@ -73,7 +80,7 @@ const Home: React.FC<ServerProps> = ({
     location.href = '#!';
   };
   return (
-    <>
+    <AllWrapper>
       <Head>
         <title>Os melhores carros para você | TKars</title>
 
@@ -321,7 +328,7 @@ const Home: React.FC<ServerProps> = ({
 
       {/* Rodapé */}
       <Footer />
-    </>
+    </AllWrapper>
   );
 };
 

@@ -1,9 +1,11 @@
 import styled from "styled-components";
 
 export const Body = styled.div`
-    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
 
-    margin: 64px 0 0 0;
+    width: 100%;
 
     z-index: 200;
 

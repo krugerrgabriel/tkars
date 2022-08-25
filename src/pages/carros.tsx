@@ -16,7 +16,7 @@ import Product from '../components/Product';
 
 import { useWindowSize } from '../functions';
 
-import { Button, Title, FilterToggle } from '../styles/global';
+import { Button, Title, FilterToggle, AllWrapper } from '../styles/global';
 import { ProductWrapper, StyledContainer, BoxAppear } from '../styles/carros';
 
 import { ServerProps } from '../interfaces';
@@ -30,8 +30,6 @@ const List: React.FC<ServerProps> = () => {
   const [filters, setFilters] = useState([]);
 
   const getData = async () => {
-    console.log(filters);
-
     const response = await fetch(
       `https://transdesk.com.br/souunus/backend/admin/tkars/site/get.php`,
       {
@@ -50,10 +48,11 @@ const List: React.FC<ServerProps> = () => {
   const [showCars, setShowCars] = useState([]);
 
   useEffect(() => {
-    // @ts-ignore
-    getData().then(data => {
-      setShowCars(data);
-    });
+    setTimeout(() => {
+      getData().then(data => {
+        setShowCars(data);
+      });
+    }, 500);
   }, [filters, searchParams]);
 
   const handleKey = event => {
@@ -195,7 +194,7 @@ const List: React.FC<ServerProps> = () => {
   };
 
   return (
-    <>
+    <AllWrapper>
       <Head>
         <title>As melhores ofertas de carros | TKars</title>
 
@@ -392,7 +391,7 @@ const List: React.FC<ServerProps> = () => {
 
       {/* Footer */}
       <Footer />
-    </>
+    </AllWrapper>
   );
 };
 

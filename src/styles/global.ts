@@ -378,3 +378,11 @@ export const Box = styled.div`
         }
     }
 `;
+
+export const AllWrapper = styled.div`
+    position: relative;
+
+    min-height: 100vh;
+
+    padding: 0 0 148px 0;
+`;

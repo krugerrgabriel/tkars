@@ -27,7 +27,13 @@ import {
 import useDrag from '../../../functions/useDrag';
 
 import { Wrapper, InfoBox, FloatingBox } from '../../../styles/carro';
-import { Divider, Title, Button, Loader } from '../../../styles/global';
+import {
+  Divider,
+  Title,
+  Button,
+  Loader,
+  AllWrapper
+} from '../../../styles/global';
 import { BannerWrapper } from '../../../styles/';
 
 import 'froala-editor/css/froala_style.min.css';
@@ -151,7 +157,7 @@ const Carro: React.FC<ServerProps> = ({ data, recommended }) => {
   };
 
   return (
-    <>
+    <AllWrapper>
       <Head>
         <title>{data.nome} | TKars</title>
 
@@ -717,7 +723,7 @@ const Carro: React.FC<ServerProps> = ({ data, recommended }) => {
       <Fab />
 
       <Footer />
-    </>
+    </AllWrapper>
   );
 };
 
