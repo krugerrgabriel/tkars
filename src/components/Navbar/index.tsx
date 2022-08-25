@@ -13,18 +13,50 @@ import {
   SidenavWrapper,
   NavbarMargin,
   SearchWrapper,
-  Sidenav
+  Sidenav,
+  SearchReveal,
+  SearchOverlay
 } from './styles';
+import { Button } from '../../styles/global';
 
 const Navbar: React.FC<{ handleKey: Function }> = ({ handleKey }) => {
   const [sidenavActive, setSidenavActive] = useState(false);
+  const [searchActive, setSearchActive] = useState(false);
 
   return (
     <>
       <NavbarMargin />
       <Body>
+        <SearchReveal active={searchActive}>
+          <Container className="d-flex">
+            <SearchField handleKey={handleKey} />
+            <Button
+              className="button-style"
+              onClick={() => setSearchActive(false)}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="18"
+                height="18"
+                viewBox="0 0 18 18"
+              >
+                <path
+                  id="Close_Icon"
+                  data-name="Close Icon"
+                  d="M10.758,25.758l6-6,6,6,3-3-6-6,6-6-3-3-6,6-6-6-3,3,6,6-6,6Z"
+                  transform="translate(-7.758 -7.758)"
+                  fill="#fff"
+                />
+              </svg>
+            </Button>
+          </Container>
+        </SearchReveal>
+        <SearchOverlay active={searchActive} />
         <Container className="h-100 container-wrapper">
-          <SearchWrapper className="show-768px">
+          <SearchWrapper
+            className="show-768px"
+            onClick={() => setSearchActive(true)}
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"

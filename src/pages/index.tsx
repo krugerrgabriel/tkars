@@ -160,7 +160,7 @@ const Home: React.FC<ServerProps> = ({
         </Row>
       </Container>
 
-      {/* Filtrors */}
+      {/* Filtros */}
       <Filters
         active={filterOpen}
         filterChange={() => setFilterOpen(!filterOpen)}

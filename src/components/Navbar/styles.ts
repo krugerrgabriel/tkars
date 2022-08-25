@@ -69,9 +69,70 @@ export const NavbarMargin = styled.div`
 `;
 
 export const SearchWrapper = styled.div`
+    cursor: pointer;
+    
     @media(max-width: 480px){
         height: 18px;
     }
 `;
 
 export const Sidenav = styled.div<{ active: boolean; }>``;
+
+export const SearchReveal = styled.div<{ active: boolean; }>`
+    background-color: ${({ theme }) => theme.colors.gray};
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    position: fixed;
+    left: 0;
+    top: ${({ active }) => active ? '0' : '-200%'};
+
+    height: 96px;
+    width: 100%;
+
+    transition: 0.2s;
+
+    z-index: 502;
+
+    div.button-style{
+        background-color: ${({ theme }) => theme.colors.secondary};
+
+        min-width: 44px;
+        width: 44px;
+        height: 44px;
+
+        margin: 0 0 0 32px;
+
+        svg{
+            margin: 0;
+        }
+
+        @media(max-width: 496px){
+            margin: 0 0 0 14px;
+        }
+    }
+
+    @media(max-width: 480px){
+        height: 86px;
+    }
+`;
+
+export const SearchOverlay = styled.div<{ active: boolean }>`
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+
+    position: fixed;
+    left: 0;
+    top: ${({ active }) => active ? '0' : '-200%'};
+
+    width: 100vw;
+    height: 100vh;
+
+    transition: 0.2s;
+
+    z-index: 501;
+`;

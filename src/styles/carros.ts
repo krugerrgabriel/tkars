@@ -20,6 +20,16 @@ export const StyledContainer = styled(Container)`
     @media (min-width: 1400px){
         max-width: unset;
     }
+    @media(max-width: 768px){
+        padding-left: 0;
+        padding-right: 0;
+    }
+    @media(max-width: 576px){
+        div.col-sm-12{
+            padding-left: 0;
+            padding-right: 0;
+        }
+    }
 `;
 
 export const BoxAppear = styled.div`
