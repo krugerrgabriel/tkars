@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Link from 'next/link';
+import Router from 'next/router';
 
 import { Row, Col } from 'react-bootstrap';
 
@@ -13,6 +14,23 @@ const SearchBox: React.FC<{ filterClick: Function; carsNumber: number }> = ({
   filterClick,
   carsNumber
 }) => {
+  const handleKey = event => {
+    if (event.key == 'Enter') {
+      let { value } = event.target;
+
+      Router.push(
+        {
+          pathname: '/carros',
+          query: {
+            searchParams: value
+          }
+        },
+        '/carros',
+        { shallow: true }
+      );
+    }
+  };
+
   return (
     <Body>
       <h1> Seu novo carro está aqui! 🤩 </h1>
@@ -23,7 +41,7 @@ const SearchBox: React.FC<{ filterClick: Function; carsNumber: number }> = ({
 
       <Row>
         <Col lg={8} md={8} sm={12}>
-          <SearchField />
+          <SearchField handleKey={handleKey} />
         </Col>
         <Col lg={4} md={4} sm={12} className="margin-top-12px-768px">
           <Link href="/carros">
