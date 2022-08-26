@@ -61,6 +61,19 @@ const Home: React.FC<ServerProps> = ({
     );
   };
 
+  const handleLink = value => {
+    Router.push(
+      {
+        pathname: '/carros',
+        query: {
+          orderBy: value
+        }
+      },
+      '/carros',
+      { shallow: true }
+    );
+  };
+
   const handleRedirect = itemId => {
     location.href = '#!';
   };
@@ -116,7 +129,7 @@ const Home: React.FC<ServerProps> = ({
       </Head>
 
       {/* Navbar */}
-      <Navbar handleKey={handleKey} />
+      <Navbar handleKey={handleKey} handleLink={handleLink} />
 
       {/* Banners */}
       <BannerWrapper>
@@ -169,11 +182,11 @@ const Home: React.FC<ServerProps> = ({
         <Divider />
       </Container>
 
-      {/* Produtos mais vistos */}
+      {/* Produtos mais novos */}
       <Container>
         <Row>
           <Col lg={12}>
-            <Title> Mais vistos </Title>
+            <Title> Novidade </Title>
           </Col>
         </Row>
 

@@ -76,8 +76,6 @@ export const SearchWrapper = styled.div`
     }
 `;
 
-export const Sidenav = styled.div<{ active: boolean; }>``;
-
 export const SearchReveal = styled.div<{ active: boolean; }>`
     background-color: ${({ theme }) => theme.colors.gray};
 
@@ -135,4 +133,104 @@ export const SearchOverlay = styled.div<{ active: boolean }>`
     transition: 0.2s;
 
     z-index: 501;
+`;
+
+export const Sidenav = styled.div<{ active: boolean; }>`
+    background-color: ${({ theme }) => theme.colors.gray};
+
+    width: 325px;
+    height: 100%;
+
+    position: fixed;
+    top: 0;
+    right: ${({ active }) => active ? '0' : '-200%'};
+
+    padding: 64px 42px;
+
+    box-shadow: -2px 0 6px rgba(0, 0, 0, 0.08);
+
+    transition: 0.2s;
+
+    z-index: 600;
+
+    div.logo-wrapper{
+        position: relative;
+
+        aspect-ratio: 1.6845238095238095238095238095238;
+        width: 100px;
+        height: auto;
+    }
+
+    div.links{
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+
+        height: 100%;
+
+        padding: 42px 0 0 0;
+
+        p{
+            color: ${({ theme }) => theme.colors.text};
+
+            font-size: 18px;
+            font-weight: 500;
+
+            margin: 0 0 24px 0;
+
+            cursor: pointer;
+
+            i{
+                font-style: unset;
+                font-size: 14px;
+                font-weight: 400;
+            }
+
+            svg{
+                width: 18px;
+                height: auto;
+
+                margin: 0 12px 5px 0;
+            }
+
+            @media (max-width: 576px) {
+                font-size: 16px;
+            }
+        }
+    }
+
+    @media(max-width: 325px){
+        width: 100%;
+    }
+`;
+
+export const CloseWrapper = styled.div<{ active: boolean; }>`
+    position: fixed;
+    top: 24px;
+    right: ${({ active }) => active ? '24px' : '-200%'};
+
+    cursor: pointer;
+
+    transition: 0.2s;
+
+    z-index: 601;
+`;
+
+export const OverlaySidenav = styled.div<{ active: boolean }>`
+    @media(max-width: 768px){
+        background-color: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(2px);
+        -webkit-backdrop-filter: blur(2px);
+    
+        position: fixed;
+        top: 0;
+        right: ${({ active }) => active ? '0' : '-200%'};
+        
+        width: 100%;
+        height: 100%;
+    
+        transition: 0.2s;
+    
+        z-index: 501;
+    }
 `;

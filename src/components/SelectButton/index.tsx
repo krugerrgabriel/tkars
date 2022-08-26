@@ -20,6 +20,10 @@ const SelectButton: React.FC<SelectButtonProps> = ({
       value: 'mais-caros'
     },
     {
+      name: 'NOVIDADE',
+      value: 'novidade'
+    },
+    {
       name: 'MENOS RODADOS (km)',
       value: 'menos-rodados'
     },

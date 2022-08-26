@@ -457,3 +457,72 @@ export const Wrapper = styled.div`
         width: 300px;
     }
 `;
+
+export const FullImage = styled.div<{ active: boolean }>`
+    position: fixed;
+    top: ${({ active }) => active ? '0' : '-200%'};
+    bottom: ${({ active }) => active ? '0' : '200%'};
+    right: 0;
+    left: 0;
+    margin: auto;
+
+    aspect-ratio: 1.7706666666666666666666666666667;
+    max-width: 75%;
+    width: 100%;
+    height: auto;
+
+    transition: 0.2s;
+
+    z-index: 502;
+
+    div.wrapper{
+        position: relative;
+
+        aspect-ratio: 1.7706666666666666666666666666667;
+        width: 100%;
+        height: auto;
+    }
+
+    @media(max-width: 1200px){
+        max-width: 90%;
+    }
+    @media(max-width: 992px){
+        max-width: 95%;
+    }
+    @media(max-width: 768px){
+        max-width: 99%;
+    }
+    @media(max-width: 576px){
+        max-width: 100%;
+    }
+`;
+
+export const ImageOverlay = styled.div<{ active: boolean }>`
+    background-color: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+
+    position: fixed;
+    top: ${({ active }) => active ? '0' : '-200%'};
+    right: 0;
+    
+    width: 100%;
+    height: 100%;
+
+    transition: 0.2s;
+
+    z-index: 501;
+
+    svg{
+        width: 24px;
+        height: 24px;
+
+        position: fixed;
+        right: 24px;
+        top: 24px;
+
+        cursor: pointer;
+
+        z-index: 503;
+    }
+`;

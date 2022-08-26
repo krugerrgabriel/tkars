@@ -51,12 +51,23 @@ const List: React.FC<ServerProps> = () => {
     setTimeout(() => {
       getData().then(data => {
         setShowCars(data);
+
+        if (router.query.orderBy) {
+          setTimeout(() => {
+            // @ts-ignore
+            setSelectValue(router.query.orderBy);
+          }, 250);
+        }
       });
     }, 100);
   }, [filters, searchParams]);
 
   const handleKey = value => {
     setSearchParams(value);
+  };
+
+  const handleLink = value => {
+    setSelectValue(value);
   };
 
   useEffect(() => {
@@ -160,6 +171,17 @@ const List: React.FC<ServerProps> = () => {
           return 0;
         });
         break;
+      case 'novidade':
+        newArray = showCars.sort((a, b) => {
+          if (a.id > b.id) {
+            return -1;
+          }
+          if (a.id < b.id) {
+            return 1;
+          }
+          return 0;
+        });
+        break;
       default:
         newArray = showCars.sort((a, b) => {
           if (a.id > b.id) {
@@ -248,7 +270,7 @@ const List: React.FC<ServerProps> = () => {
       </Head>
 
       {/* Navbar */}
-      <Navbar handleKey={handleKey} />
+      <Navbar handleKey={handleKey} handleLink={handleLink} />
 
       <Row>
         {/* Filters */}

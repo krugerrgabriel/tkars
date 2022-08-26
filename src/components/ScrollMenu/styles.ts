@@ -8,7 +8,7 @@ export const Body = styled.div`
     width: 100%;
 
     &::-webkit-scrollbar {
-        height: 4px;
+        height: 0px;
     }
 
     & > *{

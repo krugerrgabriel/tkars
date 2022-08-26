@@ -23,9 +23,14 @@ import {
   formatBRL,
   useWindowSize
 } from '../../../functions/';
-import useDrag from '../../../functions/useDrag';
 
-import { Wrapper, InfoBox, FloatingBox } from '../../../styles/carro';
+import {
+  Wrapper,
+  InfoBox,
+  FloatingBox,
+  FullImage,
+  ImageOverlay
+} from '../../../styles/carro';
 import {
   Divider,
   Title,
@@ -46,18 +51,54 @@ const Carro: React.FC<ServerProps> = ({ data, recommended }) => {
     index
   }) => {
     const [isLoaded, setIsLoaded] = useState(false);
+    const [isActive, setIsActive] = useState(false);
+
+    const imageSrc = `https://transdesk.com.br/souunus/assets/img/veiculos/${data.id}_${item}`;
+
     return (
-      <Wrapper onDragStart={preventDragHandler}>
-        {!isLoaded && <Loader />}
-        <Image
-          src={`https://transdesk.com.br/souunus/assets/img/veiculos/${data.id}_${item}`}
-          alt="Logo da TKARS"
-          layout="fill"
-          objectFit="cover"
-          onLoad={() => setIsLoaded(true)}
-          priority={index == 0 ? true : false}
-        />
-      </Wrapper>
+      <>
+        <Wrapper onDragStart={preventDragHandler}>
+          {!isLoaded && <Loader />}
+          <Image
+            src={imageSrc}
+            alt="Logo da TKARS"
+            layout="fill"
+            objectFit="cover"
+            onLoad={() => setIsLoaded(true)}
+            priority={index == 0 ? true : false}
+            onClick={() => setIsActive(true)}
+          />
+        </Wrapper>
+        <FullImage active={isActive}>
+          <div className="wrapper">
+            <Image
+              src={imageSrc}
+              alt="Logo da TKARS"
+              layout="fill"
+              objectFit="cover"
+              onLoad={() => setIsLoaded(true)}
+              priority={index == 0 ? true : false}
+            />
+          </div>
+        </FullImage>
+        <ImageOverlay active={isActive} onClick={() => setIsActive(false)}>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="18"
+            height="18"
+            viewBox="0 0 18 18"
+            onClick={() => setIsActive(false)}
+          >
+            <path
+              id="Close_Icon"
+              data-name="Close Icon"
+              d="M10.758,25.758l6-6,6,6,3-3-6-6,6-6-3-3-6,6-6-6-3,3,6,6-6,6Z"
+              transform="translate(-7.758 -7.758)"
+              fill="#fff"
+            />
+          </svg>
+        </ImageOverlay>
+      </>
     );
   };
   let items = [
@@ -125,6 +166,19 @@ const Carro: React.FC<ServerProps> = ({ data, recommended }) => {
     );
   };
 
+  const handleLink = value => {
+    Router.push(
+      {
+        pathname: '/carros',
+        query: {
+          orderBy: value
+        }
+      },
+      '/carros',
+      { shallow: true }
+    );
+  };
+
   return (
     <AllWrapper>
       <Head>
@@ -132,7 +186,7 @@ const Carro: React.FC<ServerProps> = ({ data, recommended }) => {
 
         <meta name="og:site_name" content="TKars" />
         <meta name="author" content="Gabriel Sabara Krüger" />
-        <link rel="canonical" href="https://diretodotrecho.com.br/" />
+        <link rel="canonical" href="https://tkars.vercel.app/" />
         <meta property="og:locale" content="pt_BR" />
         <meta property="locale" content="pt_BR" />
         <meta name="robots" content="index, follow" />
@@ -195,7 +249,7 @@ const Carro: React.FC<ServerProps> = ({ data, recommended }) => {
         <meta name="twitter:creator" content="@krugerrgabriel" />
       </Head>
 
-      <Navbar handleKey={handleKey} />
+      <Navbar handleKey={handleKey} handleLink={handleLink} />
 
       {/* Banners */}
       <BannerWrapper>
