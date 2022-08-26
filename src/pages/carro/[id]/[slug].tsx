@@ -148,10 +148,11 @@ const Carro: React.FC<ServerProps> = ({ data, recommended }) => {
         data.nome +
         ' ' +
         data.modelo +
-        ' com apenas ' +
+        ' com ' +
         data.quilometragem +
-        'km rodados' +
-        '\n',
+        'km rodados, por apenas *' +
+        formatBRL(data.preco) +
+        '*\n',
       url: `https://tkars.vercel.app/carro/${data.id}/${data.slug}`
     });
   };
