@@ -21,7 +21,8 @@ import {
   numberWithCommas,
   returnFormattedDate,
   formatBRL,
-  useWindowSize
+  useWindowSize,
+  capitalizeFirstLetter
 } from '../../../functions/';
 
 import {
@@ -140,8 +141,10 @@ const Carro: React.FC<ServerProps> = ({ data, recommended }) => {
 
   const handleShare = () => {
     navigator.share({
-      title: '[TKARS] ' + data.nome,
+      title: data.nome,
       text:
+        capitalizeFirstLetter(data.marca) +
+        ' ' +
         data.nome +
         ' ' +
         data.modelo +
@@ -201,6 +204,8 @@ const Carro: React.FC<ServerProps> = ({ data, recommended }) => {
         <meta
           name="description"
           content={
+            capitalizeFirstLetter(data.marca) +
+            ' ' +
             data.nome +
             ' ' +
             data.modelo +
@@ -212,7 +217,7 @@ const Carro: React.FC<ServerProps> = ({ data, recommended }) => {
         <meta
           property="og:title"
           content={
-            data.marca +
+            capitalizeFirstLetter(data.marca) +
             ' ' +
             data.nome +
             ' ' +
@@ -230,7 +235,7 @@ const Carro: React.FC<ServerProps> = ({ data, recommended }) => {
         <meta
           property="og:description"
           content={
-            data.marca +
+            capitalizeFirstLetter(data.marca) +
             ' ' +
             data.nome +
             ' ' +
@@ -287,7 +292,8 @@ const Carro: React.FC<ServerProps> = ({ data, recommended }) => {
         <meta
           name="twitter:title"
           content={
-            '[TKARS] ' +
+            capitalizeFirstLetter(data.marca) +
+            ' ' +
             data.nome +
             ' ' +
             data.motorizacao +

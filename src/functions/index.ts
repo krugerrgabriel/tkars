@@ -58,3 +58,7 @@ export const useWindowSize = () => {
     }, []); // Empty array ensures that effect is only run on mount
     return windowSize;
   }
+
+export const capitalizeFirstLetter = (string) => {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
