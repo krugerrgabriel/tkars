@@ -142,12 +142,12 @@ const Carro: React.FC<ServerProps> = ({ data, recommended }) => {
     navigator.share({
       title: '[TKARS] ' + data.nome,
       text:
-        '[TKARS] ' +
         data.nome +
         ' ' +
         data.modelo +
-        ' por apenas ' +
-        formatBRL(data.preco) +
+        ' com apenas ' +
+        data.quilometragem +
+        'km rodados' +
         '\n',
       url: `https://tkars.vercel.app/carro/${data.id}/${data.slug}`
     });
@@ -201,16 +201,24 @@ const Carro: React.FC<ServerProps> = ({ data, recommended }) => {
         <meta
           name="description"
           content={
-            data.modelo + ' com apenas ' + data.quilometragem + 'km rodados'
+            data.nome +
+            ' ' +
+            data.modelo +
+            ' com apenas ' +
+            data.quilometragem +
+            'km rodados'
           }
         />
         <meta
           property="og:title"
           content={
-            '[TKARS] ' +
+            data.marca +
+            ' ' +
             data.nome +
             ' ' +
             data.motorizacao +
+            ' ' +
+            data.cambio.toUpperCase() +
             ' por apenas ' +
             formatBRL(data.preco)
           }
@@ -221,19 +229,29 @@ const Carro: React.FC<ServerProps> = ({ data, recommended }) => {
         />
         <meta
           property="og:description"
-          content={data.nome + ' ' + data.modelo}
+          content={
+            data.marca +
+            ' ' +
+            data.nome +
+            ' ' +
+            data.modelo +
+            ' com apenas ' +
+            data.quilometragem +
+            'km rodados'
+          }
         />
         <meta
           property="og:image"
           content={`https://transdesk.com.br/souunus/assets/img/veiculos/${data.id}_og.jpg`}
         />
+        <meta property="og:image:type" content="image/jpeg" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta
           property="og:image:alt"
           content={data.nome + ' ' + data.modelo + ' | TKars'}
         />
-        <meta property="og:type" content="article" />
+        <meta property="og:type" content="website" />
         <meta
           name="keywords"
           content={
@@ -242,6 +260,8 @@ const Carro: React.FC<ServerProps> = ({ data, recommended }) => {
             data.marca +
             ', ' +
             data.modelo +
+            ', ' +
+            data.cambio +
             ', ' +
             data.motorizacao
           }
@@ -253,6 +273,8 @@ const Carro: React.FC<ServerProps> = ({ data, recommended }) => {
             data.nome +
             ', ' +
             data.marca +
+            ', ' +
+            data.cambio +
             ', ' +
             data.modelo +
             ', ' +
@@ -278,6 +300,7 @@ const Carro: React.FC<ServerProps> = ({ data, recommended }) => {
           content={data.nome + ' ' + data.modelo}
         />
         <meta name="twitter:creator" content="@krugerrgabriel" />
+        <meta property="og:updated_time" content={data.createdAt} />
       </Head>
 
       <Navbar handleKey={handleKey} handleLink={handleLink} />
