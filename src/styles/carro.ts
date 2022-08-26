@@ -261,38 +261,46 @@ export const InfoBox = styled.div`
         }
 
         div.reveal{
-            font-size: 0;
+            font-size: 0px;
 
             transition: 0.2s;
 
             p{
+                font-size: 0px;
+
                 margin: 0;
 
                 transition: 0.1s;
             }
 
+            .fr-view{
+                margin: 0;
+            }
+
             &.show{
                 font-size: unset;
-
+                
                 p{
+                    font-size: unset;
+
                     margin-bottom: 1rem;
                 }
-            }
-        }
 
-        .fr-view{
-            color: ${({ theme }) => theme.colors.text};
+                .fr-view{
+                    color: ${({ theme }) => theme.colors.text};
 
-            word-wrap: break-word;
+                    word-wrap: break-word;
 
-            @media (max-width: 592px){
-                font-size: 14px;
-                
-                margin: 24px 0 0 0;
-            }
-            @media (max-width: 360px){
-                font-size: 12px;
-            }
+                    @media (max-width: 592px){
+                        font-size: 14px;
+                        
+                        margin: 24px 0 0 0;
+                    }
+                    @media (max-width: 360px){
+                        font-size: 12px;
+                    }
+                }
+            }   
         }
     }
 

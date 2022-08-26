@@ -142,7 +142,13 @@ const Carro: React.FC<ServerProps> = ({ data, recommended }) => {
     navigator.share({
       title: '[TKARS] ' + data.nome,
       text:
-        data.nome + ' ' + data.modelo + ' por apenas ' + formatBRL(data.preco),
+        '[TKARS] ' +
+        data.nome +
+        ' ' +
+        data.modelo +
+        ' por apenas ' +
+        formatBRL(data.preco) +
+        '\n',
       url: `https://tkars.vercel.app/carro/${data.id}/${data.slug}`
     });
   };
@@ -192,8 +198,23 @@ const Carro: React.FC<ServerProps> = ({ data, recommended }) => {
         <meta name="robots" content="index, follow" />
         <meta name="googlebot" content="index, follow" />
         <meta name="viewport" content="width=device-width" />
-        <meta name="description" content={data.nome + ' ' + data.modelo} />
-        <meta property="og:title" content={data.nome + ' ' + data.modelo} />
+        <meta
+          name="description"
+          content={
+            data.modelo + ' com apenas ' + data.quilometragem + 'km rodados'
+          }
+        />
+        <meta
+          property="og:title"
+          content={
+            '[TKARS] ' +
+            data.nome +
+            ' ' +
+            data.motorizacao +
+            ' por apenas ' +
+            formatBRL(data.preco)
+          }
+        />
         <meta
           property="og:url"
           content={`https://tkars.vercel.app/carro/${data.id}/${data.slug}`}
@@ -241,7 +262,17 @@ const Carro: React.FC<ServerProps> = ({ data, recommended }) => {
         {/* @ts-ignore */}
         <meta name="twitter:card" value="summary" />
         <meta name="twitter:site" content="@krugerrgabriel" />
-        <meta name="twitter:title" content={data.nome + ' ' + data.modelo} />
+        <meta
+          name="twitter:title"
+          content={
+            '[TKARS] ' +
+            data.nome +
+            ' ' +
+            data.motorizacao +
+            ' por apenas ' +
+            formatBRL(data.preco)
+          }
+        />
         <meta
           name="twitter:description"
           content={data.nome + ' ' + data.modelo}
