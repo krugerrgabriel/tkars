@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import Head from 'next/head';
-import Link from 'next/link';
 import Router from 'next/router';
 
 import { Container, Row, Col } from 'react-bootstrap';
@@ -30,8 +29,12 @@ const Home: React.FC<ServerProps> = ({
   data,
   lessPrice,
   moreViewed,
-  carsNumber
+  carsNumber,
+  images
 }) => {
+  useEffect(() => {
+    console.log(images);
+  }, []);
   const [filterOpen, setFilterOpen] = useState(false);
 
   const handleFilter = event => {

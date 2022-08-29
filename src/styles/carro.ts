@@ -450,19 +450,19 @@ export const Wrapper = styled.div`
     margin: 0 12px 0 0;
 
     @media(max-width: 1400px){
-        width: 600px;
+        height: 350px;
     }
     @media(max-width: 1200px){
-        width: 550px;
+        height: 325px;
     }
     @media(max-width: 992px){
-        width: 500px;
+        height: 285px;
     }
     @media(max-width: 768px){
-        width: 400px;
+        height: 225px;
     }
     @media(max-width: 480px){
-        width: 300px;
+        height: 175px;
     }
 `;
 
