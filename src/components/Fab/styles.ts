@@ -26,8 +26,8 @@ export const Body = styled.div`
         box-shadow: 0 0 12px rgba(37, 211, 102, 0.5);
     }
 
-    svg{
-        fill: ${({ theme }) => theme.colors.text};
+    div.wrapper{
+        position: relative;
 
         width: 18px;
         height: 18px;

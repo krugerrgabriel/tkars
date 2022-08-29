@@ -6,13 +6,13 @@ export const Body = styled.div`
 
     margin: 0 0 20px 0;
 
-    svg{
-        fill: ${({ theme }) => theme.colors.text};
+    div.wrapper{
+        position: relative;
 
         height: 11px;
-        width: auto;
+        width: 11px;
 
-        margin: 0 4px 6px 0;
+        margin: 0 4px 3px 0;
     }
 
     p{

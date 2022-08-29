@@ -66,9 +66,9 @@ export const Body = styled.div<{ type?: string; }>`
         width: ${({ type }) => type == 'whatsapp' ? '100%' : type == 'small' ? '40px' : '100%'};
         height: 40px;
 
-        svg{
+        div.wrapper{
             width: 14px;
-            height: auto;
+            height: 14px;
 
             ${({ type }) => type == 'small' ? '' : 'margin: 0 0 1px 0;'};
         }

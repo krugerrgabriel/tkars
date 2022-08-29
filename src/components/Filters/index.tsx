@@ -1,4 +1,6 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useState } from 'react';
+
+import Image from 'next/image';
 
 import { Row, Col } from 'react-bootstrap';
 
@@ -163,29 +165,12 @@ const Filters: React.FC<FiltersProps> = ({
       <Body className={className} type={type} active={active}>
         <BackWrapper active={active} onClick={() => filterChange('close')}>
           <div className="wrapper">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="26"
-              height="26"
-              viewBox="0 0 26 26"
-            >
-              <g id="bx-chevron-left-circle" transform="translate(-2 -2)">
-                <path
-                  id="Caminho_58"
-                  data-name="Caminho 58"
-                  d="M15,2A13,13,0,1,0,28,15,13.015,13.015,0,0,0,15,2Zm0,23.4A10.4,10.4,0,1,1,25.4,15,10.412,10.412,0,0,1,15,25.4Z"
-                  transform="translate(0 0)"
-                  fill="#fff"
-                />
-                <path
-                  id="Caminho_59"
-                  data-name="Caminho 59"
-                  d="M15,6.293,7.586,13.716,15,21.139,16.836,19.3,11.26,13.716l5.577-5.584Z"
-                  transform="translate(1.679 1.284)"
-                  fill="#fff"
-                />
-              </g>
-            </svg>
+            <Image
+              src="/bx-chevron-left-circle.svg"
+              alt="Ícone de voltar dos filtros | TKars"
+              layout="fill"
+              objectFit="contain"
+            />
           </div>
         </BackWrapper>
         <div className="section">
