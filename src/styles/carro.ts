@@ -444,8 +444,8 @@ export const Wrapper = styled.div`
     position: relative;
 
     aspect-ratio: 1.7706666666666666666666666666667;
-    width: 664px;
-    height: auto;
+    width: auto;
+    height: 375px;
 
     margin: 0 12px 0 0;
 

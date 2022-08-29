@@ -6,8 +6,9 @@ import Router from 'next/router';
 import { Row, Col } from 'react-bootstrap';
 
 import SearchField from '../SearchField';
+import Button from '../Button';
 
-import { Button, FilterToggle } from '../../styles/global';
+import { FilterToggle } from '../../styles/global';
 import { Body } from './styles';
 
 const SearchBox: React.FC<{ filterClick: Function; carsNumber: number }> = ({
@@ -41,25 +42,12 @@ const SearchBox: React.FC<{ filterClick: Function; carsNumber: number }> = ({
           <SearchField handleKey={handleKey} />
         </Col>
         <Col lg={4} md={4} sm={12} className="margin-top-12px-768px">
-          <Link href="/carros">
-            <a>
-              <Button>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="14.4"
-                  viewBox="0 0 16 14.4"
-                >
-                  <path
-                    id="bxs-car"
-                    d="M17.018,8.924,15.923,5.641A2.4,2.4,0,0,0,13.647,4H6.353A2.4,2.4,0,0,0,4.077,5.641L2.982,8.924A1.6,1.6,0,0,0,2,10.4v4a1.593,1.593,0,0,0,.8,1.378V17.6a.8.8,0,0,0,.8.8h.8a.8.8,0,0,0,.8-.8V16h9.6v1.6a.8.8,0,0,0,.8.8h.8a.8.8,0,0,0,.8-.8V15.778A1.592,1.592,0,0,0,18,14.4v-4A1.6,1.6,0,0,0,17.018,8.924ZM6.353,5.6h7.294a.8.8,0,0,1,.759.547L15.29,8.8H4.71l.884-2.653A.8.8,0,0,1,6.353,5.6ZM4.8,13.6A1.2,1.2,0,1,1,6,12.4,1.2,1.2,0,0,1,4.8,13.6Zm10.4,0a1.2,1.2,0,1,1,1.2-1.2A1.2,1.2,0,0,1,15.2,13.6Z"
-                    transform="translate(-2 -4)"
-                  />
-                </svg>
-                <p>VER TUDO</p>
-              </Button>
-            </a>
-          </Link>
+          <Button
+            icon="/bxs-car.svg"
+            iconAlt="Ícone de carro para ver todas as ofertas | TKars"
+            link="/carros"
+            label="VER TUDO"
+          />
         </Col>
       </Row>
 
