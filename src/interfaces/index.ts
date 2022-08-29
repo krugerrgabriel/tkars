@@ -87,5 +87,22 @@ export interface ServerProps{
         views: number,
         files: number[]
     },
-    placeholderArray: string[];
+    images?: {
+        src: string,
+        width: number,
+        height: number,
+        type: string,
+        base64: string
+    }[]
+}
+
+export interface CarImageProps{
+    item: {
+        src: string,
+        width: number,
+        height: number,
+        type: string,
+        base64: string,
+        index: number,
+    }
 }

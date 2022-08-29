@@ -1,6 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { GetStaticPaths, GetStaticProps } from 'next';
 
+import { getPlaiceholder } from 'plaiceholder';
+
 import Head from 'next/head';
 import Image from 'next/image';
 import Router from 'next/router';
@@ -38,48 +40,46 @@ import { BannerWrapper } from '../../../styles/';
 import 'froala-editor/css/froala_style.min.css';
 import 'font-awesome/css/font-awesome.css';
 
-import { ServerProps } from '../../../interfaces';
+import { ServerProps, CarImageProps } from '../../../interfaces';
 
-const Carro: React.FC<ServerProps> = ({
-  data,
-  recommended,
-  placeholderArray
-}) => {
+const Carro: React.FC<ServerProps> = ({ data, recommended, images }) => {
   useEffect(() => {
-    console.log(placeholderArray);
+    console.log(images);
   }, []);
-  const CarImage: React.FC<{ item: string; index?: number }> = ({
-    item,
-    index
-  }) => {
+  const CarImage: React.FC<CarImageProps> = (props, index) => {
+    let { item } = props;
+    let { src, base64 } = item;
+
     const [isLoaded, setIsLoaded] = useState(false);
     const [isActive, setIsActive] = useState(false);
-
-    const imageSrc = `https://transdesk.com.br/souunus/assets/img/veiculos/${data.id}_${item}`;
 
     return (
       <>
         <Wrapper onDragStart={preventDragHandler}>
           {!isLoaded && <Loader />}
           <Image
-            src={imageSrc}
+            src={src}
             alt="Logo da TKARS"
             layout="fill"
             objectFit="cover"
             onLoad={() => setIsLoaded(true)}
             priority={index == 0 ? true : false}
             onClick={() => setIsActive(true)}
+            placeholder="blur"
+            blurDataURL={base64}
           />
         </Wrapper>
         <FullImage active={isActive}>
           <div className="wrapper">
             <Image
-              src={imageSrc}
+              src={src}
               alt="Logo da TKARS"
               layout="fill"
               objectFit="cover"
               onLoad={() => setIsLoaded(true)}
               priority={index == 0 ? true : false}
+              placeholder="blur"
+              blurDataURL={base64}
             />
           </div>
         </FullImage>
@@ -316,8 +316,9 @@ const Carro: React.FC<ServerProps> = ({
       {/* Banners */}
       <BannerWrapper>
         <ScrollMenu>
-          {data.files.map((item, index) => (
-            <CarImage key={index} item={item + '.jpg'} index={index} />
+          {images.map((item, index) => (
+            // @ts-ignore
+            <CarImage key={index} item={item} index={index} />
           ))}
         </ScrollMenu>
       </BannerWrapper>
@@ -811,10 +812,23 @@ export const getStaticProps: GetStaticProps = async context => {
   );
   const { data, recommended } = await response.json();
 
+  const images = await Promise.all(
+    data.files.map(async item => {
+      const { base64, img } = await getPlaiceholder(
+        `https://transdesk.com.br/souunus/assets/img/veiculos/${data.id}_${item}.jpg`
+      );
+      return {
+        ...img,
+        base64
+      };
+    })
+  );
+
   return {
     props: {
       data,
-      recommended
+      recommended,
+      images
     }
   };
 };
