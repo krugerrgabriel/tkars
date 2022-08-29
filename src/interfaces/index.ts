@@ -87,4 +87,5 @@ export interface ServerProps{
         views: number,
         files: number[]
     },
+    placeholderArray: string[];
 }
