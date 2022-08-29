@@ -566,7 +566,7 @@ const Carro: React.FC<ServerProps> = ({ data, recommended, images }) => {
 
                       <p> CÂMBIO </p>
                     </div>
-                    <p> MANUAL </p>
+                    <p> {data.cambio.toUpperCase()} </p>
                   </div>
 
                   <div className="item">
