@@ -1,8 +1,10 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 
 import { Body } from './styles';
 
-const ScrollMenu: React.FC<{ children: JSX.Element[] }> = ({ children }) => {
+import { ScrollMenuProps } from './interfaces';
+
+const ScrollMenu: React.FC<ScrollMenuProps> = props => {
   const sliderRef = useRef(null);
   const [isDown, setIsDown] = useState(false);
   const [startX, setStartX] = useState(0);
@@ -17,11 +19,11 @@ const ScrollMenu: React.FC<{ children: JSX.Element[] }> = ({ children }) => {
     setScrollLeft(slider.scrollLeft);
   };
 
-  const onMouseLeave = event => {
+  const onMouseLeave = () => {
     setIsDown(false);
   };
 
-  const onMouseUp = event => {
+  const onMouseUp = () => {
     setIsDown(false);
   };
 
@@ -45,7 +47,7 @@ const ScrollMenu: React.FC<{ children: JSX.Element[] }> = ({ children }) => {
       onMouseUp={onMouseUp}
       onMouseMove={onMouseMove}
     >
-      {children}
+      {props.children}
     </Body>
   );
 };

@@ -23,6 +23,6 @@ export const Body = styled.div`
 
         text-transform: uppercase;
 
-        margin: 0;
+        margin: 0 0 0 4px;
     }
 `;

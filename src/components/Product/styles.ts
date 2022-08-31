@@ -41,7 +41,8 @@ export const Body = styled.div<{ margin?: boolean; fixedWidth?: boolean; classNa
 export const ImageWrapper = styled.div`
     position: relative;
 
-    aspect-ratio: 1.3382352941176470588235294117647;
+    /* aspect-ratio: 1.3382352941176470588235294117647; */
+    aspect-ratio: 1.75;
     width: 100%;
     height: auto;
 

@@ -31,12 +31,8 @@ const Home: React.FC<ServerProps> = ({
   data,
   lessPrice,
   moreViewed,
-  carsNumber,
-  images
+  carsNumber
 }) => {
-  useEffect(() => {
-    console.log(images);
-  }, []);
   const [filterOpen, setFilterOpen] = useState(false);
 
   const handleFilter = event => {
@@ -76,6 +72,29 @@ const Home: React.FC<ServerProps> = ({
   const handleRedirect = itemId => {
     location.href = '#!';
   };
+
+  const delta = 6;
+  const [startX, setStartX] = useState(0);
+  const [startY, setStartY] = useState(0);
+
+  const onMouseDown = event => {
+    setStartX(event.pageX);
+    setStartY(event.pageY);
+  };
+
+  const onMouseUp = (event, url = null) => {
+    const diffX = Math.abs(event.pageX - startX);
+    const diffY = Math.abs(event.pageY - startY);
+
+    console.log(url);
+
+    if (diffX < delta && diffY < delta) {
+      if (url != null) {
+        Router.push(url);
+      }
+    }
+  };
+
   return (
     <AllWrapper>
       <Head>
@@ -140,7 +159,13 @@ const Home: React.FC<ServerProps> = ({
               key={index}
               onClick={() => handleRedirect(item.id)}
             >
-              <Banner item={item} />
+              <Banner
+                item={item}
+                onMouseDown={onMouseDown}
+                onMouseUp={event =>
+                  onMouseUp(event, `/carro/${item.id}/${item.slug}`)
+                }
+              />
             </div>
           ))}
         </ScrollMenu>

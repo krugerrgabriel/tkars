@@ -133,6 +133,50 @@ export default createGlobalStyle`
     .show-768px{
         display: none;
     }
+
+    div.arrow{
+        background-color: rgba(255, 255, 255, 0.35);
+
+        display: flex;
+
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        margin-top: auto;
+        margin-bottom: auto;
+
+        width: 42px;
+        height: 42px;
+
+        cursor: pointer;
+
+        border-radius: 8px;
+
+        transition: 0.2s;
+
+        z-index: 1;
+
+        &:hover{
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+
+        &.left{
+            left: 12px;
+        }
+        &.right{
+            right: 12px;
+        }
+
+        svg{
+            fill: #fff;
+
+            width: 24px;
+            height: 24px;
+
+            margin: auto;
+        }
+    }
+
     @media (min-width: 1920px){
         .width-unset-1920px{
             width: unset;

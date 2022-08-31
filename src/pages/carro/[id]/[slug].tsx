@@ -34,7 +34,7 @@ import {
   FullImage,
   ImageOverlay
 } from '../../../styles/carro';
-import { Divider, Title, Loader, AllWrapper } from '../../../styles/global';
+import { Divider, Title, AllWrapper } from '../../../styles/global';
 import { BannerWrapper } from '../../../styles/';
 
 import 'froala-editor/css/froala_style.min.css';
@@ -43,73 +43,43 @@ import 'font-awesome/css/font-awesome.css';
 import { ServerProps, CarImageProps } from '../../../interfaces';
 
 const Carro: React.FC<ServerProps> = ({ data, recommended, images }) => {
-  useEffect(() => {
-    console.log(images);
-  }, []);
+  const [first, setFirst] = useState(true);
   const CarImage: React.FC<CarImageProps> = (props, index) => {
-    let { item } = props;
+    let { item, SEO } = props;
     let { src, base64 } = item;
 
     const [isLoaded, setIsLoaded] = useState(false);
-    const [isActive, setIsActive] = useState(false);
 
     return (
       <>
+        {/* @ts-ignore */}
         <Wrapper onDragStart={preventDragHandler}>
-          {!isLoaded && <Loader />}
           <Image
             src={src}
-            alt="Logo da TKARS"
+            alt={`Foto do ${SEO} | TKARS`}
             layout="fill"
             objectFit="cover"
             onLoad={() => setIsLoaded(true)}
-            priority={index == 0 ? true : false}
-            onClick={() => setIsActive(true)}
-            placeholder="blur"
-            blurDataURL={base64}
+            placeholder={first ? 'blur' : 'empty'}
+            blurDataURL={first ? base64 : ''}
+            onMouseDown={onMouseDown}
+            onMouseUp={event => onMouseUp(event, true)}
           />
         </Wrapper>
-        <FullImage active={isActive}>
-          <div className="wrapper">
-            <Image
-              src={src}
-              alt="Logo da TKARS"
-              layout="fill"
-              objectFit="cover"
-              onLoad={() => setIsLoaded(true)}
-              priority={index == 0 ? true : false}
-              placeholder="blur"
-              blurDataURL={base64}
-            />
-          </div>
-        </FullImage>
-        <ImageOverlay active={isActive} onClick={() => setIsActive(false)}>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="18"
-            height="18"
-            viewBox="0 0 18 18"
-            onClick={() => setIsActive(false)}
-          >
-            <path
-              id="Close_Icon"
-              data-name="Close Icon"
-              d="M10.758,25.758l6-6,6,6,3-3-6-6,6-6-3-3-6,6-6-6-3,3,6,6-6,6Z"
-              transform="translate(-7.758 -7.758)"
-              fill="#fff"
-            />
-          </svg>
-        </ImageOverlay>
       </>
     );
   };
+  useEffect(() => {
+    setFirst(false);
+  }, []);
+
   let items = [
     {
-      name: 'Carros',
+      name: 'Carros ',
       url: '/carros'
     },
     {
-      name: data.nome,
+      name: data.marca + ' ' + data.nome,
       url: '#!'
     }
   ];
@@ -158,6 +128,8 @@ const Carro: React.FC<ServerProps> = ({ data, recommended, images }) => {
     });
   };
 
+  const [isFullImageActive, setIsFullImageActive] = useState(false);
+
   const [heightFix, setHeightFix] = useState(false);
   const size = useWindowSize();
   useEffect(() => {
@@ -188,6 +160,28 @@ const Carro: React.FC<ServerProps> = ({ data, recommended, images }) => {
       '/carros',
       { shallow: true }
     );
+  };
+
+  const SEO = data.marca + ' ' + data.nome + ' ' + data.ano + ' ' + data.modelo;
+
+  const delta = 6;
+  const [startX, setStartX] = useState(0);
+  const [startY, setStartY] = useState(0);
+
+  const onMouseDown = event => {
+    setStartX(event.pageX);
+    setStartY(event.pageY);
+  };
+
+  const onMouseUp = (event, type = null) => {
+    const diffX = Math.abs(event.pageX - startX);
+    const diffY = Math.abs(event.pageY - startY);
+
+    if (diffX < delta && diffY < delta) {
+      if (type != null) {
+        setIsFullImageActive(type);
+      }
+    }
   };
 
   return (
@@ -317,11 +311,53 @@ const Carro: React.FC<ServerProps> = ({ data, recommended, images }) => {
       <BannerWrapper>
         <ScrollMenu>
           {images.map((item, index) => (
-            // @ts-ignore
-            <CarImage key={index} item={item} index={index} />
+            <CarImage
+              key={index} // @ts-ignore
+              item={item}
+              index={index}
+              SEO={SEO}
+            />
           ))}
         </ScrollMenu>
       </BannerWrapper>
+
+      <FullImage active={isFullImageActive}>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="18"
+          height="18"
+          viewBox="0 0 18 18"
+          onClick={() => setIsFullImageActive(false)}
+        >
+          <path
+            id="Close_Icon"
+            data-name="Close Icon"
+            d="M10.758,25.758l6-6,6,6,3-3-6-6,6-6-3-3-6,6-6-6-3,3,6,6-6,6Z"
+            transform="translate(-7.758 -7.758)"
+            fill="#fff"
+          />
+        </svg>
+        <ScrollMenu>
+          {images.map((item, index) => (
+            <div className="wrapper">
+              <Image
+                src={item.src}
+                alt={`Foto do ${SEO} | TKARS`}
+                layout="fill"
+                objectFit="cover"
+                placeholder="blur"
+                blurDataURL={item.src}
+                onMouseDown={onMouseDown}
+                onMouseUp={event => onMouseUp(event)}
+              />
+            </div>
+          ))}
+        </ScrollMenu>
+      </FullImage>
+      <ImageOverlay
+        active={isFullImageActive}
+        onClick={() => setIsFullImageActive(false)}
+      ></ImageOverlay>
 
       <Container>
         <Row>
@@ -650,7 +686,7 @@ const Carro: React.FC<ServerProps> = ({ data, recommended, images }) => {
 
                       <p> GARANTIA DE </p>
                     </div>
-                    <p> 6 meses motor e câmbio </p>
+                    <p> {data.garantia} motor e câmbio </p>
                   </div>
 
                   <div className="item">
@@ -829,6 +865,7 @@ export const getStaticProps: GetStaticProps = async context => {
       data,
       recommended,
       images
-    }
+    },
+    revalidate: 720
   };
 };

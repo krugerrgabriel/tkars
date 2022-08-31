@@ -105,4 +105,6 @@ export interface CarImageProps{
         base64: string,
         index: number,
     }
+    SEO: string;
+    onClick?: Function
 }

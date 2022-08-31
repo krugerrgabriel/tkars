@@ -464,9 +464,18 @@ export const Wrapper = styled.div`
     @media(max-width: 480px){
         height: 175px;
     }
+
+    transition: all .001s;
+    *{
+        transition: all .001s;
+    }
 `;
 
 export const FullImage = styled.div<{ active: boolean }>`
+    display: flex;
+
+    align-items: center;
+    
     position: fixed;
     top: ${({ active }) => active ? '0' : '-200%'};
     bottom: ${({ active }) => active ? '0' : '200%'};
@@ -474,8 +483,6 @@ export const FullImage = styled.div<{ active: boolean }>`
     left: 0;
     margin: auto;
 
-    aspect-ratio: 1.7706666666666666666666666666667;
-    max-width: 75%;
     width: 100%;
     height: auto;
 
@@ -487,8 +494,33 @@ export const FullImage = styled.div<{ active: boolean }>`
         position: relative;
 
         aspect-ratio: 1.7706666666666666666666666666667;
-        width: 100%;
+        width: 80%;
         height: auto;
+
+        margin: auto 42px auto auto;
+
+        &:first-of-type{
+            margin: auto 42px auto 64px;
+        }
+        &:last-of-type{
+            margin: auto 64px auto auto;
+        }
+
+    }
+
+    svg{
+        width: 24px;
+        height: 24px;
+
+        position: fixed;
+        right: 18px;
+        top: ${({ active }) => active ? '18px' : '-200%'};
+
+        cursor: pointer;
+
+        z-index: 503;
+
+        transition: 0.2s;
     }
 
     @media(max-width: 1200px){
@@ -520,17 +552,4 @@ export const ImageOverlay = styled.div<{ active: boolean }>`
     transition: 0.2s;
 
     z-index: 501;
-
-    svg{
-        width: 24px;
-        height: 24px;
-
-        position: fixed;
-        right: 24px;
-        top: 24px;
-
-        cursor: pointer;
-
-        z-index: 503;
-    }
 `;
