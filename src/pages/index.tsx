@@ -105,7 +105,7 @@ const Home: React.FC<ServerProps> = ({
 
         <meta name="og:site_name" content="TKars" />
         <meta name="author" content="Gabriel Sabara Krüger" />
-        <link rel="canonical" href="https://tkars.vercel.app/" />
+        <link rel="canonical" href="https://tkars.com.br/" />
         <meta property="og:locale" content="pt_BR" />
         <meta property="locale" content="pt_BR" />
         <meta name="robots" content="index, follow" />

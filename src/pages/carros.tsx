@@ -205,7 +205,7 @@ const List: React.FC<ServerProps> = () => {
   }, [selectValue]);
 
   const filterChange = event => {
-    if (event == 'close' || event.length == 0) {
+    if (event == 'close') {
       setFilterOpen(false);
     } else {
       setSearchParams('');
@@ -225,7 +225,7 @@ const List: React.FC<ServerProps> = () => {
 
         <meta name="og:site_name" content="TKars" />
         <meta name="author" content="Gabriel Sabara Krüger" />
-        <link rel="canonical" href="https://diretodotrecho.com.br/" />
+        <link rel="canonical" href="https://tkars.com.br/" />
         <meta property="og:locale" content="pt_BR" />
         <meta property="locale" content="pt_BR" />
         <meta name="robots" content="index, follow" />

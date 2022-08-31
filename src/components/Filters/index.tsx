@@ -29,10 +29,6 @@ const Filters: React.FC<FiltersProps> = ({
   className,
   data
 }) => {
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
-
   const [filters, setFilters] = useState([]);
 
   const filterTextApply = prop => {
@@ -98,8 +94,6 @@ const Filters: React.FC<FiltersProps> = ({
 
   const [marcas, setMarcas] = useState([]);
   const handleMarca = name => {
-    let type = marcas.includes(name) ? 'remove' : 'add';
-
     if (marcas.includes(name)) {
       setMarcas(marcas.filter(item => item != name));
     } else {
@@ -109,8 +103,6 @@ const Filters: React.FC<FiltersProps> = ({
 
   const [cores, setCores] = useState([]);
   const handleCorChange = name => {
-    let type = cores.includes(name) ? 'remove' : 'add';
-
     if (cores.includes(name)) {
       setCores(cores.filter(item => item != name));
     } else {
@@ -120,8 +112,6 @@ const Filters: React.FC<FiltersProps> = ({
 
   const [combustiveis, setCombustiveis] = useState([]);
   const handleCombustiveisChange = name => {
-    let type = combustiveis.includes(name) ? 'remove' : 'add';
-
     if (combustiveis.includes(name)) {
       setCombustiveis(combustiveis.filter(item => item != name));
     } else {
@@ -131,8 +121,6 @@ const Filters: React.FC<FiltersProps> = ({
 
   const [tipos, setTipos] = useState([]);
   const handleTiposChange = name => {
-    let type = tipos.includes(name) ? 'remove' : 'add';
-
     if (tipos.includes(name)) {
       setTipos(tipos.filter(item => item != name));
     } else {
