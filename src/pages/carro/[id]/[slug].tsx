@@ -824,9 +824,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const response = await fetch(
     'https://transdesk.com.br/souunus/backend/admin/tkars/site/get.php'
   );
-  const { data } = await response.json();
+  const { all } = await response.json();
 
-  const paths = data.map(item => {
+  const paths = all.map(item => {
     return {
       params: { id: item.id, slug: item.slug }
     };
