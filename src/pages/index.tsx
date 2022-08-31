@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+// Refresh 2
 
-// Refresh 1
+import React, { useEffect, useState } from 'react';
 
 import Head from 'next/head';
 import Router from 'next/router';
