@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 
 import Image from 'next/image';
 import Link from 'next/link';
@@ -32,6 +32,18 @@ const Navbar: React.FC<{ handleKey: Function; handleLink: Function }> = ({
     handleLink(value);
     setSidenavActive(false);
   };
+
+  const sidenavRef = useRef(null);
+
+  const handleClick = event => {
+    if (sidenavRef.current && !sidenavRef.current.contains(event.target)) {
+      setSidenavActive(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('click', handleClick);
+  }, []);
 
   return (
     <>
@@ -99,7 +111,13 @@ const Navbar: React.FC<{ handleKey: Function; handleLink: Function }> = ({
             <SearchField handleKey={handleKey} />
           </div>
 
-          <SidenavWrapper onClick={() => setSidenavActive(true)}>
+          <SidenavWrapper
+            onClick={() => {
+              setTimeout(() => {
+                setSidenavActive(true);
+              }, 50);
+            }}
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="32"
@@ -116,7 +134,7 @@ const Navbar: React.FC<{ handleKey: Function; handleLink: Function }> = ({
         </Container>
       </Body>
 
-      <Sidenav active={sidenavActive}>
+      <Sidenav active={sidenavActive} ref={sidenavRef}>
         <CloseWrapper
           active={sidenavActive}
           onClick={() => setSidenavActive(false)}
