@@ -2,8 +2,6 @@ export interface ProductProps{
     margin?: boolean;
     fixedWidth?: boolean;
     className?: boolean;
-    onMouseDown?: Function;
-    onMouseUp?: Function;
     item: {
         id: number,
         slug: string,

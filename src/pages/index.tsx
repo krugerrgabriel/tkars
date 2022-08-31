@@ -5,6 +5,8 @@ import React, { useEffect, useState } from 'react';
 import Head from 'next/head';
 import Router from 'next/router';
 
+import { getPlaiceholder } from 'plaiceholder';
+
 import { Container, Row, Col } from 'react-bootstrap';
 
 // Components
@@ -28,10 +30,10 @@ import { Title, Subtitle, Divider, Box, AllWrapper } from '../styles/global';
 import { ServerProps } from '../interfaces/';
 
 const Home: React.FC<ServerProps> = ({
-  data,
   lessPrice,
   moreViewed,
-  carsNumber
+  carsNumber,
+  images
 }) => {
   const [filterOpen, setFilterOpen] = useState(false);
 
@@ -42,8 +44,6 @@ const Home: React.FC<ServerProps> = ({
   };
 
   const handleKey = value => {
-    console.log(value);
-
     Router.push(
       {
         pathname: '/carros',
@@ -86,14 +86,17 @@ const Home: React.FC<ServerProps> = ({
     const diffX = Math.abs(event.pageX - startX);
     const diffY = Math.abs(event.pageY - startY);
 
-    console.log(url);
-
     if (diffX < delta && diffY < delta) {
       if (url != null) {
         Router.push(url);
       }
     }
   };
+
+  const [first, setFirst] = useState(true);
+  useEffect(() => {
+    setFirst(false);
+  }, [first]);
 
   return (
     <AllWrapper>
@@ -153,17 +156,19 @@ const Home: React.FC<ServerProps> = ({
       <BannerWrapper>
         <ScrollMenu>
           {/* @ts-ignore */}
-          {data.slice(0, 5).map((item, index) => (
+          {images.map((item, index) => (
             <div
               className={`margin-banner-${index}`}
-              key={index}
+              key={index} // @ts-ignore
               onClick={() => handleRedirect(item.id)}
             >
-              <Banner
+              <Banner // @ts-ignore
+                first={first} // @ts-ignore
                 item={item}
                 onMouseDown={onMouseDown}
                 onMouseUp={event =>
-                  onMouseUp(event, `/carro/${item.id}/${item.slug}`)
+                  // @ts-ignore
+                  onMouseUp(event, `/carro/${item.item.id}/${item.item.slug}`)
                 }
               />
             </div>
@@ -322,12 +327,26 @@ export const getStaticProps = async () => {
   );
   const { data, lessPrice, moreViewed } = await response.json();
 
+  const images = await Promise.all(
+    data.slice(0, 5).map(async item => {
+      const { base64, img } = await getPlaiceholder(
+        `https://transdesk.com.br/souunus/assets/img/veiculos/${item.id}_og.jpg`
+      );
+      return {
+        ...img,
+        base64,
+        item
+      };
+    })
+  );
+
   return {
     props: {
       data,
       lessPrice,
       moreViewed,
-      carsNumber: data.length
+      carsNumber: data.length,
+      images
     },
     revalidate: 720
   };

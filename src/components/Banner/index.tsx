@@ -4,16 +4,14 @@ import Image from 'next/image';
 
 import { preventDragHandler } from '../../functions/index';
 
-import { Loader } from '../../styles/global';
 import { Body, Overlay } from './styles';
 
-import { ProductProps } from '../Product/interfaces';
+import { BannerProps } from './interfaces';
 
-const Banner: React.FC<ProductProps> = props => {
-  let { onMouseDown, onMouseUp } = props;
-  let { id, slug, marca, nome, modelo, quilometragem } = props.item;
-
-  const [isLoaded, setIsLoaded] = useState(false);
+const Banner: React.FC<BannerProps> = props => {
+  let { onMouseDown, onMouseUp, item, first } = props;
+  let { src, base64 } = item;
+  let { marca, nome, modelo, quilometragem } = item.item;
   return (
     // @ts-ignore
     <Body
@@ -21,14 +19,14 @@ const Banner: React.FC<ProductProps> = props => {
       onMouseDown={onMouseDown}
       onMouseUp={onMouseUp}
     >
-      {!isLoaded && <Loader />}
       <Image
-        src={`https://transdesk.com.br/souunus/assets/img/veiculos/${id}_og.jpg`}
+        src={src}
         alt="Logo da TKARS"
         layout="fill"
         objectFit="cover"
         className="border-radius-8px"
-        onLoad={() => setIsLoaded(true)}
+        placeholder={first ? 'blur' : 'empty'}
+        blurDataURL={first ? base64 : ''}
       />
 
       <Overlay />

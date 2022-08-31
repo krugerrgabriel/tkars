@@ -1,7 +1,18 @@
 export type BannerProps = {
+    onMouseDown?: Function;
+    onMouseUp?: Function;
+    first: boolean;
     item: {
-        id: number,
-        nome: string,
-        description: string
+        src: string;
+        base64: string
+
+        item: {
+            id: number,
+            slug: string;
+            marca: string;
+            nome: string;
+            modelo: string;
+            quilometragem: number;
+        }
     }
 }
