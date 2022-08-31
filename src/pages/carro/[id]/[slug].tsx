@@ -864,6 +864,6 @@ export const getStaticProps: GetStaticProps = async context => {
       recommended,
       images
     },
-    revalidate: 720
+    revalidate: 360
   };
 };

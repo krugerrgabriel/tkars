@@ -344,6 +344,6 @@ export const getStaticProps = async () => {
       carsNumber: data.length,
       images
     },
-    revalidate: 720
+    revalidate: 360
   };
 };
