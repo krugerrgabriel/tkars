@@ -54,6 +54,8 @@ const Carro: React.FC<ServerProps> = ({ data, recommended, images }) => {
     let { item, SEO } = props;
     let { src, base64 } = item;
 
+    const [isLoaded, setIsLoaded] = useState(false);
+
     return (
       <>
         {/* @ts-ignore */}
@@ -63,8 +65,9 @@ const Carro: React.FC<ServerProps> = ({ data, recommended, images }) => {
             alt={`Foto do ${SEO} | TKARS`}
             layout="fill"
             objectFit="cover"
-            placeholder={first ? 'blur' : 'empty'}
-            blurDataURL={first ? base64 : ''}
+            onLoad={() => setIsLoaded(true)}
+            placeholder={first && !isLoaded ? 'blur' : 'empty'}
+            blurDataURL={first && !isLoaded ? base64 : ''}
             onMouseDown={onMouseDown}
             onMouseUp={event => onMouseUp(event, true)}
           />

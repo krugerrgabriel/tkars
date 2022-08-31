@@ -12,6 +12,9 @@ const Banner: React.FC<BannerProps> = props => {
   let { onMouseDown, onMouseUp, item, first } = props;
   let { src, base64 } = item;
   let { marca, nome, modelo, quilometragem } = item.item;
+
+  const [isLoaded, setIsLoaded] = useState(false);
+
   return (
     // @ts-ignore
     <Body
@@ -25,8 +28,9 @@ const Banner: React.FC<BannerProps> = props => {
         layout="fill"
         objectFit="cover"
         className="border-radius-8px"
-        placeholder={first ? 'blur' : 'empty'}
-        blurDataURL={first ? base64 : ''}
+        onLoad={() => setIsLoaded(true)}
+        placeholder={first && !isLoaded ? 'blur' : 'empty'}
+        blurDataURL={first && !isLoaded ? base64 : ''}
       />
 
       <Overlay />
