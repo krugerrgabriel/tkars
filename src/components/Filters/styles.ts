@@ -102,6 +102,8 @@ export const Body = styled.div<{ active: boolean; type?: string; className?: str
 
             border-radius: 24px 24px 0 0;
 
+            top: 36px;
+
             z-index: 501;
         }
         &, div.button-box{
@@ -212,8 +214,8 @@ export const Overlay = styled.div<{ active: boolean}>`
         backdrop-filter: blur(2px);
         -webkit-backdrop-filter: blur(2px);
 
-        width: 100vw;
-        height: 100vh;
+        width: 100%;
+        height: 100%;
 
         position: fixed;
         left: ${({ active }) => active ? '0' : '-125%'};

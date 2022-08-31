@@ -205,7 +205,7 @@ const List: React.FC<ServerProps> = () => {
   }, [selectValue]);
 
   const filterChange = event => {
-    if (event == 'close') {
+    if (event == 'close' || event.length == 0) {
       setFilterOpen(false);
     } else {
       setSearchParams('');
@@ -213,7 +213,7 @@ const List: React.FC<ServerProps> = () => {
       setTimeout(() => {
         setFilters(event);
 
-        setFilterOpen(size.width < 1400 ? false : true);
+        setFilterOpen(size.width > 1400 ? false : true);
       }, 250);
     }
   };

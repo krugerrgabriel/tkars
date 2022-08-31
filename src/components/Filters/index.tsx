@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { GetStaticProps } from 'next';
 
 import Image from 'next/image';
@@ -26,8 +26,13 @@ const Filters: React.FC<FiltersProps> = ({
   active,
   filterChange,
   type,
-  className
+  className,
+  data
 }) => {
+  useEffect(() => {
+    console.log(data);
+  }, [data]);
+
   const [filters, setFilters] = useState([]);
 
   const filterTextApply = prop => {
@@ -379,18 +384,3 @@ const Filters: React.FC<FiltersProps> = ({
 };
 
 export default Filters;
-
-// export const getStaticProps: GetStaticProps = async context => {
-//   const { id } = context.params;
-
-//   const response = await fetch(
-//     `https://transdesk.com.br/souunus/backend/admin/tkars/site/filterInfo.php`
-//   );
-//   const { data } = await response.json();
-
-//   return {
-//     props: {
-//       data
-//     }
-//   };
-// };
