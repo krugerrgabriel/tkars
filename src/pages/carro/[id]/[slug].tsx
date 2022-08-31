@@ -45,10 +45,7 @@ import 'font-awesome/css/font-awesome.css';
 import { ServerProps, CarImageProps } from '../../../interfaces';
 
 const Carro: React.FC<ServerProps> = ({ data, recommended, images }) => {
-  const [first, setFirst] = useState(true);
-  useEffect(() => {
-    setFirst(false);
-  }, []);
+  const [drag, setDrag] = useState(false);
 
   const CarImage: React.FC<CarImageProps> = (props, index) => {
     let { item, SEO } = props;
@@ -65,13 +62,8 @@ const Carro: React.FC<ServerProps> = ({ data, recommended, images }) => {
             alt={`Foto do ${SEO} | TKARS`}
             layout="fill"
             objectFit="cover"
-            onLoad={() => {
-              setTimeout(() => {
-                setIsLoaded(true);
-              }, 1000);
-            }}
-            placeholder={first && !isLoaded ? 'blur' : 'empty'}
-            blurDataURL={first && !isLoaded ? base64 : ''}
+            placeholder={!drag ? 'blur' : 'empty'}
+            blurDataURL={!drag ? base64 : ''}
             onMouseDown={onMouseDown}
             onMouseUp={event => onMouseUp(event, true)}
           />
@@ -178,6 +170,8 @@ const Carro: React.FC<ServerProps> = ({ data, recommended, images }) => {
   const onMouseDown = event => {
     setStartX(event.pageX);
     setStartY(event.pageY);
+
+    setDrag(true);
   };
 
   const onMouseUp = (event, type = null) => {
