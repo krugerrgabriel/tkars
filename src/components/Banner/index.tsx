@@ -28,7 +28,11 @@ const Banner: React.FC<BannerProps> = props => {
         layout="fill"
         objectFit="cover"
         className="border-radius-8px"
-        onLoad={() => setIsLoaded(true)}
+        onLoad={() => {
+          setTimeout(() => {
+            setIsLoaded(true);
+          }, 1000);
+        }}
         placeholder={first && !isLoaded ? 'blur' : 'empty'}
         blurDataURL={first && !isLoaded ? base64 : ''}
       />

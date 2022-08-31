@@ -65,7 +65,11 @@ const Carro: React.FC<ServerProps> = ({ data, recommended, images }) => {
             alt={`Foto do ${SEO} | TKARS`}
             layout="fill"
             objectFit="cover"
-            onLoad={() => setIsLoaded(true)}
+            onLoad={() => {
+              setTimeout(() => {
+                setIsLoaded(true);
+              }, 1000);
+            }}
             placeholder={first && !isLoaded ? 'blur' : 'empty'}
             blurDataURL={first && !isLoaded ? base64 : ''}
             onMouseDown={onMouseDown}
