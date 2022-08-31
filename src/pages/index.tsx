@@ -201,11 +201,7 @@ const Home: React.FC<ServerProps> = ({
         </Row>
         <ScrollMenu>
           {MarcasArray.map((item, index) => {
-            return (
-              <div>
-                <Marca name={item} key={index} />
-              </div>
-            );
+            return <Marca name={item} key={index} />;
           })}
         </ScrollMenu>
         <Divider />

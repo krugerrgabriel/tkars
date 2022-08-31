@@ -506,6 +506,48 @@ export const FullImage = styled.div<{ active: boolean }>`
             margin: auto 64px auto auto;
         }
 
+        @media(max-width: 1200px){
+            width: 85%;
+        }
+        @media(max-width: 992px){
+            width: 90%;
+
+            margin: auto 24px auto auto;
+
+            &:first-of-type{
+                margin: auto 24px auto 32px;
+            }
+            &:last-of-type{
+                margin: auto 32px auto auto;
+            }
+        }
+        @media(max-width: 768px){
+            width: 90%;
+        }
+        @media(max-width: 576px){
+            width: 92%;
+
+            margin: auto 12px auto auto;
+
+            &:first-of-type{
+                margin: auto 12px auto 24px;
+            }
+            &:last-of-type{
+                margin: auto 24px auto auto;
+            }
+        }
+        @media(max-width: 442px){
+            width: 93%;
+
+            margin: auto 8px auto auto;
+
+            &:first-of-type{
+                margin: auto 8px auto 12px;
+            }
+            &:last-of-type{
+                margin: auto 12px auto auto;
+            }
+        }
     }
 
     svg{
@@ -521,19 +563,6 @@ export const FullImage = styled.div<{ active: boolean }>`
         z-index: 503;
 
         transition: 0.2s;
-    }
-
-    @media(max-width: 1200px){
-        max-width: 90%;
-    }
-    @media(max-width: 992px){
-        max-width: 95%;
-    }
-    @media(max-width: 768px){
-        max-width: 99%;
-    }
-    @media(max-width: 576px){
-        max-width: 100%;
     }
 `;
 

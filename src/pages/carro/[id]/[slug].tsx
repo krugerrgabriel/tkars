@@ -44,11 +44,13 @@ import { ServerProps, CarImageProps } from '../../../interfaces';
 
 const Carro: React.FC<ServerProps> = ({ data, recommended, images }) => {
   const [first, setFirst] = useState(true);
+  useEffect(() => {
+    setFirst(false);
+  }, []);
+
   const CarImage: React.FC<CarImageProps> = (props, index) => {
     let { item, SEO } = props;
     let { src, base64 } = item;
-
-    const [isLoaded, setIsLoaded] = useState(false);
 
     return (
       <>
@@ -59,7 +61,6 @@ const Carro: React.FC<ServerProps> = ({ data, recommended, images }) => {
             alt={`Foto do ${SEO} | TKARS`}
             layout="fill"
             objectFit="cover"
-            onLoad={() => setIsLoaded(true)}
             placeholder={first ? 'blur' : 'empty'}
             blurDataURL={first ? base64 : ''}
             onMouseDown={onMouseDown}
@@ -69,9 +70,6 @@ const Carro: React.FC<ServerProps> = ({ data, recommended, images }) => {
       </>
     );
   };
-  useEffect(() => {
-    setFirst(false);
-  }, []);
 
   let items = [
     {

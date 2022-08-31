@@ -56,10 +56,10 @@ const List: React.FC<ServerProps> = () => {
           setTimeout(() => {
             // @ts-ignore
             setSelectValue(router.query.orderBy);
-          }, 250);
+          }, 300);
         }
       });
-    }, 100);
+    }, 150);
   }, [filters, searchParams]);
 
   const handleKey = value => {
@@ -200,8 +200,8 @@ const List: React.FC<ServerProps> = () => {
       setSelectStatus(true);
       setTimeout(() => {
         setSelectStatus(false);
-      }, 5);
-    }, 5);
+      }, 10);
+    }, 10);
   }, [selectValue]);
 
   const filterChange = event => {
