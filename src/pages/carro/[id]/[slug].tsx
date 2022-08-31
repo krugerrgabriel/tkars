@@ -36,7 +36,7 @@ import {
   FullImage,
   ImageOverlay
 } from '../../../styles/carro';
-import { Divider, Title, AllWrapper } from '../../../styles/global';
+import { Divider, Title, AllWrapper, Loader } from '../../../styles/global';
 import { BannerWrapper } from '../../../styles/';
 
 import 'froala-editor/css/froala_style.min.css';
@@ -47,11 +47,9 @@ import { ServerProps, CarImageProps } from '../../../interfaces';
 const Carro: React.FC<ServerProps> = ({ data, recommended, images }) => {
   const [drag, setDrag] = useState(false);
 
-  const CarImage: React.FC<CarImageProps> = (props, index) => {
+  const CarImage: React.FC<CarImageProps> = props => {
     let { item, SEO } = props;
     let { src, base64 } = item;
-
-    const [isLoaded, setIsLoaded] = useState(false);
 
     return (
       <>
@@ -66,6 +64,7 @@ const Carro: React.FC<ServerProps> = ({ data, recommended, images }) => {
             blurDataURL={!drag ? base64 : ''}
             onMouseDown={onMouseDown}
             onMouseUp={event => onMouseUp(event, true)}
+            onLoad={() => console.log('load')}
           />
         </Wrapper>
       </>
@@ -188,7 +187,9 @@ const Carro: React.FC<ServerProps> = ({ data, recommended, images }) => {
   return (
     <AllWrapper>
       <Head>
-        <title>{data.nome} | TKars</title>
+        <title>
+          {capitalizeFirstLetter(data.marca)} {data.nome} | TKars
+        </title>
 
         <meta name="og:site_name" content="TKars" />
         <meta name="author" content="Gabriel Sabara Krüger" />
