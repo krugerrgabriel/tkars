@@ -1,6 +1,6 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-  siteUrl: process.env.SITE_URL || 'https://tkars.vercel.app',
+  siteUrl: process.env.SITE_URL || 'https://www.tkars.vercel.app',
   generateRobotsTxt: true // (optional)
   // ...other options
 };

@@ -35,7 +35,7 @@ const Product: React.FC<ProductProps> = props => {
 
           <Info>
             <div className="d-flex align-items-center">
-              <h3> {marca} </h3>
+              <h4> {marca} </h4>
               <MarcaWrapper className={marca}>
                 <Image
                   src={`/marcas/${marca}.${
@@ -47,10 +47,10 @@ const Product: React.FC<ProductProps> = props => {
                 />
               </MarcaWrapper>
             </div>
-            <h1> {nome} </h1>
-            <h4> {modelo} </h4>
+            <h2> {nome} </h2>
+            <h5> {modelo} </h5>
 
-            <h2> {formatBRL(preco)} </h2>
+            <h3> {formatBRL(preco)} </h3>
 
             <div className="more-info">
               <p> {ano} </p>

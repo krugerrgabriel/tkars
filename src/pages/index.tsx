@@ -105,7 +105,7 @@ const Home: React.FC<ServerProps> = ({
 
         <meta name="og:site_name" content="TKars" />
         <meta name="author" content="Gabriel Sabara Krüger" />
-        <link rel="canonical" href="https://tkars.com.br/" />
+        <link rel="canonical" href="https://www.tkars.com.br/" />
         <meta property="og:locale" content="pt_BR" />
         <meta property="locale" content="pt_BR" />
         <meta name="robots" content="index, follow" />
@@ -119,7 +119,7 @@ const Home: React.FC<ServerProps> = ({
           property="og:title"
           content="Os melhores carros para você | TKars"
         />
-        <meta property="og:url" content={`https://tkars.vercel.app`} />
+        <meta property="og:url" content={`https://www.tkars.vercel.app`} />
         <meta
           property="og:description"
           content="Os melhores carros para você estão aqui na TKars"

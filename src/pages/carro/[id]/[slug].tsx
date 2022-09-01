@@ -105,7 +105,7 @@ const Carro: React.FC<ServerProps> = ({ data, recommended, images }) => {
     }
   }, [fichaTecnicaReveal]);
 
-  let link = `https://api.whatsapp.com/send?phone=5545988134329&text=*[TKARS]*%0ahttps://tkars.vercel.app/carro/${data.id}/${data.slug}%0a%0aMe interessei por esse *${data.nome}* e gostaria de saber mais sobre 😁`;
+  let link = `https://api.whatsapp.com/send?phone=5545988134329&text=*[TKARS]*%0ahttps://www.tkars.vercel.app/carro/${data.id}/${data.slug}%0a%0aMe interessei por esse *${data.nome}* e gostaria de saber mais sobre 😁`;
 
   const handleShare = () => {
     navigator.share({
@@ -121,7 +121,7 @@ const Carro: React.FC<ServerProps> = ({ data, recommended, images }) => {
         'km rodados, por apenas *' +
         formatBRL(data.preco) +
         '*\n',
-      url: `https://tkars.vercel.app/carro/${data.id}/${data.slug}`
+      url: `https://www.tkars.vercel.app/carro/${data.id}/${data.slug}`
     });
   };
 
@@ -192,7 +192,7 @@ const Carro: React.FC<ServerProps> = ({ data, recommended, images }) => {
 
         <meta name="og:site_name" content="TKars" />
         <meta name="author" content="Gabriel Sabara Krüger" />
-        <link rel="canonical" href="https://tkars.com.br/" />
+        <link rel="canonical" href="https://www.tkars.com.br/" />
         <meta property="og:locale" content="pt_BR" />
         <meta property="locale" content="pt_BR" />
         <meta name="robots" content="index, follow" />
@@ -227,7 +227,7 @@ const Carro: React.FC<ServerProps> = ({ data, recommended, images }) => {
         />
         <meta
           property="og:url"
-          content={`https://tkars.vercel.app/carro/${data.id}/${data.slug}`}
+          content={`https://www.tkars.vercel.app/carro/${data.id}/${data.slug}`}
         />
         <meta
           property="og:description"
