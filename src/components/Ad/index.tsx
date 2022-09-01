@@ -11,15 +11,15 @@ const Ad: React.FC<{ price?: number }> = ({ price }) => {
 
   let imageSrc;
   if (price) {
-    if (price <= 35000) {
-      imageSrc = 'carro-novinho1.jpg';
-    } else if (price > 45000 && price <= 95000) {
+    if (price >= 40000 && price <= 60000) {
       imageSrc = 'carro-novinho2.jpg';
+    } else if (price > 60000 && price <= 120000) {
+      imageSrc = 'carro-novinho1.jpg';
     } else {
       imageSrc = 'carro-novinho3.jpg';
     }
   } else {
-    imageSrc = 'carro-novinho1.jpg';
+    imageSrc = 'carro-novinho3.jpg';
   }
 
   return (
