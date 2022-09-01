@@ -36,7 +36,7 @@ import {
   FullImage,
   ImageOverlay
 } from '../../../styles/carro';
-import { Divider, Title, AllWrapper, Loader } from '../../../styles/global';
+import { Divider, Title, AllWrapper } from '../../../styles/global';
 import { BannerWrapper } from '../../../styles/';
 
 import 'froala-editor/css/froala_style.min.css';
@@ -377,8 +377,8 @@ const Carro: React.FC<ServerProps> = ({ data, recommended, images }) => {
                         src={`/marcas/${data.marca}.${
                           data.marca == 'chevrolet' ? 'png' : 'svg'
                         }`}
-                        alt={'Logo da ' + data.marca + ' | TKARS'}
-                        title={'Logo da ' + data.marca + ' | TKARS'}
+                        alt={'Logo da marca ' + data.marca + ' | TKARS'}
+                        title={'Logo da marca ' + data.marca + ' | TKARS'}
                         layout="fill"
                         objectFit="contain"
                       />
