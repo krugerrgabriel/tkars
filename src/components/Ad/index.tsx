@@ -14,14 +14,14 @@ const Ad: React.FC<{ price?: number }> = ({ price }) => {
   let imageSrc;
   if (price) {
     if (price >= 40000 && price <= 60000) {
-      imageSrc = 'carro-novinho2.jpg';
+      imageSrc = 'carro-novinho2-small.jpg';
     } else if (price > 60000 && price <= 120000) {
-      imageSrc = 'carro-novinho1.jpg';
+      imageSrc = 'carro-novinho1-small.jpg';
     } else {
-      imageSrc = 'carro-novinho3.jpg';
+      imageSrc = 'carro-novinho3-small.jpg';
     }
   } else {
-    imageSrc = 'carro-novinho3.jpg';
+    imageSrc = 'carro-novinho3-small.jpg';
   }
   return (
     <>
