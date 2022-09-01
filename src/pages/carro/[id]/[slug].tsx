@@ -795,7 +795,7 @@ const Carro: React.FC<ServerProps> = ({ data, recommended, images }) => {
 
         <Row className="margin-top-64px">
           <Col lg={12}>
-            <Ad />
+            <Ad price={data.preco} />
           </Col>
         </Row>
 
