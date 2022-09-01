@@ -18,7 +18,7 @@ const SearchField: React.FC<{ handleKey: Function }> = ({ handleKey }) => {
   }, []);
 
   const onKeyUp = event => {
-    if (event.key == 'Enter') {
+    if (event.key == 'Enter' || event.keyCode === 13) {
       sendKey();
     }
   };

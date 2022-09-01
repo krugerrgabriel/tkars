@@ -13,7 +13,7 @@ const Ad: React.FC<{ price?: number }> = ({ price }) => {
   let link = `https://api.whatsapp.com/send?phone=5545988134329&text=Olá! Acessei o site da TKars e me interessei por um anúncio do Consórcio Transdesk 🤩`;
 
   let imageSrc;
-  if (price <= 45000) {
+  if (price <= 35000) {
     imageSrc = 'carro-novinho1.jpg';
   } else if (price > 45000 && price <= 95000) {
     imageSrc = 'carro-novinho2.jpg';
@@ -34,6 +34,7 @@ const Ad: React.FC<{ price?: number }> = ({ price }) => {
               layout="fill"
               objectFit="contain"
               onLoad={() => setIsLoadedOne(true)}
+              priority
             />
           </ImageWrapper>
         </a>
@@ -41,7 +42,7 @@ const Ad: React.FC<{ price?: number }> = ({ price }) => {
       <Box className="ad">
         <h3> Deseja comprar um veículo mas está sem grana à vista? 😥 </h3>
         <h6>
-          Clique na imagem abaixo e solicite já uma simulação do{' '}
+          Clique na imagem abaixo e solicite já uma simulação do
           <u>Consórcio Transdesk</u>, a melhor forma de realizar o seu sonho! 🤑
         </h6>
         <Link href={link}>
@@ -54,6 +55,7 @@ const Ad: React.FC<{ price?: number }> = ({ price }) => {
                 layout="fill"
                 objectFit="contain"
                 onLoad={() => setIsLoadedTwo(true)}
+                priority
               />
             </ImageWrapper>
           </a>

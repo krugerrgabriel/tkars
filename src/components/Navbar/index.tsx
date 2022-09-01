@@ -73,7 +73,10 @@ const Navbar: React.FC<{ handleKey: Function; handleLink: Function }> = ({
             </Button>
           </Container>
         </SearchReveal>
-        <SearchOverlay active={searchActive} />
+        <SearchOverlay
+          active={searchActive}
+          onClick={() => setSearchActive(false)}
+        />
         <Container className="h-100 container-wrapper">
           <SearchWrapper
             className="show-768px"
