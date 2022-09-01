@@ -7,9 +7,6 @@ import { Box, Loader } from '../../styles/global';
 import { Subtext, ImageWrapper } from './styles';
 
 const Ad: React.FC = () => {
-  const [isLoadedOne, setIsLoadedOne] = useState(false);
-  const [isLoadedTwo, setIsLoadedTwo] = useState(false);
-
   let link = `https://api.whatsapp.com/send?phone=5545988134329&text=Olá! Acessei o site da TKars e me interessei por um anúncio do Consórcio Transdesk 🤩`;
 
   return (
@@ -18,14 +15,12 @@ const Ad: React.FC = () => {
       <Link href={link}>
         <a rel="nofollow" target="_blank">
           <ImageWrapper className="mobile">
-            {!isLoadedOne && <Loader />}
             <Image
               src={`https://www.transdesk.com.br/realizeseusonho/assets/img/banners/mobile/carro-novinho1.jpg`}
               alt="Carro Novinho com parcelinhas a partir de R$ 273,70 com o Consórcio Transdesk"
               title="Carro Novinho com parcelinhas a partir de R$ 273,70 com o Consórcio Transdesk"
               layout="fill"
               objectFit="contain"
-              onLoad={() => setIsLoadedOne(true)}
               priority
             />
           </ImageWrapper>
@@ -40,14 +35,12 @@ const Ad: React.FC = () => {
         <Link href={link}>
           <a rel="nofollow" target="_blank">
             <ImageWrapper className="desktop">
-              {!isLoadedTwo && <Loader />}
               <Image
                 src={`https://www.transdesk.com.br/realizeseusonho/assets/img/banners/desktop/carro-novinho1.jpg`}
                 alt="Carro Novinho com parcelinhas a partir de R$ 273,70 com o Consórcio Transdesk"
                 title="Carro Novinho com parcelinhas a partir de R$ 273,70 com o Consórcio Transdesk"
                 layout="fill"
                 objectFit="contain"
-                onLoad={() => setIsLoadedTwo(true)}
                 priority
               />
             </ImageWrapper>
