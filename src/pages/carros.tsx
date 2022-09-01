@@ -255,7 +255,7 @@ const List: React.FC<ServerProps> = () => {
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:image:alt" content="TKars" />
-        <meta property="og:type" content="article" />
+        <meta property="og:type" content="webmite" />
         <meta name="keywords" content="Carros" />
         <meta property="article:published_time" content="24/08/2022" />
         <meta property="article:tag" content="Carros" />

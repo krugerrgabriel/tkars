@@ -131,10 +131,10 @@ const Home: React.FC<ServerProps> = ({
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:image:alt" content="TKars" />
-        <meta property="og:type" content="article" />
+        <meta property="og:type" content="website" />
         <meta name="keywords" content="Carros" />
         <meta property="article:published_time" content="24/08/2022" />
-        <meta property="article:tag" content="Carros" />
+        <meta property="article:tag" content="Carros, catalogo, barato" />
         {/* @ts-ignore */}
         <meta name="twitter:card" value="summary" />
         <meta name="twitter:site" content="@krugerrgabriel" />
