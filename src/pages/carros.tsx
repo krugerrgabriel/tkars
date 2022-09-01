@@ -29,11 +29,15 @@ const List: React.FC<ServerProps> = () => {
 
   const [filters, setFilters] = useState([]);
 
+  const controller = new AbortController();
+  const signal = controller.signal;
+
   const getData = async () => {
     const response = await fetch(
       `https://transdesk.com.br/souunus/backend/admin/tkars/site/get.php`,
       {
         method: 'POST',
+        signal,
         body:
           filters.length > 0 || searchParams.length > 0
             ? JSON.stringify({ params: filters, searchParams })
@@ -59,7 +63,7 @@ const List: React.FC<ServerProps> = () => {
           }, 300);
         }
       });
-    }, 150);
+    }, 250);
   }, [filters, searchParams]);
 
   const handleKey = value => {

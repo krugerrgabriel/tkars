@@ -64,7 +64,6 @@ const Carro: React.FC<ServerProps> = ({ data, recommended, images }) => {
             blurDataURL={!drag ? base64 : ''}
             onMouseDown={onMouseDown}
             onMouseUp={event => onMouseUp(event, true)}
-            onLoad={() => console.log('load')}
           />
         </Wrapper>
       </>
@@ -341,7 +340,7 @@ const Carro: React.FC<ServerProps> = ({ data, recommended, images }) => {
         </svg>
         <ScrollMenu>
           {images.map((item, index) => (
-            <div className="wrapper">
+            <div className="wrapper" key={index}>
               <Image
                 src={item.src}
                 alt={`Foto do ${SEO} | TKARS`}
@@ -793,7 +792,7 @@ const Carro: React.FC<ServerProps> = ({ data, recommended, images }) => {
 
         <Row className="margin-top-64px">
           <Col lg={12}>
-            <Ad />
+            <Ad price={data.preco} />
           </Col>
         </Row>
 

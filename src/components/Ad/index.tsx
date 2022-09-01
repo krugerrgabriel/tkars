@@ -6,11 +6,21 @@ import Link from 'next/link';
 import { Box, Loader } from '../../styles/global';
 import { Subtext, ImageWrapper } from './styles';
 
-const Ad: React.FC = () => {
+const Ad: React.FC<{ price?: number }> = ({ price }) => {
   const [isLoadedOne, setIsLoadedOne] = useState(false);
   const [isLoadedTwo, setIsLoadedTwo] = useState(false);
 
   let link = `https://api.whatsapp.com/send?phone=5545988134329&text=Olá! Acessei o site da TKars e me interessei por um anúncio do Consórcio Transdesk 🤩`;
+
+  let imageSrc;
+  if (price <= 45000) {
+    imageSrc = 'carro-novinho1.jpg';
+  } else if (price > 45000 && price <= 95000) {
+    imageSrc = 'carro-novinho2.jpg';
+  } else {
+    imageSrc = 'carro-novinho3.jpg';
+  }
+
   return (
     <>
       <Subtext> ANÚNCIO PUBLICITÁRIO </Subtext>
@@ -19,7 +29,7 @@ const Ad: React.FC = () => {
           <ImageWrapper className="mobile">
             {!isLoadedOne && <Loader />}
             <Image
-              src="https://www.transdesk.com.br/realizeseusonho/assets/img/banners/mobile/carro-novinho1.jpg"
+              src={`https://www.transdesk.com.br/realizeseusonho/assets/img/banners/mobile/${imageSrc}`}
               alt="Logo da TKARS"
               layout="fill"
               objectFit="contain"
@@ -39,7 +49,7 @@ const Ad: React.FC = () => {
             <ImageWrapper className="desktop">
               {!isLoadedTwo && <Loader />}
               <Image
-                src="https://www.transdesk.com.br/realizeseusonho/assets/img/banners/desktop/carro-novinho1.jpg"
+                src={`https://www.transdesk.com.br/realizeseusonho/assets/img/banners/desktop/${imageSrc}`}
                 alt="Logo da TKARS"
                 layout="fill"
                 objectFit="contain"
