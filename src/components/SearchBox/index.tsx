@@ -34,7 +34,7 @@ const SearchBox: React.FC<{ filterClick: Function; carsNumber: number }> = ({
       <h1> Seu novo carro está aqui! 🤩 </h1>
       <h3>
         São mais de {carsNumber} carros esperando por você! Dê uma olhada em
-        nosso catalogo e encontre o seu carro ideal.
+        nosso catálogo e encontre o seu carro ideal.
       </h3>
 
       <Row>

@@ -11,8 +11,9 @@ import { ProductProps } from './interfaces';
 
 const Product: React.FC<ProductProps> = props => {
   let { margin, fixedWidth, className } = props;
-  let { id, slug, marca, nome, modelo, preco, ano, quilometragem, extension } =
-    props.item;
+  let { id, slug, marca, nome, modelo, preco, ano, quilometragem } = props.item;
+
+  const SEO = marca + ' ' + nome + ' ' + ano + ' ' + modelo;
 
   return (
     <Body margin={margin} fixedWidth={fixedWidth} className={className}>
@@ -25,7 +26,8 @@ const Product: React.FC<ProductProps> = props => {
                 id +
                 '_og.jpg'
               }
-              alt="Logo da TKARS"
+              alt={'Logo do ' + SEO + ' | TKars'}
+              title={'Logo do ' + SEO + ' | TKars'}
               layout="fill"
               objectFit="cover"
               objectPosition="center"
@@ -41,7 +43,8 @@ const Product: React.FC<ProductProps> = props => {
                   src={`/marcas/${marca}.${
                     marca == 'chevrolet' ? 'png' : 'svg'
                   }`}
-                  alt="Logo da TKARS"
+                  alt={'Logo da' + marca + ' | TKARS'}
+                  title={'Logo da' + marca + ' | TKARS'}
                   layout="fill"
                   objectFit="contain"
                 />

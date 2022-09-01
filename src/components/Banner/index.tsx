@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import Image from 'next/image';
 
-import { preventDragHandler } from '../../functions/index';
+import { preventDragHandler, numberWithCommas } from '../../functions/index';
 
 import { Body, Overlay } from './styles';
 
@@ -15,6 +15,7 @@ const Banner: React.FC<BannerProps> = props => {
 
   const [isLoaded, setIsLoaded] = useState(false);
 
+  const SEO = marca + ' ' + nome + ' ' + modelo;
   return (
     // @ts-ignore
     <Body
@@ -24,7 +25,8 @@ const Banner: React.FC<BannerProps> = props => {
     >
       <Image
         src={src}
-        alt="Logo da TKARS"
+        alt={'Foto do ' + SEO + ' | TKars'}
+        title={'Foto do ' + SEO + ' | TKars'}
         layout="fill"
         objectFit="cover"
         className="border-radius-8px"
@@ -44,7 +46,8 @@ const Banner: React.FC<BannerProps> = props => {
           {marca} {nome}
         </h2>
         <h3>
-          <b>{modelo}</b> com apenas <b>{quilometragem}km</b> rodados!!
+          <b>{modelo}</b> com apenas <b>{numberWithCommas(quilometragem)}km</b>{' '}
+          rodados!!
         </h3>
       </div>
     </Body>

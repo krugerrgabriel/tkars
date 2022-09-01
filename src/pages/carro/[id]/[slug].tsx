@@ -58,6 +58,7 @@ const Carro: React.FC<ServerProps> = ({ data, recommended, images }) => {
           <Image
             src={src}
             alt={`Foto do ${SEO} | TKARS`}
+            title={`Foto do ${SEO} | TKARS`}
             layout="fill"
             objectFit="cover"
             placeholder={!drag ? 'blur' : 'empty'}
@@ -344,6 +345,7 @@ const Carro: React.FC<ServerProps> = ({ data, recommended, images }) => {
               <Image
                 src={item.src}
                 alt={`Foto do ${SEO} | TKARS`}
+                title={`Foto do ${SEO} | TKARS`}
                 layout="fill"
                 objectFit="cover"
                 placeholder="blur"
@@ -375,7 +377,8 @@ const Carro: React.FC<ServerProps> = ({ data, recommended, images }) => {
                         src={`/marcas/${data.marca}.${
                           data.marca == 'chevrolet' ? 'png' : 'svg'
                         }`}
-                        alt="Logo da TKARS"
+                        alt={'Logo da ' + data.marca + ' | TKARS'}
+                        title={'Logo da ' + data.marca + ' | TKARS'}
                         layout="fill"
                         objectFit="contain"
                       />
@@ -659,7 +662,7 @@ const Carro: React.FC<ServerProps> = ({ data, recommended, images }) => {
                       <div className="item-wrapper">
                         <Image
                           src={`/steering-wheel.png`}
-                          alt="Logo da TKARS"
+                          alt="Logo de Volante"
                           layout="fill"
                           objectFit="contain"
                         />
@@ -792,7 +795,7 @@ const Carro: React.FC<ServerProps> = ({ data, recommended, images }) => {
 
         <Row className="margin-top-64px">
           <Col lg={12}>
-            <Ad price={data.preco} />
+            <Ad />
           </Col>
         </Row>
 
