@@ -69,10 +69,6 @@ const Home: React.FC<ServerProps> = ({
     );
   };
 
-  const handleRedirect = itemId => {
-    location.href = '#!';
-  };
-
   const delta = 6;
   const [startX, setStartX] = useState(0);
   const [startY, setStartY] = useState(0);
@@ -126,7 +122,7 @@ const Home: React.FC<ServerProps> = ({
         />
         <meta
           property="og:image"
-          content={`https://transdesk.com.br/souunus/assets/img/veiculos/6_og.jpg`}
+          content={`https://transdesk.com.br/souunus/assets/img/veiculos/${moreViewed[0].id}_og.jpg`}
         />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
@@ -160,7 +156,6 @@ const Home: React.FC<ServerProps> = ({
             <div
               className={`margin-banner-${index}`}
               key={index} // @ts-ignore
-              onClick={() => handleRedirect(item.id)}
             >
               <Banner // @ts-ignore
                 first={first} // @ts-ignore
