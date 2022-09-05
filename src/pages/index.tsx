@@ -16,6 +16,7 @@ import Banner from '../components/Banner';
 import SearchBox from '../components/SearchBox';
 import Marca from '../components/Marca';
 import Product from '../components/Product';
+import ComingSoon from '../components/ComingSoon';
 import Ad from '../components/Ad';
 import Footer from '../components/Footer';
 import Fab from '../components/Fab';
@@ -219,6 +220,13 @@ const Home: React.FC<ServerProps> = ({
               </Col>
             );
           })}
+          {moreViewed.length < 4 ? (
+            <Col lg={3} md={4} sm={12}>
+              <ComingSoon />
+            </Col>
+          ) : (
+            ''
+          )}
         </Row>
 
         <Row>
@@ -264,6 +272,13 @@ const Home: React.FC<ServerProps> = ({
               </Col>
             );
           })}
+          {lessPrice.length < 4 ? (
+            <Col lg={3} md={4} sm={12}>
+              <ComingSoon />
+            </Col>
+          ) : (
+            ''
+          )}
         </Row>
 
         <Row>
