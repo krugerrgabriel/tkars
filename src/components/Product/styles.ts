@@ -128,57 +128,57 @@ export const Info = styled.div`
   }
 
   @media (max-width: 1200px) {
-    h3 {
+    h4 {
       font-size: 10px;
     }
 
-    h1 {
+    h2 {
       font-size: 17px;
     }
 
-    h4 {
+    h5 {
       font-size: 11px;
 
       margin: 0 0 12px 0;
     }
 
-    h2 {
+    h3 {
       font-size: 21px;
     }
   }
 
   @media (max-width: 768px) {
-    h3 {
+    h4 {
       font-size: 11px;
     }
 
-    h1 {
+    h2 {
       font-size: 19px;
     }
 
-    h4 {
+    h5 {
       font-size: 12px;
     }
 
-    h2 {
+    h3 {
       font-size: 22px;
     }
   }
 
   @media (max-width: 480px) {
-    h3 {
-      font-size: 10px;
-    }
-
-    h1 {
-      font-size: 18px;
-    }
-
     h4 {
       font-size: 10px;
     }
 
     h2 {
+      font-size: 18px;
+    }
+
+    h5 {
+      font-size: 10px;
+    }
+
+    h3 {
       font-size: 18px;
     }
 
