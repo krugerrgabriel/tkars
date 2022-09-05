@@ -243,7 +243,7 @@ const List: React.FC<ServerProps> = () => {
           property="og:title"
           content="Os melhores carros para você | TKars"
         />
-        <meta property="og:url" content={`https://tkars.vercel.app`} />
+        <meta property="og:url" content={`https://tkars.com.br`} />
         <meta
           property="og:description"
           content="Os melhores carros para você estão aqui na TKars"
