@@ -855,7 +855,7 @@ export const getStaticProps: GetStaticProps = async context => {
   const images = await Promise.all(
     data.files.map(async item => {
       const { base64, img } = await getPlaiceholder(
-        `https://transdesk.com.br/souunus/assets/img/veiculos/${data.id}_${item}.jpg`
+        `https://transdesk.com.br/souunus/assets/img/veiculos/${data.id}_${item}.jpg?1`
       );
       return {
         ...img,
