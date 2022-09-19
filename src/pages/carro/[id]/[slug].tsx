@@ -1,4 +1,4 @@
-// Refresh 7
+// Refresh 8
 
 import React, { useState, useRef, useEffect } from 'react';
 import { GetStaticPaths, GetStaticProps } from 'next';
