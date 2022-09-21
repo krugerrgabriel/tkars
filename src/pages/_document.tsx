@@ -52,8 +52,19 @@ export default class MyDocument extends Document {
             rel="stylesheet"
           />
 
-          <link rel="icon" type="image/svg" href="/icon01.svg" />
-          <link rel="apple-touch-icon" href="/icon01.svg"></link>
+          <link
+            rel="icon"
+            type="image/svg"
+            href="/favicon-darkmode.svg"
+            media="(prefers-color-scheme: dark)"
+          />
+          <link
+            rel="icon"
+            type="image/svg"
+            href="/favicon-lightmode.svg"
+            media="(prefers-color-scheme: light)"
+          />
+          <link rel="apple-touch-icon" href="/favicon-lightmode.svg"></link>
 
           <meta name="theme-color" content="#971915" />
         </Head>
