@@ -101,7 +101,7 @@ const Navbar: React.FC<{ handleKey: Function; handleLink: Function }> = ({
             <a>
               <LogoWrapper>
                 <Image
-                  src="/icon01.svg"
+                  src="/logo01.svg"
                   alt="Logo da TKARS"
                   layout="fill"
                   objectFit="contain"
@@ -162,7 +162,7 @@ const Navbar: React.FC<{ handleKey: Function; handleLink: Function }> = ({
           <a>
             <div className="logo-wrapper">
               <Image
-                src="/icon01.svg"
+                src="/logo01.svg"
                 alt="Logo da TKARS"
                 layout="fill"
                 objectFit="contain"

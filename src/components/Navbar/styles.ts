@@ -32,7 +32,7 @@ export const Body = styled.div`
         }
     }
     @media(max-width: 480px){
-        height: 72px;
+        height: 82px;
     }
 `;
 
@@ -40,11 +40,11 @@ export const LogoWrapper = styled.div`
     position: relative;
 
     aspect-ratio: 1.6845238095238095238095238095238;
-    height: 42px;
+    height: 82px;
     width: auto;
 
     @media(max-width: 480px){
-        height: 28px;
+        height: 64px;
     }
 `;
 
@@ -157,7 +157,7 @@ export const Sidenav = styled.div<{ active: boolean; }>`
         position: relative;
 
         aspect-ratio: 1.6845238095238095238095238095238;
-        width: 100px;
+        width: 150px;
         height: auto;
     }
 
