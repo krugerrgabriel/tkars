@@ -229,7 +229,7 @@ const List: React.FC<ServerProps> = () => {
 
         <meta name="og:site_name" content="TKars" />
         <meta name="author" content="Gabriel Sabara Krüger" />
-        <link rel="canonical" href="https://tkars.com.br/carros/" />
+        <link rel="canonical" href="https://www.tkars.com.br/" />
         <meta property="og:locale" content="pt_BR" />
         <meta property="locale" content="pt_BR" />
         <meta name="robots" content="index, follow" />
@@ -237,7 +237,7 @@ const List: React.FC<ServerProps> = () => {
         <meta name="viewport" content="width=device-width" />
         <meta name="description" content="Seu novo carro está aqui na TKars" />
         <meta property="og:title" content="Os melhores carros para você" />
-        <meta property="og:url" content={`https://tkars.com.br/carros/`} />
+        <meta property="og:url" content={`https://www.tkars.com.br/carros/`} />
         <meta
           property="og:description"
           content="Seu novo carro está aqui na TKars"

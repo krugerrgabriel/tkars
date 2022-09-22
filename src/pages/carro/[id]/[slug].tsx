@@ -193,10 +193,7 @@ const Carro: React.FC<ServerProps> = ({ data, recommended, images }) => {
 
         <meta name="og:site_name" content="TKars" />
         <meta name="author" content="Gabriel Sabara Krüger" />
-        <link
-          rel="canonical"
-          href={`https://tkars.com.br/carro/${data.id}/${data.slug}`}
-        />
+        <link rel="canonical" href={`https://www.tkars.com.br/`} />
         <meta property="og:locale" content="pt_BR" />
         <meta property="locale" content="pt_BR" />
         <meta name="robots" content="index, follow" />
@@ -231,7 +228,7 @@ const Carro: React.FC<ServerProps> = ({ data, recommended, images }) => {
         />
         <meta
           property="og:url"
-          content={`https://tkars.com.br/carro/${data.id}/${data.slug}`}
+          content={`https://www.tkars.com.br/carro/${data.id}/${data.slug}`}
         />
         <meta
           property="og:description"
