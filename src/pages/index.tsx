@@ -123,7 +123,10 @@ const Home: React.FC<ServerProps> = ({
         <meta property="og:image:height" content="630" />
         <meta property="og:image:alt" content="TKars" />
         <meta property="og:type" content="website" />
-        <meta name="keywords" content="Carros" />
+        <meta
+          name="keywords"
+          content="Carros, novo carro, financiamento, consórcio, tkars, barato, tabela fipe"
+        />
         <meta property="article:published_time" content="24/08/2022" />
         <meta property="article:tag" content="Carros, catalogo, barato" />
         {/* @ts-ignore */}

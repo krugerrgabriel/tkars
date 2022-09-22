@@ -266,7 +266,8 @@ const Carro: React.FC<ServerProps> = ({ data, recommended, images }) => {
             ', ' +
             data.cambio +
             ', ' +
-            data.motorizacao
+            data.motorizacao +
+            'Carros, novo carro, financiamento, consórcio, tkars, barato, tabela fipe'
           }
         />
         <meta property="article:published_time" content={data.createdAt} />
