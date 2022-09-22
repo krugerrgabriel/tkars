@@ -44,7 +44,7 @@ const SearchBox: React.FC<{ filterClick: Function; carsNumber: number }> = ({
         <Col lg={4} md={4} sm={12} className="margin-top-12px-768px">
           <Button
             icon="/bxs-car.svg"
-            iconAlt="Ícone de carro para ver todas as ofertas | TKars"
+            iconAlt="Ícone de carro para ver todas as ofertas"
             link="/carros"
             label="VER TUDO"
           />

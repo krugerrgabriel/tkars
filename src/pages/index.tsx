@@ -98,7 +98,7 @@ const Home: React.FC<ServerProps> = ({
   return (
     <AllWrapper>
       <Head>
-        <title>Os melhores carros para você | TKars</title>
+        <title>Seu novo carro está aqui na TKars</title>
 
         <meta name="og:site_name" content="TKars" />
         <meta name="author" content="Gabriel Sabara Krüger" />
@@ -108,18 +108,12 @@ const Home: React.FC<ServerProps> = ({
         <meta name="robots" content="index, follow" />
         <meta name="googlebot" content="index, follow" />
         <meta name="viewport" content="width=device-width" />
-        <meta
-          name="description"
-          content="Os melhores carros para você estão aqui na TKars"
-        />
-        <meta
-          property="og:title"
-          content="Os melhores carros para você | TKars"
-        />
+        <meta name="description" content="Seu novo carro está aqui na TKars" />
+        <meta property="og:title" content="Seu novo carro está aqui na TKars" />
         <meta property="og:url" content={`https://tkars.com.br`} />
         <meta
           property="og:description"
-          content="Os melhores carros para você estão aqui na TKars"
+          content="Seu novo carro está aqui na TKars"
         />
         <meta
           property="og:image"
@@ -233,7 +227,7 @@ const Home: React.FC<ServerProps> = ({
           <Col lg={3}>
             <Button
               icon="/bxs-car.svg"
-              iconAlt="Ícone de carro para ver todas as ofertas | TKars"
+              iconAlt="Ícone de carro para ver todas as ofertas"
               link="/carros"
               label="VER TUDO"
               className="margin-top-24px"
@@ -285,7 +279,7 @@ const Home: React.FC<ServerProps> = ({
           <Col lg={3}>
             <Button
               icon="/bxs-car.svg"
-              iconAlt="Ícone de carro para ver todas as ofertas | TKars"
+              iconAlt="Ícone de carro para ver todas as ofertas"
               link="/carros"
               label="VER MAIS"
               className="margin-top-24px"
@@ -307,7 +301,7 @@ const Home: React.FC<ServerProps> = ({
               <Button
                 type="whatsapp"
                 icon="/bxl-whatsapp.svg"
-                iconAlt="Ícone de entrar em contato com WhatsApp | TKars"
+                iconAlt="Ícone de entrar em contato com WhatsApp"
                 link="https://api.whatsapp.com/send?phone=5545988134329&text=Olá! Acessei o site da TKars e gostaria de tirar uma dúvida 😁"
                 label="ENTRAR EM CONTATO"
               />

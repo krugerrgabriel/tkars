@@ -14,7 +14,7 @@ const Fab: React.FC = () => {
           <div className="wrapper">
             <Image
               src="/bxl-whatsapp.svg"
-              alt="Ícone de entrar em contato pelo WhatsApp | TKars"
+              alt="Ícone de entrar em contato pelo WhatsApp"
               layout="fill"
               objectFit="contain"
             />

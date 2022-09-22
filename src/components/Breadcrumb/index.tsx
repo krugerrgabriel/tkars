@@ -15,7 +15,7 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({ items }) => {
           <div className="wrapper">
             <Image
               src="/bxs-home.svg"
-              alt="Logo de casa | TKars"
+              alt="Ícone de casa"
               layout="fill"
               objectFit="contain"
             />

@@ -25,8 +25,8 @@ const Banner: React.FC<BannerProps> = props => {
     >
       <Image
         src={src}
-        alt={'Foto do ' + SEO + ' | TKars'}
-        title={'Foto do ' + SEO + ' | TKars'}
+        alt={'Foto do ' + SEO}
+        title={'Foto do ' + SEO}
         layout="fill"
         objectFit="cover"
         className="border-radius-8px"

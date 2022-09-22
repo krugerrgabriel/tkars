@@ -11,8 +11,8 @@ const ComingSoon: React.FC = () => {
         <ImageWrapper>
           <Image
             src={'https://transdesk.com.br/souunus/assets/img/em-breve.jpg'}
-            alt={'Em breve novidades e mais carros | TKars'}
-            title={'Em breve novidades e mais carros | TKars'}
+            alt={'Em breve novidades e mais carros'}
+            title={'Em breve novidades e mais carros'}
             layout="fill"
             objectFit="cover"
             objectPosition="center"

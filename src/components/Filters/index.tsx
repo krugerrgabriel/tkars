@@ -161,7 +161,7 @@ const Filters: React.FC<FiltersProps> = ({
           <div className="wrapper">
             <Image
               src="/bx-chevron-left-circle.svg"
-              alt="Ícone de voltar dos filtros | TKars"
+              alt="Ícone de voltar dos filtros"
               layout="fill"
               objectFit="contain"
             />

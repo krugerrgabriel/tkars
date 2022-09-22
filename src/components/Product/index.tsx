@@ -26,8 +26,8 @@ const Product: React.FC<ProductProps> = props => {
                 id +
                 '_og.jpg'
               }
-              alt={'Logo do ' + SEO + ' | TKars'}
-              title={'Logo do ' + SEO + ' | TKars'}
+              alt={'Logo do ' + SEO}
+              title={'Logo do ' + SEO}
               layout="fill"
               objectFit="cover"
               objectPosition="center"
@@ -43,8 +43,8 @@ const Product: React.FC<ProductProps> = props => {
                   src={`/marcas/${marca}.${
                     marca == 'chevrolet' ? 'png' : 'svg'
                   }`}
-                  alt={'Logo da' + marca + ' | TKARS'}
-                  title={'Logo da' + marca + ' | TKARS'}
+                  alt={'Logo da' + marca}
+                  title={'Logo da' + marca}
                   layout="fill"
                   objectFit="contain"
                 />

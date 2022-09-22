@@ -225,28 +225,22 @@ const List: React.FC<ServerProps> = () => {
   return (
     <AllWrapper>
       <Head>
-        <title>As melhores ofertas de carros | TKars</title>
+        <title>Seu novo carro está aqui na TKars</title>
 
         <meta name="og:site_name" content="TKars" />
         <meta name="author" content="Gabriel Sabara Krüger" />
-        <link rel="canonical" href="https://tkars.com.br/" />
+        <link rel="canonical" href="https://tkars.com.br/carros/" />
         <meta property="og:locale" content="pt_BR" />
         <meta property="locale" content="pt_BR" />
         <meta name="robots" content="index, follow" />
         <meta name="googlebot" content="index, follow" />
         <meta name="viewport" content="width=device-width" />
-        <meta
-          name="description"
-          content="Os melhores carros para você estão aqui na TKars"
-        />
-        <meta
-          property="og:title"
-          content="Os melhores carros para você | TKars"
-        />
-        <meta property="og:url" content={`https://tkars.com.br`} />
+        <meta name="description" content="Seu novo carro está aqui na TKars" />
+        <meta property="og:title" content="Os melhores carros para você" />
+        <meta property="og:url" content={`https://tkars.com.br/carros/`} />
         <meta
           property="og:description"
-          content="Os melhores carros para você estão aqui na TKars"
+          content="Seu novo carro está aqui na TKars"
         />
         <meta
           property="og:image"

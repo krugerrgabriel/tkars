@@ -20,8 +20,8 @@ const Marca: React.FC<{ name: string }> = props => {
                 src={`/marcas/${nameLower}.${
                   name == 'Chevrolet' ? 'png' : 'svg'
                 }`}
-                alt={`Logo da marca ${name} | TKars`}
-                title={`Logo da marca ${name} | TKars`}
+                alt={`Logo da marca ${name}`}
+                title={`Logo da marca ${name}`}
                 layout="fill"
                 objectFit="contain"
               />

@@ -57,8 +57,8 @@ const Carro: React.FC<ServerProps> = ({ data, recommended, images }) => {
         <Wrapper onDragStart={preventDragHandler}>
           <Image
             src={src}
-            alt={`Foto do ${SEO} | TKARS`}
-            title={`Foto do ${SEO} | TKARS`}
+            alt={`Foto do ${SEO}`}
+            title={`Foto do ${SEO}`}
             layout="fill"
             objectFit="cover"
             placeholder={!drag ? 'blur' : 'empty'}
@@ -193,7 +193,10 @@ const Carro: React.FC<ServerProps> = ({ data, recommended, images }) => {
 
         <meta name="og:site_name" content="TKars" />
         <meta name="author" content="Gabriel Sabara Krüger" />
-        <link rel="canonical" href="https://tkars.com.br/" />
+        <link
+          rel="canonical"
+          href={`https://tkars.com.br/carro/${data.id}/${data.slug}`}
+        />
         <meta property="og:locale" content="pt_BR" />
         <meta property="locale" content="pt_BR" />
         <meta name="robots" content="index, follow" />
@@ -202,7 +205,7 @@ const Carro: React.FC<ServerProps> = ({ data, recommended, images }) => {
         <meta
           name="description"
           content={
-            capitalizeFirstLetter(data.marca) +
+            data.marca.toUpperCase() +
             ' ' +
             data.nome +
             ' ' +
@@ -215,7 +218,7 @@ const Carro: React.FC<ServerProps> = ({ data, recommended, images }) => {
         <meta
           property="og:title"
           content={
-            capitalizeFirstLetter(data.marca) +
+            data.marca.toUpperCase() +
             ' ' +
             data.nome +
             ' ' +
@@ -233,7 +236,7 @@ const Carro: React.FC<ServerProps> = ({ data, recommended, images }) => {
         <meta
           property="og:description"
           content={
-            capitalizeFirstLetter(data.marca) +
+            data.marca.toUpperCase() +
             ' ' +
             data.nome +
             ' ' +
@@ -250,10 +253,7 @@ const Carro: React.FC<ServerProps> = ({ data, recommended, images }) => {
         <meta property="og:image:type" content="image/jpeg" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
-        <meta
-          property="og:image:alt"
-          content={data.nome + ' ' + data.modelo + ' | TKars'}
-        />
+        <meta property="og:image:alt" content={data.nome + ' ' + data.modelo} />
         <meta property="og:type" content="website" />
         <meta
           name="keywords"
@@ -290,7 +290,7 @@ const Carro: React.FC<ServerProps> = ({ data, recommended, images }) => {
         <meta
           name="twitter:title"
           content={
-            capitalizeFirstLetter(data.marca) +
+            data.marca.toUpperCase() +
             ' ' +
             data.nome +
             ' ' +
@@ -344,8 +344,8 @@ const Carro: React.FC<ServerProps> = ({ data, recommended, images }) => {
             <div className="wrapper" key={index}>
               <Image
                 src={item.src}
-                alt={`Foto do ${SEO} | TKARS`}
-                title={`Foto do ${SEO} | TKARS`}
+                alt={`Foto do ${SEO}`}
+                title={`Foto do ${SEO}`}
                 layout="fill"
                 objectFit="cover"
                 placeholder="blur"
@@ -377,8 +377,8 @@ const Carro: React.FC<ServerProps> = ({ data, recommended, images }) => {
                         src={`/marcas/${data.marca}.${
                           data.marca == 'chevrolet' ? 'png' : 'svg'
                         }`}
-                        alt={'Logo da marca ' + data.marca + ' | TKARS'}
-                        title={'Logo da marca ' + data.marca + ' | TKARS'}
+                        alt={'Logo da marca ' + data.marca}
+                        title={'Logo da marca ' + data.marca}
                         layout="fill"
                         objectFit="contain"
                       />
@@ -785,7 +785,7 @@ const Carro: React.FC<ServerProps> = ({ data, recommended, images }) => {
 
               <Button
                 icon="/bx-share.svg"
-                iconAlt="Ícone de entrar em contato pelo WhatsApp | TKars"
+                iconAlt="Ícone de entrar em contato pelo WhatsApp"
                 link={link}
                 label="ENTRAR EM CONTATO"
               />
