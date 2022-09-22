@@ -15,6 +15,7 @@ export const Body = styled.div<{
 
   border-radius: 8px;
 
+  margin: 0 0 18px 0;
   ${({ margin }) => (margin ? 'margin: 0 18px 18px 18px' : '')};
 
   @media (min-width: 1920px) {
@@ -24,10 +25,6 @@ export const Body = styled.div<{
   @media (max-width: 992px) {
     &.product-3 {
       display: none;
-    }
-
-    & {
-      margin: 0 0 18px 0;
     }
   }
 
