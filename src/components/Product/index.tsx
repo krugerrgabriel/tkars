@@ -43,8 +43,8 @@ const Product: React.FC<ProductProps> = props => {
                   src={`/marcas/${marca}.${
                     marca == 'chevrolet' ? 'png' : 'svg'
                   }`}
-                  alt={'Logo da' + marca}
-                  title={'Logo da' + marca}
+                  alt={'Logo da marca ' + marca}
+                  title={'Logo da marca ' + marca}
                   layout="fill"
                   objectFit="contain"
                 />
