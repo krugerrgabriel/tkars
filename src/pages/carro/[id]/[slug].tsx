@@ -188,7 +188,7 @@ const Carro: React.FC<ServerProps> = ({ data, recommended, images }) => {
     <AllWrapper>
       <Head>
         <title>
-          {capitalizeFirstLetter(data.marca)} {data.nome} | TKars
+          {capitalizeFirstLetter(data.marca)} {data.nome}
         </title>
 
         <meta name="og:site_name" content="TKars" />
