@@ -26,8 +26,8 @@ const Product: React.FC<ProductProps> = props => {
                 id +
                 '_og.jpg'
               }
-              alt={'Logo do ' + SEO}
-              title={'Logo do ' + SEO}
+              alt={'Imagem do ' + SEO}
+              title={'Imagem do ' + SEO}
               layout="fill"
               objectFit="cover"
               objectPosition="center"
@@ -37,7 +37,7 @@ const Product: React.FC<ProductProps> = props => {
 
           <Info>
             <div className="d-flex align-items-center">
-              <h4> {marca} </h4>
+              <p> {marca} </p>
               <MarcaWrapper className={marca}>
                 <Image
                   src={`/marcas/${marca}.${

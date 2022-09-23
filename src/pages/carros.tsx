@@ -235,12 +235,15 @@ const List: React.FC<ServerProps> = () => {
         <meta name="robots" content="index, follow" />
         <meta name="googlebot" content="index, follow" />
         <meta name="viewport" content="width=device-width" />
-        <meta name="description" content="A TKars é uma revendedora de veículos seminovos de Cascavel-PR. Adquira conosco já o seu carro por meio do nosso financiamento e/ou consórcio. Seu seminovo está aqui!" />
+        <meta
+          name="description"
+          content="A TKars é uma revendedora de veículos seminovos de Cascavel-PR. Adquira conosco já o seu carro por meio do nosso financiamento e/ou consórcio."
+        />
         <meta property="og:title" content="Seu novo carro está aqui na TKars" />
         <meta property="og:url" content={`https://www.tkars.com.br/carros/`} />
         <meta
           property="og:description"
-          content="A TKars é uma revendedora de veículos seminovos de Cascavel-PR. Adquira conosco já o seu carro por meio do nosso financiamento e/ou consórcio. Seu seminovo está aqui!"
+          content="A TKars é uma revendedora de veículos seminovos de Cascavel-PR. Adquira conosco já o seu carro por meio do nosso financiamento e/ou consórcio."
         />
         <meta
           property="og:image"

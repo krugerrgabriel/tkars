@@ -61,7 +61,7 @@ export const Info = styled.div`
 
   padding: 18px 14px 14px 14px;
 
-  h4 {
+  p {
     color: ${({ theme }) => theme.colors.text};
 
     font-size: 11px;
@@ -124,7 +124,7 @@ export const Info = styled.div`
   }
 
   @media (max-width: 1200px) {
-    h4 {
+    p {
       font-size: 10px;
     }
 
@@ -144,7 +144,7 @@ export const Info = styled.div`
   }
 
   @media (max-width: 768px) {
-    h4 {
+    p {
       font-size: 11px;
     }
 
@@ -162,7 +162,7 @@ export const Info = styled.div`
   }
 
   @media (max-width: 480px) {
-    h4 {
+    p {
       font-size: 10px;
     }
 
