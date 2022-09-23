@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import Image from 'next/image';
 
-import { preventDragHandler, numberWithCommas } from '../../functions/index';
+import { preventDragHandler, formatBRL } from '../../functions/index';
 
 import { Body, Overlay } from './styles';
 
@@ -11,7 +11,7 @@ import { BannerProps } from './interfaces';
 const Banner: React.FC<BannerProps> = props => {
   let { onMouseDown, onMouseUp, item, first } = props;
   let { src, base64 } = item;
-  let { marca, nome, modelo, quilometragem } = item.item;
+  let { marca, nome, modelo, preco } = item.item;
 
   const [isLoaded, setIsLoaded] = useState(false);
 
@@ -46,8 +46,7 @@ const Banner: React.FC<BannerProps> = props => {
           {marca} {nome}
         </h2>
         <h3>
-          <b>{modelo}</b> com apenas <b>{numberWithCommas(quilometragem)}km</b>{' '}
-          rodados!!
+          <b>{modelo}</b> por apenas <b>{formatBRL(preco)}</b>!
         </h3>
       </div>
     </Body>

@@ -8,7 +8,6 @@ export const Body = styled.div<{
   background-color: ${({ theme }) => theme.colors.gray};
 
   width: ${({ fixedWidth }) => (fixedWidth ? '310px' : '100%')};
-  /* width: 310px; */
   height: auto;
 
   padding: 0;

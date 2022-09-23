@@ -235,12 +235,12 @@ const List: React.FC<ServerProps> = () => {
         <meta name="robots" content="index, follow" />
         <meta name="googlebot" content="index, follow" />
         <meta name="viewport" content="width=device-width" />
-        <meta name="description" content="Seu novo carro está aqui na TKars" />
-        <meta property="og:title" content="Os melhores carros para você" />
+        <meta name="description" content="A TKars é uma revendedora de veículos seminovos de Cascavel-PR. Adquira conosco já o seu carro por meio do nosso financiamento e/ou consórcio. Seu seminovo está aqui!" />
+        <meta property="og:title" content="Seu novo carro está aqui na TKars" />
         <meta property="og:url" content={`https://www.tkars.com.br/carros/`} />
         <meta
           property="og:description"
-          content="Seu novo carro está aqui na TKars"
+          content="A TKars é uma revendedora de veículos seminovos de Cascavel-PR. Adquira conosco já o seu carro por meio do nosso financiamento e/ou consórcio. Seu seminovo está aqui!"
         />
         <meta
           property="og:image"
@@ -261,11 +261,11 @@ const List: React.FC<ServerProps> = () => {
         <meta name="twitter:site" content="@krugerrgabriel" />
         <meta
           name="twitter:title"
-          content="Os melhores carros para você estão aqui na TKars"
+          content="Seu novo carro está aqui na TKars"
         />
         <meta
           name="twitter:description"
-          content="Os melhores carros para você estão aqui na TKars"
+          content="Seu novo carro está aqui na TKars"
         />
         <meta name="twitter:creator" content="@krugerrgabriel" />
       </Head>

@@ -207,9 +207,8 @@ const Carro: React.FC<ServerProps> = ({ data, recommended, images }) => {
             data.nome +
             ' ' +
             data.modelo +
-            ' com apenas ' +
-            data.quilometragem +
-            'km rodados'
+            ' por apenas ' +
+            formatBRL(data.preco)
           }
         />
         <meta
@@ -238,9 +237,8 @@ const Carro: React.FC<ServerProps> = ({ data, recommended, images }) => {
             data.nome +
             ' ' +
             data.modelo +
-            ' com apenas ' +
-            data.quilometragem +
-            'km rodados'
+            ' por apenas ' +
+            formatBRL(data.preco)
           }
         />
         <meta
