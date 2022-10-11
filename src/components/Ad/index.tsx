@@ -41,10 +41,24 @@ const Ad: React.FC<{ price?: number }> = ({ price }) => {
         </a>
       </Link>
       <Box className="ad">
-        <h3> Deseja comprar um veículo mas está sem grana à vista? 😥 </h3>
+        <h3>
+          Deseja comprar um veículo mas está sem grana à vista? 😥
+          <br /> Conte com o{' '}
+          <a
+            href="https://transdesk.com.br/realizeseusonho"
+            target="_blank"
+            rel="nofollow"
+          >
+            Consórcio Transdesk
+          </a>
+        </h3>
         <h6>
-          Clique na imagem abaixo e solicite já uma simulação do{' '}
-          <u>Consórcio Transdesk</u>, a melhor forma de realizar o seu sonho! 🤑
+          O que é o consórcio Transdesk?
+          <br /> Para facilitar a realização do seu sonho, uma das modalidades
+          de compra acontece por meio do consórcio Transdesk. Com ele, você
+          adquiri uma carta de crédito no valor do veículo que deseja comprar,
+          ao ser contemplado, o valor da carta é destinado ao pagamento do
+          veículo.
         </h6>
         <Link href={link}>
           <a rel="nofollow" target="_blank">

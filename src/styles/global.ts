@@ -1,4 +1,4 @@
-import styled, { createGlobalStyle, keyframes } from "styled-components";
+import styled, { createGlobalStyle, keyframes } from 'styled-components';
 
 export default createGlobalStyle`
     *{
@@ -222,213 +222,242 @@ const loader = keyframes`
     }
 `;
 export const Loader = styled.div`
-    position: absolute;
-    left: 0;
-    top: 0;
+  position: absolute;
+  left: 0;
+  top: 0;
 
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 
-    background: linear-gradient(100deg, #2d2d2d 8%, #3b3b3b 18%, #2d2d2d 33%);
-    background-size: 200% 300%;
+  background: linear-gradient(100deg, #2d2d2d 8%, #3b3b3b 18%, #2d2d2d 33%);
+  background-size: 200% 300%;
 
-    -webkit-animation: 1.5s ${loader} linear infinite;
-    animation: 1.5s ${loader} linear infinite;
+  -webkit-animation: 1.5s ${loader} linear infinite;
+  animation: 1.5s ${loader} linear infinite;
 
-    z-index: 400;
+  z-index: 400;
 `;
 
-export const Button = styled.div<{ type?: string; }>`
-    display: flex;
-    align-items: center;
-    justify-content: center;
+export const Button = styled.div<{ type?: string }>`
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-    background-color: ${(props) => props.type == 'whatsapp' ? '#25D366' : props.type == 'secondary' ? props.theme.colors.secondary : props.theme.colors.primary};
+  background-color: ${props =>
+    props.type == 'whatsapp'
+      ? '#25D366'
+      : props.type == 'secondary'
+      ? props.theme.colors.secondary
+      : props.theme.colors.primary};
 
-    height: 44px;
-    width: ${({ type }) => type == 'whatsapp' ? '375px' : type == 'small' ? '44px' : '100%'};
-    ${({ type }) => type == 'small' ? 'min-width: 44px;' : '0'};
+  height: 44px;
+  width: ${({ type }) =>
+    type == 'whatsapp' ? '375px' : type == 'small' ? '44px' : '100%'};
+  ${({ type }) => (type == 'small' ? 'min-width: 44px;' : '0')};
 
-    ${({ type }) => type == 'small' ? 'margin: 0 0 0 16px;' : '0'};
+  ${({ type }) => (type == 'small' ? 'margin: 0 0 0 16px;' : '0')};
 
-    border-radius: 8px;
+  border-radius: 8px;
 
-    cursor: pointer;
+  cursor: pointer;
 
-    box-shadow: 0 1px 24px rgba(68, 15, 16, 0.15);
+  box-shadow: 0 1px 24px rgba(68, 15, 16, 0.15);
 
-    transition: 0.2s;
+  transition: 0.2s;
 
-    &:hover{
-        box-shadow: 0 1px 24px rgba(68, 15, 16, 0.5);
+  &:hover {
+    box-shadow: 0 1px 24px rgba(68, 15, 16, 0.5);
+  }
+
+  &:active {
+    transform: scale(0.99);
+  }
+
+  svg {
+    fill: ${({ theme }) => theme.colors.text};
+
+    width: 16px;
+    height: auto;
+
+    ${({ type }) => (type == 'small' ? '' : 'margin: 0 0 2px 0;')};
+  }
+
+  p {
+    color: ${({ theme }) => theme.colors.text};
+
+    font-size: 15px;
+    font-weight: 600;
+
+    margin: 0 0 0 14px;
+  }
+
+  @media (max-width: 468px) {
+    width: ${({ type }) =>
+      type == 'whatsapp' ? '100%' : type == 'small' ? '40px' : '100%'};
+    height: 40px;
+
+    svg {
+      width: 14px;
+      height: auto;
+
+      ${({ type }) => (type == 'small' ? '' : 'margin: 0 0 1px 0;')};
     }
 
-    &:active{
-        transform: scale(0.99);
+    p {
+      font-size: 14px;
+
+      margin: 0 0 0 12px;
     }
-
-    svg{
-        fill: ${({ theme }) => theme.colors.text};
-
-        width: 16px;
-        height: auto;
-
-        ${({ type }) => type == 'small' ? '' : 'margin: 0 0 2px 0;'};
-    }
-
-    p{
-        color: ${({ theme }) => theme.colors.text};
-
-        font-size: 15px;
-        font-weight: 600;
-
-        margin: 0 0 0 14px;
-    }
-
-    @media(max-width: 468px){
-        width: ${({ type }) => type == 'whatsapp' ? '100%' : type == 'small' ? '40px' : '100%'};
-        height: 40px;
-
-        svg{
-            width: 14px;
-            height: auto;
-
-            ${({ type }) => type == 'small' ? '' : 'margin: 0 0 1px 0;'};
-        }
-        
-        p{
-            font-size: 14px;
-
-            margin: 0 0 0 12px;
-        }
-    }
+  }
 `;
 
 export const FilterToggle = styled.div`
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 
-    margin: 14px 0 0 0;
+  margin: 14px 0 0 0;
 
-    cursor: pointer;
+  cursor: pointer;
 
-    svg{
-        fill: ${({ theme }) => theme.colors.text};
-    }
+  svg {
+    fill: ${({ theme }) => theme.colors.text};
+  }
 
-    p{
-        color: ${({ theme }) => theme.colors.text};
+  p {
+    color: ${({ theme }) => theme.colors.text};
 
-        font-size: 16px;
-        font-weight: 600;
+    font-size: 16px;
+    font-weight: 600;
 
-        margin: 0 0 0 8px;
-    }
+    margin: 0 0 0 8px;
+  }
 `;
 
 export const Title = styled.h5`
-    color: ${({ theme }) => theme.colors.text};
+  color: ${({ theme }) => theme.colors.text};
 
-    font-size: 26px;
-    font-weight: 700;
+  font-size: 26px;
+  font-weight: 700;
 
-    margin: 0 0 12px 0;
+  margin: 0 0 12px 0;
 
-    @media (max-width: 768px) {
-        font-size: 22px;
-    }
+  @media (max-width: 768px) {
+    font-size: 22px;
+  }
 `;
 
 export const Subtitle = styled.p`
-    display: flex;
-    align-items: end;
+  display: flex;
+  align-items: end;
 
+  color: ${({ theme }) => theme.colors.text};
+
+  font-size: 14px;
+  font-weight: 500;
+
+  margin: 0 0 10px 32px;
+
+  opacity: 0.75;
+
+  @media (max-width: 768px) {
+    font-size: 12px;
+
+    margin: 0 0 10px 24px;
+  }
+`;
+
+export const Divider = styled.hr<{ full?: boolean }>`
+  background-color: ${({ theme }) => theme.colors.text};
+
+  height: 3px;
+  width: ${({ full }) => (full ? '100%' : '175px')};
+
+  margin: 32px 0;
+
+  opacity: 0.25;
+`;
+
+export const Box = styled.div`
+  background-color: ${({ theme }) => theme.colors.gray};
+
+  width: 100%;
+  height: auto;
+
+  padding: 32px;
+
+  border-radius: 8px;
+
+  &.ad a {
+    color: ${({ theme }) => theme.colors.text};
+
+    text-decoration: underline;
+  }
+
+  & > p:first-of-type,
+  h3 {
+    color: ${({ theme }) => theme.colors.text};
+
+    font-size: 22px;
+    font-weight: 700;
+
+    margin: 0;
+  }
+  &.ad > h3 {
+    line-height: 32px;
+  }
+
+  & > p:last-of-type,
+  h6 {
     color: ${({ theme }) => theme.colors.text};
 
     font-size: 14px;
     font-weight: 500;
 
-    margin: 0 0 10px 32px;
+    line-height: 26px;
 
-    opacity: 0.75;
+    margin: 0 0 24px 0;
 
-    @media(max-width: 768px){
-        font-size: 12px;
+    opacity: 0.8;
+  }
+  &.ad > h6 {
+    font-weight: 400;
 
-        margin: 0 0 10px 24px;
-    }
-`;
+    line-height: 24px;
 
-export const Divider = styled.hr<{ full?: boolean }>`
-    background-color: ${({ theme }) => theme.colors.text};
+    margin: 8px 0 24px 0;
 
-    height: 3px;
-    width: ${({ full }) => full ? '100%' : '175px'};
+    opacity: 0.9;
+  }
 
-    margin: 32px 0;
+  @media (max-width: 992px) {
+    padding: 18px 24px;
 
-    opacity: 0.25;
-`;
-
-export const Box = styled.div`
-    background-color: ${({ theme }) => theme.colors.gray};
-
-    width: 100%;
-    height: auto;
-
-    padding: 32px;
-
-    border-radius: 8px;
-
-    & > p:first-of-type, h3{
-        color: ${({ theme }) => theme.colors.text};
-
-        font-size: 22px;
-        font-weight: 700;
-
-        margin: 0;
+    & > p:first-of-type,
+    h3 {
+      font-size: 18px;
     }
 
-    & > p:last-of-type, h6{
-        color: ${({ theme }) => theme.colors.text};
+    & > p:last-of-type,
+    h6 {
+      font-size: 12px;
 
-        font-size: 14px;
-        font-weight: 500;
+      line-height: 24px;
 
-        line-height: 26px;
-
-        margin: 0 0 24px 0;
-
-        opacity: 0.8;
+      margin: 0 0 18px 0;
     }
+  }
 
-    @media (max-width: 992px){
-        padding: 18px 24px;
-
-        & > p:first-of-type, h3{
-            font-size: 18px;
-        }
-
-        & > p:last-of-type, h6{
-            font-size: 12px;
-
-            line-height: 24px;
-
-            margin: 0 0 18px 0;
-        }
+  @media (max-width: 768px) {
+    &.ad {
+      display: none;
     }
-
-    @media(max-width: 768px){
-        &.ad{
-            display: none;
-        }
-    }
+  }
 `;
 
 export const AllWrapper = styled.div`
-    position: relative;
+  position: relative;
 
-    min-height: 100vh;
+  min-height: 100vh;
 
-    padding: 0 0 148px 0;
+  padding: 0 0 148px 0;
 `;

@@ -47,24 +47,28 @@ const Footer: React.FC = () => {
           <div>
             <div className="wrapper">
               <p>uma empresa do</p>
-              <Wrapper>
-                <Image
-                  src="/grupo-unus01.svg"
-                  alt="Logo do Grupo Unus"
-                  layout="fill"
-                  objectFit="contain"
-                />
-              </Wrapper>
+              <a href="https://grupounus.com.br" rel="nofollow" target="_blank">
+                <Wrapper>
+                  <Image
+                    src="/grupo-unus01.svg"
+                    alt="Logo do Grupo Unus"
+                    layout="fill"
+                    objectFit="contain"
+                  />
+                </Wrapper>
+              </a>
             </div>
           </div>
         </Container>
       </div>
       <div className="second">
-        <Container className="h-100 d-flex align-items-center">
+        <Container className="h-100 d-flex align-items-center justify-content-between">
           <p>
             Copyright © 2013 - 2022 TK GERENCIAMENTO DE RISCO. Todos os Direitos
             Reservados.
           </p>
+
+          <p>Cascavel - PR</p>
         </Container>
       </div>
     </Body>

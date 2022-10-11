@@ -192,7 +192,9 @@ const Home: React.FC<ServerProps> = ({
         <Row>
           <Col lg={12} className="d-flex">
             <Title> Marcas </Title>
-            <Subtitle> arraste para o lado </Subtitle>
+            <Subtitle>
+              Design e personalização, alto desempenho e economia
+            </Subtitle>
           </Col>
         </Row>
         <ScrollMenu>
@@ -206,8 +208,9 @@ const Home: React.FC<ServerProps> = ({
       {/* Produtos mais novos */}
       <Container>
         <Row>
-          <Col lg={12}>
+          <Col lg={12} className="d-flex">
             <Title> Novidade </Title>
+            <Subtitle>Se liga nas novidades que preparamos para você</Subtitle>
           </Col>
         </Row>
 
@@ -258,8 +261,9 @@ const Home: React.FC<ServerProps> = ({
       {/* Produtos mais baratos */}
       <Container>
         <Row>
-          <Col lg={12}>
+          <Col lg={12} className="d-flex">
             <Title> Mais baratos </Title>
+            <Subtitle>A TKARS tem as melhores ofertas confira:</Subtitle>
           </Col>
         </Row>
 
@@ -301,8 +305,8 @@ const Home: React.FC<ServerProps> = ({
             <Box>
               <p> Não achou o que está procurando? 😱 </p>
               <p>
-                Entre em contato para que possamos entender as suas necessidades
-                e encontrar o melhor carro para você já sair dirigindo 🤩
+                Entre em contato para que possamos identificar a sua necessidade
+                e encontrar o carro que melhor combina com o seu estilo 🤩
               </p>
               <Button
                 type="whatsapp"
