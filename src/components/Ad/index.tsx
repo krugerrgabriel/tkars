@@ -9,7 +9,7 @@ import { Subtext, ImageWrapper } from './styles';
 const Ad: React.FC<{ price?: number }> = ({ price }) => {
   // @ts-ignore
   price = parseInt(price);
-  let link = `https://api.whatsapp.com/send?phone=5545988134329&text=Olá! Acessei o site da TKars e me interessei por um anúncio do Consórcio Transdesk 🤩`;
+  let link = `https://api.whatsapp.com/send?phone=5545999438811&text=Olá! Acessei o site da TKars e me interessei por um anúncio do Consórcio Transdesk 🤩`;
 
   let imageSrc;
   if (price) {

@@ -312,7 +312,7 @@ const Home: React.FC<ServerProps> = ({
                 type="whatsapp"
                 icon="/bxl-whatsapp.svg"
                 iconAlt="Ícone de entrar em contato com WhatsApp"
-                link="https://api.whatsapp.com/send?phone=5545988134329&text=Olá! Acessei o site da TKars e gostaria de tirar uma dúvida 😁"
+                link="https://api.whatsapp.com/send?phone=5545999438811&text=Olá! Acessei o site da TKars e gostaria de tirar uma dúvida 😁"
                 label="ENTRAR EM CONTATO"
               />
             </Box>

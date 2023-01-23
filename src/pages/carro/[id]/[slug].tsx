@@ -106,7 +106,7 @@ const Carro: React.FC<ServerProps> = ({ data, recommended, images }) => {
     }
   }, [fichaTecnicaReveal]);
 
-  let link = `https://api.whatsapp.com/send?phone=5545988134329&text=*[TKARS]*%0ahttps://tkars.com.br/carro/${data.id}/${data.slug}%0a%0aMe interessei por esse *${data.nome}* e gostaria de saber mais sobre 😁`;
+  let link = `https://api.whatsapp.com/send?phone=5545999438811&text=*[TKARS]*%0ahttps://tkars.com.br/carro/${data.id}/${data.slug}%0a%0aMe interessei por esse *${data.nome}* e gostaria de saber mais sobre 😁`;
 
   const handleShare = () => {
     navigator.share({
