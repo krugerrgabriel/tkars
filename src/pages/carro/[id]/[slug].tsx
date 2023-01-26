@@ -714,11 +714,11 @@ const Carro: React.FC<ServerProps> = ({ data, recommended, images }) => {
                 </div>
               </Row>
 
-              <Row>
+              {/* <Row>
                 <p className="ipva">
                   ✅ IPVA DE <b>{data.ipva}</b> PAGO
                 </p>
-              </Row>
+              </Row> */}
 
               <Divider full={true} />
 
